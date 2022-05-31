@@ -53,7 +53,11 @@ public class GameLogic : MonoBehaviour
             {
                 for (int j = 0; j < gridSize; j++) //Rows
                 {
-                    if (tiles[i, j] == item) tiles[i, j].GetComponent<SpriteRenderer>().material.color = tiles[i, j].GetComponent<TileBehaviour>().defaultColor;
+                    if (tiles[i, j] == item) 
+                    {
+                        tiles[i, j].GetComponent<SpriteRenderer>().material.color = tiles[i, j].GetComponent<TileBehaviour>().defaultColor;
+                        FindFirstOnTop(tiles[i, j]);
+                    }
                 }
             }
             GenereteNewTile(item);
@@ -76,8 +80,8 @@ public class GameLogic : MonoBehaviour
         newTile.name = tiles[indexX, indexY].name;
 
 
-        //GameObject.Destroy(tiles[indexX, indexY]);
-        //tiles[indexX, indexY] = null;
+        GameObject.Destroy(tiles[indexX, indexY]);
+        tiles[indexX, indexY] = null;
     }
 
     void Fall(GameObject chainTile)
@@ -87,6 +91,14 @@ public class GameLogic : MonoBehaviour
 
     int FindFirstOnTop(GameObject startObject)
     {
-        return 0;
+        for (int i = startObject.GetComponent<TileBehaviour>().indexY; i < gridSize; i++)
+        {
+            if (tiles[i, startObject.GetComponent<TileBehaviour>().indexX] != null)
+            {
+                Debug.Log("First on top: " + i.ToString());
+                return i;
+            } 
+        }
+        return startObject.GetComponent<TileBehaviour>().indexY;
     }
 }
