@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 135102580}
   - component: {fileID: 135102582}
   - component: {fileID: 135102581}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: IndexX.6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 501739943}
   - component: {fileID: 501739945}
   - component: {fileID: 501739944}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: IndexX.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -462,7 +462,7 @@ GameObject:
   - component: {fileID: 866200060}
   - component: {fileID: 866200062}
   - component: {fileID: 866200061}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: IndexX.2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -542,7 +542,7 @@ GameObject:
   - component: {fileID: 941670848}
   - component: {fileID: 941670850}
   - component: {fileID: 941670849}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: IndexY.2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -622,7 +622,7 @@ GameObject:
   - component: {fileID: 996487451}
   - component: {fileID: 996487453}
   - component: {fileID: 996487452}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: IndexY.Y
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -700,7 +700,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1054690605}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DebugIndexes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -735,7 +735,7 @@ GameObject:
   - component: {fileID: 1107844253}
   - component: {fileID: 1107844255}
   - component: {fileID: 1107844254}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: IndexY.4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -815,7 +815,7 @@ GameObject:
   - component: {fileID: 1169459094}
   - component: {fileID: 1169459096}
   - component: {fileID: 1169459095}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: IndexY.3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -895,7 +895,7 @@ GameObject:
   - component: {fileID: 1218240144}
   - component: {fileID: 1218240146}
   - component: {fileID: 1218240145}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: IndexX.5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -974,7 +974,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1425696801}
   - component: {fileID: 1425696802}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Indexs.X
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1078,10 +1078,8 @@ MonoBehaviour:
   testTile2: {fileID: 5358903232906739836, guid: 31ca8c3683d7cff4c99b16f82495e3f4, type: 3}
   isDragStarted: 0
   chain: []
-  head: {fileID: 1859478060818789119, guid: 5516a54af7627924182f5907a529851e, type: 3}
-  tail: {fileID: 1859478060818789119, guid: 5516a54af7627924182f5907a529851e, type: 3}
   chainRenderer: {fileID: 1923584050}
-  node: {fileID: 1859478060818789119, guid: 5516a54af7627924182f5907a529851e, type: 3}
+  node: {fileID: 6486109109635851281, guid: 55c3d5580151e4e4ea55bbe014360ad3, type: 3}
 --- !u!1 &1444773055
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,7 +1091,7 @@ GameObject:
   - component: {fileID: 1444773056}
   - component: {fileID: 1444773058}
   - component: {fileID: 1444773057}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: IndexX.X
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1173,7 +1171,7 @@ GameObject:
   - component: {fileID: 1453588197}
   - component: {fileID: 1453588199}
   - component: {fileID: 1453588198}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: IndexX.4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1253,7 +1251,7 @@ GameObject:
   - component: {fileID: 1472931178}
   - component: {fileID: 1472931180}
   - component: {fileID: 1472931179}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: IndexX.3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1333,7 +1331,7 @@ GameObject:
   - component: {fileID: 1519714236}
   - component: {fileID: 1519714238}
   - component: {fileID: 1519714237}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: IndexY.6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1499,7 +1497,7 @@ GameObject:
   - component: {fileID: 1599650476}
   - component: {fileID: 1599650478}
   - component: {fileID: 1599650477}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: IndexY.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1578,7 +1576,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1605689697}
   - component: {fileID: 1605689698}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Indexs.Y
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1644,7 +1642,7 @@ GameObject:
   - component: {fileID: 1623256036}
   - component: {fileID: 1623256038}
   - component: {fileID: 1623256037}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: IndexY.5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1737,7 +1735,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1837652306}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.5, y: -1, z: -1}
+  m_LocalPosition: {x: -2.5, y: -1, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

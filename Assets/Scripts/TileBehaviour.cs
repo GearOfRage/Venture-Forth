@@ -12,12 +12,11 @@ public class TileBehaviour : MonoBehaviour
 
     bool mouseOver = false;
 
-    public Color defaultColor;
-
-    void Awake()
+    void Start()
     {
-        defaultColor = gameObject.GetComponent<SpriteRenderer>().material.color;
         gl = GameObject.Find("GameManager").GetComponent<GameLogic>();
+
+        gameObject.GetComponent<SpriteRenderer>().transform.Rotate(0, 0, Random.Range(-10f, 10f), Space.Self);
     }
 
     void OnMouseDown()
@@ -51,7 +50,6 @@ public class TileBehaviour : MonoBehaviour
 
     void OnMouseOver()
     {
-        //Пофіксить лінію
         if (gl.isDragStarted && !gl.chain.Contains(gameObject) && Vector2.Distance(gl.chain[gl.chain.Count - 1].transform.position, gameObject.transform.position) < 1.5f)
         {
             Select(gameObject);
@@ -61,6 +59,7 @@ public class TileBehaviour : MonoBehaviour
             if (gl.isDragStarted && gameObject == gl.chain[gl.chain.Count - 2])
             {
                 gl.chain.RemoveAt(gl.chain.Count - 1);
+                gl.chainRenderer.DrawChain();
             }
         }
     }
@@ -69,14 +68,9 @@ public class TileBehaviour : MonoBehaviour
     {
 
         gl.chain.Add(selectedObjet);
-        selectedObjet.GetComponent<SpriteRenderer>().material.color = Color.blue;
-
-        Transform[] chainPoints = new Transform[gl.chain.Count];
-        for (int i = 0; i < gl.chain.Count; i++)
-        {
-            chainPoints[i] = gl.chain[i].transform;
-            //Debug.Log(chainPoints[i].name);
-        }
-        gl.chainRenderer.SetUpLine(chainPoints);
+        //selectedObjet.GetComponent<SpriteRenderer>().material.color = Color.blue;
+        gl.chainRenderer.DrawChain();
     }
+
+    
 }

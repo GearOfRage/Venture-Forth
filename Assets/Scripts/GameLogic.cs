@@ -42,7 +42,6 @@ public class GameLogic : MonoBehaviour
                 newTile.name = "[" + (j + 1).ToString() + "]" + "[" + (i + 1).ToString() + "]";
                 newTile.GetComponent<TileBehaviour>().indexY = j;
                 newTile.GetComponent<TileBehaviour>().indexX = i;
-                newTile.GetComponent<SpriteRenderer>().transform.Rotate(0, 0, Random.Range(-10f, 10f), Space.Self);
                 tiles[i, j] = newTile;
             }
         }
@@ -50,7 +49,7 @@ public class GameLogic : MonoBehaviour
 
     public void ChainDone()
     {
-        if (chain.Count > minChainSize)
+        if (chain.Count >= minChainSize)
         {
             foreach (GameObject item in chain)
             {
@@ -60,28 +59,18 @@ public class GameLogic : MonoBehaviour
                     {
                         if (tiles[i, j] == item)
                         {
-                            tiles[i, j].GetComponent<SpriteRenderer>().material.color = tiles[i, j].GetComponent<TileBehaviour>().defaultColor;
+
                         }
                     }
                 }
+                Fall();
                 GenereteNewTile(item);
-                Fall(item);
             }
-            //Some game logic happens
-        }
-        else
-        {
-            for (int i = 0; i < gridSize; i++) //Columns
-            {
-                for (int j = 0; j < gridSize; j++) //Rows
-                {
-                    tiles[i, j].GetComponent<SpriteRenderer>().material.color = tiles[i, j].GetComponent<TileBehaviour>().defaultColor;
-                }
-            }
-        }
 
+            //Some game logic happens <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+        }
         chainRenderer.DestroyNodes();
-        chainRenderer.lr.positionCount = 0;
         chain.Clear(); //Clearing the chain elements
     }
 
@@ -94,48 +83,36 @@ public class GameLogic : MonoBehaviour
         newTile.name = tiles[indexX, indexY].name;
 
 
-        GameObject.Destroy(tiles[indexX, indexY]);
-        tiles[indexX, indexY] = null;
+        //GameObject.Destroy(tiles[indexX, indexY]);
+        //tiles[indexX, indexY] = null;
     }
 
-    void Fall(GameObject chainTile)
+    void Fall()
     {
         for (int i = 0; i < gridSize; i++) //Columns
         {
             for (int j = 0; j < gridSize; j++) //Rows
             {
-                if (tiles[i, j] == null)
+                if (tiles[i,j] == null)
                 {
-                    //MoveFirstFromTop(tiles[i + 1, j]);
-                    //StartCoroutine(FallAnimation());
+                    //MoveFirstFromTop(tiles[i, j].GetComponent<TileBehaviour>().indexX, tiles[i, j].GetComponent<TileBehaviour>().indexY);
                 }
             }
         }
     }
 
-    IEnumerator FallAnimation(GameObject fallingObject, Vector3 endPosition)
+    void MoveFirstFromTop(int x, int y)
     {
-        float duration = 1f;
-
-        float normalizedTime = 0;
-        while (normalizedTime <= 1f)
+        for (int i = 0; i < y; i++)
         {
-            normalizedTime += Time.deltaTime / duration;
-            fallingObject.transform.Translate((endPosition + fallingObject.transform.position) * Time.deltaTime, Space.World);
-        }
-        yield return null;
-    }
-
-    int MoveFirstFromTop(GameObject position)
-    {
-        for (int i = position.GetComponent<TileBehaviour>().indexY; i < gridSize; i++)
-        {
-            if (tiles[i, position.GetComponent<TileBehaviour>().indexX] != null)
+            if (tiles[x, i] != null)
             {
-                //Debug.Log("First on top: " + i.ToString());
-                return i;
+                Debug.Log("First: " + tiles[x, i].name);
+                //tiles[x, y] = tiles[x, i];
+                //tiles[x, y].transform.position = Vector3.Lerp(tiles[x, y].transform.position, tiles[x, i].transform.position, 2f);
+                return;
             }
+            Debug.Log("There is nothing on top");
         }
-        return position.GetComponent<TileBehaviour>().indexY;
     }
 }
