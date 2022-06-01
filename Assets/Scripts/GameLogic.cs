@@ -63,26 +63,47 @@ public class GameLogic : MonoBehaviour
                         }
                     }
                 }
-                Fall();
-                GenereteNewTile(item);
             }
+            GenereteNewTile();
 
             //Some game logic happens <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
         }
+
         chainRenderer.DestroyNodes();
         chain.Clear(); //Clearing the chain elements
     }
 
-    void GenereteNewTile(GameObject chainTile)
+    void GenereteNewTile()
     {
-        int indexX = chainTile.GetComponent<TileBehaviour>().indexX;
-        int indexY = chainTile.GetComponent<TileBehaviour>().indexY;
+        GameObject[] newTiles = new GameObject[chain.Count];
+        float[] numToGenerate = new float[gridSize];
+        for (int i = 0; i < gridSize; i++) //Columns
+        {
+            for (int j = 0; j < gridSize; j++) //Rows
+            {
+                if (chain.Contains(tiles[i, j]))
+                {
+                    numToGenerate[i]++;
+                }
+            }
+            Debug.Log(numToGenerate[i].ToString());
+        }
 
-        GameObject newTile = Instantiate(testTile2, new Vector3(chainTile.transform.position.x, offset.transform.position.y + indexY + 1, offset.transform.position.z), Quaternion.identity, offset.transform);
-        newTile.name = tiles[indexX, indexY].name;
+        for (int i = 0; i < gridSize; i++)
+        {
+            for (int j = 0; j < numToGenerate[i]; j++)
+            {
+                newTiles[i] = Instantiate(testTile2,new Vector3(tiles[i,0].transform.position.x, gridSize + numToGenerate[i]),Quaternion.identity,offset.transform);
+            }
+        }
 
+        // In borodatiye vremena it was somewhat working 
 
+        //int indexX = chainTile.GetComponent<TileBehaviour>().indexX;
+        //int indexY = chainTile.GetComponent<TileBehaviour>().indexY;
+        //GameObject newTile = Instantiate(testTile2, new Vector3(chainTile.transform.position.x, offset.transform.position.y + indexY + 1, offset.transform.position.z), Quaternion.identity, offset.transform);
+        //newTile.name = tiles[indexX, indexY].name;
         //GameObject.Destroy(tiles[indexX, indexY]);
         //tiles[indexX, indexY] = null;
     }
