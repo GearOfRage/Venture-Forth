@@ -17,8 +17,6 @@ public class GameLogic : MonoBehaviour
 
     //[HideInInspector]
     public List<GameObject> chain;
-    public GameObject head;
-    public GameObject tail;
 
     public ChainRenderer chainRenderer;
     public GameObject node;
@@ -52,27 +50,38 @@ public class GameLogic : MonoBehaviour
 
     public void ChainDone()
     {
-        chainRenderer.lr.positionCount = 0;
-        foreach (GameObject item in chain)
+        if (chain.Count > minChainSize)
+        {
+            foreach (GameObject item in chain)
+            {
+                for (int i = 0; i < gridSize; i++) //Columns
+                {
+                    for (int j = 0; j < gridSize; j++) //Rows
+                    {
+                        if (tiles[i, j] == item)
+                        {
+                            tiles[i, j].GetComponent<SpriteRenderer>().material.color = tiles[i, j].GetComponent<TileBehaviour>().defaultColor;
+                        }
+                    }
+                }
+                GenereteNewTile(item);
+                Fall(item);
+            }
+            //Some game logic happens
+        }
+        else
         {
             for (int i = 0; i < gridSize; i++) //Columns
             {
                 for (int j = 0; j < gridSize; j++) //Rows
                 {
-                    if (tiles[i, j] == item)
-                    {
-                        tiles[i, j].GetComponent<SpriteRenderer>().material.color = tiles[i, j].GetComponent<TileBehaviour>().defaultColor;
-                    }
+                    tiles[i, j].GetComponent<SpriteRenderer>().material.color = tiles[i, j].GetComponent<TileBehaviour>().defaultColor;
                 }
             }
-            GenereteNewTile(item);
-            Fall(item);
         }
 
-        //Some game logic happens
-
-        GameObject.Destroy(head);
-        GameObject.Destroy(tail);
+        chainRenderer.DestroyNodes();
+        chainRenderer.lr.positionCount = 0;
         chain.Clear(); //Clearing the chain elements
     }
 

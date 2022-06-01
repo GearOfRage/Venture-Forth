@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -11,8 +10,6 @@ public class TileBehaviour : MonoBehaviour
     public int indexX;
     public int indexY;
 
-
-    [SerializeField]
     bool mouseOver = false;
 
     public Color defaultColor;
@@ -29,9 +26,6 @@ public class TileBehaviour : MonoBehaviour
         if (!gl.chain.Contains(gameObject))
         {
             Select(gameObject);
-            //gl.head = Instantiate(gl.node, gl.chain.Last().transform.localPosition, Quaternion.identity, gl.chainRenderer.transform);
-            //gl.tail = Instantiate(gl.node, gl.chain.First().transform.localPosition, Quaternion.identity, gl.chainRenderer.transform);
-            
         }
         gl.isDragStarted = true;
     }
@@ -57,37 +51,18 @@ public class TileBehaviour : MonoBehaviour
 
     void OnMouseOver()
     {
-        if (gl.isDragStarted && !gl.chain.Contains(gameObject) && Vector2.Distance(gl.chain.Last().transform.position, gameObject.transform.position) < 1.5f)
+        //Ïîô³êñèòü ë³í³þ
+        if (gl.isDragStarted && !gl.chain.Contains(gameObject) && Vector2.Distance(gl.chain[gl.chain.Count - 1].transform.position, gameObject.transform.position) < 1.5f)
         {
             Select(gameObject);
-            //Debug.Log("Added: " + gameObject.name);
         }
-
-        //Debug.Log("Over: " + gameObject.name);
-        //Debug.Log("MouseOver");
-        //StartCoroutine(Countdown());
-    }
-
-    private IEnumerator Countdown()
-    {
-        float duration = 2f;
-
-        float normalizedTime = 0;
-        while (normalizedTime <= 1f)
+        if (gl.chain.Count > 1)
         {
-            normalizedTime += Time.deltaTime / duration;
-
+            if (gl.isDragStarted && gameObject == gl.chain[gl.chain.Count - 2])
+            {
+                gl.chain.RemoveAt(gl.chain.Count - 1);
+            }
         }
-        if (mouseOver)
-        {
-            ShowToolTip();
-        }
-        yield return null;
-    }
-
-    private void ShowToolTip()
-    {
-        Debug.Log("Tool tip is showed");
     }
 
     void Select(GameObject selectedObjet)
@@ -95,8 +70,6 @@ public class TileBehaviour : MonoBehaviour
 
         gl.chain.Add(selectedObjet);
         selectedObjet.GetComponent<SpriteRenderer>().material.color = Color.blue;
-
-        gl.head.transform.Translate(gl.chain.Last().transform.localPosition);
 
         Transform[] chainPoints = new Transform[gl.chain.Count];
         for (int i = 0; i < gl.chain.Count; i++)

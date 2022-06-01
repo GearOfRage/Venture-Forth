@@ -1078,9 +1078,10 @@ MonoBehaviour:
   testTile2: {fileID: 5358903232906739836, guid: 31ca8c3683d7cff4c99b16f82495e3f4, type: 3}
   isDragStarted: 0
   chain: []
-  chainRenderer: {fileID: 1923584050}
   head: {fileID: 1859478060818789119, guid: 5516a54af7627924182f5907a529851e, type: 3}
   tail: {fileID: 1859478060818789119, guid: 5516a54af7627924182f5907a529851e, type: 3}
+  chainRenderer: {fileID: 1923584050}
+  node: {fileID: 1859478060818789119, guid: 5516a54af7627924182f5907a529851e, type: 3}
 --- !u!1 &1444773055
 GameObject:
   m_ObjectHideFlags: 0
