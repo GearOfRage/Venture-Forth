@@ -17,7 +17,7 @@ public class TileBehaviour : MonoBehaviour
 
     public Color defaultColor;
 
-    void Start()
+    void Awake()
     {
         defaultColor = gameObject.GetComponent<SpriteRenderer>().material.color;
         gl = GameObject.Find("GameManager").GetComponent<GameLogic>();
@@ -25,17 +25,20 @@ public class TileBehaviour : MonoBehaviour
 
     void OnMouseDown()
     {
-        //Debug.Log("MouseDown " + gameObject);
+        //Debug.Log("MouseDown " + gameObject.name);
         if (!gl.chain.Contains(gameObject))
         {
             Select(gameObject);
+            //gl.head = Instantiate(gl.node, gl.chain.Last().transform.localPosition, Quaternion.identity, gl.chainRenderer.transform);
+            //gl.tail = Instantiate(gl.node, gl.chain.First().transform.localPosition, Quaternion.identity, gl.chainRenderer.transform);
+            
         }
         gl.isDragStarted = true;
     }
 
     void OnMouseUp()
     {
-        Debug.Log("MouseUp");
+        //Debug.Log("MouseUp");
         gl.isDragStarted = false;
         gl.ChainDone();
     }
@@ -57,7 +60,7 @@ public class TileBehaviour : MonoBehaviour
         if (gl.isDragStarted && !gl.chain.Contains(gameObject) && Vector2.Distance(gl.chain.Last().transform.position, gameObject.transform.position) < 1.5f)
         {
             Select(gameObject);
-            Debug.Log("Added: " + gameObject.name);
+            //Debug.Log("Added: " + gameObject.name);
         }
 
         //Debug.Log("Over: " + gameObject.name);
@@ -89,7 +92,18 @@ public class TileBehaviour : MonoBehaviour
 
     void Select(GameObject selectedObjet)
     {
+
         gl.chain.Add(selectedObjet);
         selectedObjet.GetComponent<SpriteRenderer>().material.color = Color.blue;
+
+        gl.head.transform.Translate(gl.chain.Last().transform.localPosition);
+
+        Transform[] chainPoints = new Transform[gl.chain.Count];
+        for (int i = 0; i < gl.chain.Count; i++)
+        {
+            chainPoints[i] = gl.chain[i].transform;
+            //Debug.Log(chainPoints[i].name);
+        }
+        gl.chainRenderer.SetUpLine(chainPoints);
     }
 }

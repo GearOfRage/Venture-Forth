@@ -9,20 +9,25 @@ public class GameLogic : MonoBehaviour
     public GameObject[,] tiles;
     GameObject offset;
 
-    static int gridSize = 8;
+    static int gridSize = 6;
     static int minChainSize = 3;
-    static int maxChainSize = 54;
 
 
     public bool isDragStarted = false;
 
     //[HideInInspector]
     public List<GameObject> chain;
+    public GameObject head;
+    public GameObject tail;
+
+    public ChainRenderer chainRenderer;
+    public GameObject node;
 
 
     void Start()
     {
         chain = new List<GameObject>();
+        chainRenderer = gameObject.GetComponentInChildren<ChainRenderer>();
         FirstGenerate();
     }
 
@@ -35,7 +40,7 @@ public class GameLogic : MonoBehaviour
         {
             for (int j = 0; j < gridSize; j++) //Rows
             {
-                GameObject newTile = Instantiate(testTile, new Vector3(offset.transform.position.x + i, offset.transform.position.y - j, offset.transform.position.z), Quaternion.identity, offset.transform);
+                GameObject newTile = Instantiate(testTile, new Vector3(offset.transform.position.x + i, offset.transform.position.y + j, offset.transform.position.z), Quaternion.identity, offset.transform);
                 newTile.name = "[" + (j + 1).ToString() + "]" + "[" + (i + 1).ToString() + "]";
                 newTile.GetComponent<TileBehaviour>().indexY = j;
                 newTile.GetComponent<TileBehaviour>().indexX = i;
@@ -47,16 +52,16 @@ public class GameLogic : MonoBehaviour
 
     public void ChainDone()
     {
+        chainRenderer.lr.positionCount = 0;
         foreach (GameObject item in chain)
         {
             for (int i = 0; i < gridSize; i++) //Columns
             {
                 for (int j = 0; j < gridSize; j++) //Rows
                 {
-                    if (tiles[i, j] == item) 
+                    if (tiles[i, j] == item)
                     {
                         tiles[i, j].GetComponent<SpriteRenderer>().material.color = tiles[i, j].GetComponent<TileBehaviour>().defaultColor;
-                        
                     }
                 }
             }
@@ -64,10 +69,10 @@ public class GameLogic : MonoBehaviour
             Fall(item);
         }
 
-
         //Some game logic happens
 
-
+        GameObject.Destroy(head);
+        GameObject.Destroy(tail);
         chain.Clear(); //Clearing the chain elements
     }
 
@@ -82,24 +87,46 @@ public class GameLogic : MonoBehaviour
 
         GameObject.Destroy(tiles[indexX, indexY]);
         tiles[indexX, indexY] = null;
-        FindFirstOnTop(chainTile);
     }
 
     void Fall(GameObject chainTile)
     {
-        
+        for (int i = 0; i < gridSize; i++) //Columns
+        {
+            for (int j = 0; j < gridSize; j++) //Rows
+            {
+                if (tiles[i, j] == null)
+                {
+                    //MoveFirstFromTop(tiles[i + 1, j]);
+                    //StartCoroutine(FallAnimation());
+                }
+            }
+        }
     }
 
-    int FindFirstOnTop(GameObject startObject)
+    IEnumerator FallAnimation(GameObject fallingObject, Vector3 endPosition)
     {
-        for (int i = startObject.GetComponent<TileBehaviour>().indexY; i < gridSize; i++)
+        float duration = 1f;
+
+        float normalizedTime = 0;
+        while (normalizedTime <= 1f)
         {
-            if (tiles[i, startObject.GetComponent<TileBehaviour>().indexX] != null)
+            normalizedTime += Time.deltaTime / duration;
+            fallingObject.transform.Translate((endPosition + fallingObject.transform.position) * Time.deltaTime, Space.World);
+        }
+        yield return null;
+    }
+
+    int MoveFirstFromTop(GameObject position)
+    {
+        for (int i = position.GetComponent<TileBehaviour>().indexY; i < gridSize; i++)
+        {
+            if (tiles[i, position.GetComponent<TileBehaviour>().indexX] != null)
             {
                 //Debug.Log("First on top: " + i.ToString());
                 return i;
-            } 
+            }
         }
-        return startObject.GetComponent<TileBehaviour>().indexY;
+        return position.GetComponent<TileBehaviour>().indexY;
     }
 }
