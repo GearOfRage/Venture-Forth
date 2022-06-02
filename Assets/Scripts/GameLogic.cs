@@ -6,6 +6,7 @@ public class GameLogic : MonoBehaviour
 {
     public GameObject testTile;
     public GameObject testTile2;
+    public GameObject tempTile;
     public GameObject[,] tiles;
     GameObject offset;
 
@@ -14,6 +15,7 @@ public class GameLogic : MonoBehaviour
 
 
     public bool isDragStarted = false;
+    public bool IsShifting = false;
 
     //[HideInInspector]
     public List<GameObject> chain;
@@ -59,19 +61,57 @@ public class GameLogic : MonoBehaviour
                     {
                         if (tiles[i, j] == item)
                         {
-
+                            //change stuff below
+                            GameObject.Destroy(tiles[i, j]);
+                            tiles[i, j] = Instantiate(tempTile, new Vector3(tiles[i, j].transform.position.x, tiles[i, j].transform.position.y, tiles[i, j].transform.position.z), Quaternion.identity, offset.transform);
+                            tiles[i, j].name = "[" + (j + 1).ToString() + "]" + "[" + (i + 1).ToString() + "] TMP";
                         }
                     }
                 }
             }
-            GenereteNewTile();
-
+            //GenereteNewTile();
+            FindNulls();
             //Some game logic happens <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
         }
 
         chainRenderer.DestroyNodes();
         chain.Clear(); //Clearing the chain elements
+    }
+    
+    //Change checking direction
+    void FindNulls()
+    {
+        for (int i = 0; i < gridSize; i++) //Columns
+        {
+            for (int j = 0; j < gridSize; j++) //Rows
+            {
+                if (tiles[i, j].CompareTag("tmp"))
+                {
+                    ShiftTileDown(i, j);
+                }
+            }
+        }
+    }
+
+    void ShiftTileDown(int i, int j)
+    {
+        if (j + 1 < tiles.GetLength(1)) //Checking if isnt topmost row
+        {
+            GameObject tmp = new GameObject();
+
+            tmp = tiles[i, j];
+            tiles[i, j] = tiles[i, j + 1];
+            tiles[i, j + 1] = tmp;
+
+            Vector3 posUp = tiles[i, j].transform.position;
+            Vector3 posDown = tiles[i, j + 1].transform.position;
+
+            tiles[i, j].transform.position = Vector3.Lerp(posUp, posDown, 1);
+            tiles[i, j + 1].transform.position = Vector3.Lerp(posDown, posUp, 1);
+
+            Debug.Log("Swaped:" + tiles[i, j] + " : " + tiles[i, j + 1]);
+        }
     }
 
     void GenereteNewTile()
@@ -119,7 +159,7 @@ public class GameLogic : MonoBehaviour
         {
             for (int j = 0; j < gridSize; j++) //Rows
             {
-                if (tiles[i,j] == null)
+                if (tiles[i, j] == null)
                 {
                     //MoveFirstFromTop(tiles[i, j].GetComponent<TileBehaviour>().indexX, tiles[i, j].GetComponent<TileBehaviour>().indexY);
                 }

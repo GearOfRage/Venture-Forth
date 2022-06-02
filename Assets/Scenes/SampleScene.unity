@@ -1076,7 +1076,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   testTile: {fileID: 5358903232906739836, guid: 1058d64699d73de4589d03b61c54588d, type: 3}
   testTile2: {fileID: 5358903232906739836, guid: 31ca8c3683d7cff4c99b16f82495e3f4, type: 3}
+  tempTile: {fileID: 5358903232906739836, guid: 75467045fb9d4ca4f855e92ae9e3fe1c, type: 3}
   isDragStarted: 0
+  IsShifting: 0
   chain: []
   chainRenderer: {fileID: 1923584050}
   node: {fileID: 6486109109635851281, guid: 55c3d5580151e4e4ea55bbe014360ad3, type: 3}
