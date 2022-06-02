@@ -76,8 +76,10 @@ public class GameLogic : MonoBehaviour
 
     void GenereteNewTile()
     {
-        GameObject[] newTiles = new GameObject[chain.Count];
         float[] numToGenerate = new float[gridSize];
+        float[] toGenerateX = new float[gridSize];
+        float[] toGenerateY = new float[gridSize];
+
         for (int i = 0; i < gridSize; i++) //Columns
         {
             for (int j = 0; j < gridSize; j++) //Rows
@@ -85,20 +87,23 @@ public class GameLogic : MonoBehaviour
                 if (chain.Contains(tiles[i, j]))
                 {
                     numToGenerate[i]++;
+                    toGenerateX[i] = tiles[i, j].transform.position.x;
+                    toGenerateY[j] = j + gridSize;
                 }
             }
             Debug.Log(numToGenerate[i].ToString());
         }
 
+        //Failed atempt to generation
         for (int i = 0; i < gridSize; i++)
         {
             for (int j = 0; j < numToGenerate[i]; j++)
             {
-                newTiles[i] = Instantiate(testTile2,new Vector3(tiles[i,0].transform.position.x, gridSize + numToGenerate[i]),Quaternion.identity,offset.transform);
+                Instantiate(testTile2, new Vector3(toGenerateX[i], toGenerateY[i], offset.transform.position.z), Quaternion.identity, offset.transform);
             }
         }
 
-        // In borodatiye vremena it was somewhat working 
+        // In borodatiye vremena it was somewhat working
 
         //int indexX = chainTile.GetComponent<TileBehaviour>().indexX;
         //int indexY = chainTile.GetComponent<TileBehaviour>().indexY;
