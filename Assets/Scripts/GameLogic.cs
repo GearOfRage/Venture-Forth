@@ -36,7 +36,7 @@ public class GameLogic : MonoBehaviour
     {
         offset = GameObject.Find("TileOffset");
         tiles = new GameObject[gridSize, gridSize];
-        extendedTiles = new GameObject[gridSize, gridSize * 2];
+        extendedTiles = new GameObject[gridSize, gridSize];
 
         for (int i = 0; i < gridSize; i++) //Columns
         {
@@ -86,8 +86,8 @@ public class GameLogic : MonoBehaviour
         {
             for (int j = 0; j < numToGen[i]; j++)
             {
-                extendedTiles[i, j + gridSize] = Instantiate(testTile2, new Vector3(offset.transform.position.x + i, offset.transform.position.y + gridSize + j, offset.transform.position.z), Quaternion.identity, offset.transform);
-                extendedTiles[i, j + gridSize].name = "[" + (j + 1).ToString() + "]" + "[" + (i + 1).ToString() + "] TMP";
+                extendedTiles[i, j] = Instantiate(testTile2, new Vector3(offset.transform.position.x + i, offset.transform.position.y + gridSize + j, offset.transform.position.z), Quaternion.identity, offset.transform);
+                extendedTiles[i, j].name = "[" + (j + 1).ToString() + "]" + "[" + (i + 1).ToString() + "] TMP";
             }
         }
 
@@ -116,7 +116,7 @@ public class GameLogic : MonoBehaviour
                 return;
             }
         }
-        for (int i = gridSize; i < gridSize * 2; i++)
+        for (int i = 0; i < gridSize; i++)
         {
             if (extendedTiles[nullIndexX, i] != null)
             {
