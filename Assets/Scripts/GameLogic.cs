@@ -9,6 +9,7 @@ public class GameLogic : MonoBehaviour
     public GameObject tempTile;  //NULL tile prefab
 
     public GameObject[,] tiles; //Tiles matrix
+    public GameObject[,] extendedTiles; //Extended tiles matrix
     GameObject offset; //Tiles matrix offset
 
     static int gridSize = 6; //Size of both dimentions
@@ -16,7 +17,6 @@ public class GameLogic : MonoBehaviour
 
     public bool isDragStarted = false; //Boolean for detection of draging the chain
     public bool IsShifting = false; //Boolean for detection of starting shift down (unuseble)
-    float interpolationAmmount; //
     [SerializeField] float duration = 1f; //Duration of shifting
 
     public List<GameObject> chain; //List for chain elements
@@ -36,6 +36,7 @@ public class GameLogic : MonoBehaviour
     {
         offset = GameObject.Find("TileOffset");
         tiles = new GameObject[gridSize, gridSize];
+        extendedTiles = new GameObject[gridSize, gridSize * 2];
 
         for (int i = 0; i < gridSize; i++) //Columns
         {
@@ -67,26 +68,6 @@ public class GameLogic : MonoBehaviour
     void GenereteNewTiles()
     {
         int[] numToGen = new int[gridSize];
-        //for (int i = 0; i < gridSize; i++) //Columns
-        //{
-        //    numToGen[i] = 0;
-        //    foreach (GameObject item in chain)
-        //    {
-        //        if (item.transform.position.x == offset.transform.position.x + 1 + i)
-        //        {
-        //            numToGen[i]++;
-        //        }
-        //    }
-        //    //for (int j = 0; j < gridSize; j++) //Rows
-        //    //{
-        //    //    if (chain.Contains(tiles[i, j]))
-        //    //    {
-        //    //        //numToGen[i]++;
-        //    //        GameObject.Destroy(tiles[i, j]);
-        //    //        ShiftTile(i, j);
-        //    //    }
-        //    //}
-        //}
 
         for (int i = 0; i < gridSize; i++) //Columns
         {
@@ -95,6 +76,8 @@ public class GameLogic : MonoBehaviour
                 if (chain.Contains(tiles[i, j]))
                 {
                     numToGen[i]++;
+                    GameObject.Destroy(tiles[i, j]);
+                    tiles[i, j] = null;
                 }
             }
         }
@@ -103,44 +86,65 @@ public class GameLogic : MonoBehaviour
         {
             for (int j = 0; j < numToGen[i]; j++)
             {
-                tiles[i, j] = Instantiate(testTile2, new Vector3(offset.transform.position.x + i, offset.transform.position.y + gridSize + j, offset.transform.position.z), Quaternion.identity, offset.transform);
-                tiles[i, j].name = "[" + (j + 1).ToString() + "]" + "[" + (i + 1).ToString() + "] TMP";
+                extendedTiles[i, j + gridSize] = Instantiate(testTile2, new Vector3(offset.transform.position.x + i, offset.transform.position.y + gridSize + j, offset.transform.position.z), Quaternion.identity, offset.transform);
+                extendedTiles[i, j + gridSize].name = "[" + (j + 1).ToString() + "]" + "[" + (i + 1).ToString() + "] TMP";
+            }
+        }
+
+        for (int i = 0; i < gridSize; i++) //Columns
+        {
+            for (int j = 0; j < gridSize; j++) //Rows
+            {
+                if (tiles[i, j] == null)
+                {
+                    ShiftTile(i, j);
+                }
             }
         }
     }
 
     void ShiftTile(int nullIndexX, int nullIndexY)
     {
-        for (int i = nullIndexY; i < gridSize; i++)
+        for (int i = nullIndexY + 1; i < gridSize; i++)
         {
-            if (!tiles[nullIndexX, i].CompareTag("tmp"))
+            if (tiles[nullIndexX, i] != null)
             {
-                Debug.Log("Swaped:" + tiles[nullIndexX, i] + " : " + tiles[nullIndexX, nullIndexY]);
-
-                GameObject tmp;
-                tmp = tiles[nullIndexX, i];
-                tiles[nullIndexX, i] = tiles[nullIndexX, nullIndexY];
-                tiles[nullIndexX, nullIndexY] = tmp;
-
-                StartCoroutine(ShiftAnimation(tiles[nullIndexX, i], tiles[nullIndexX, nullIndexY]));
+                tiles[nullIndexX, nullIndexY] = tiles[nullIndexX, i];
+                //Move(tiles[nullIndexX, nullIndexY], new Vector3(tiles[nullIndexX, nullIndexY].transform.position.x, nullIndexY + offset.transform.position.y, offset.transform.position.z));
+                tiles[nullIndexX, i] = null;
+                StartCoroutine(ShiftAnimation(tiles[nullIndexX, nullIndexY], new Vector3(tiles[nullIndexX, nullIndexY].transform.position.x, nullIndexY + offset.transform.position.y, offset.transform.position.z)));
+                return;
+            }
+        }
+        for (int i = gridSize; i < gridSize * 2; i++)
+        {
+            if (extendedTiles[nullIndexX, i] != null)
+            {
+                tiles[nullIndexX, nullIndexY] = extendedTiles[nullIndexX, i];
+                //Move(tiles[nullIndexX, nullIndexY], new Vector3(tiles[nullIndexX, nullIndexY].transform.position.x, nullIndexY + offset.transform.position.y, offset.transform.position.z));
+                extendedTiles[nullIndexX, i] = null;
+                StartCoroutine(ShiftAnimation(tiles[nullIndexX, nullIndexY], new Vector3(tiles[nullIndexX, nullIndexY].transform.position.x, nullIndexY + offset.transform.position.y, offset.transform.position.z)));
+                return;
             }
         }
     }
 
-    IEnumerator ShiftAnimation(GameObject tileA, GameObject TileB)
+    //For testing purposes
+    void Move(GameObject tile, Vector3 endPos)
     {
-        float normalizedTime = 0;
+        tile.transform.position = endPos;
+    }
 
-        Vector3 posA = tileA.transform.position;
-        Vector3 posB = TileB.transform.position;
+    IEnumerator ShiftAnimation(GameObject tile, Vector3 endPos)
+    {
+        float normalizedTime = 0f;
+
 
         while (normalizedTime <= duration)
         {
-            normalizedTime = Time.deltaTime / duration;
+            normalizedTime += Time.deltaTime / duration;
 
-            tileA.transform.position = Vector3.Lerp(tileA.transform.position, posB, (interpolationAmmount + normalizedTime));
-            TileB.transform.position = Vector3.Lerp(TileB.transform.position, posA, (interpolationAmmount + normalizedTime));
-
+            tile.transform.position = Vector3.Lerp(tile.transform.position, endPos, normalizedTime);
             yield return null;
         }
     }
