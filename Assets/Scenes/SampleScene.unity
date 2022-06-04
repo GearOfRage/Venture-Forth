@@ -706,7 +706,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1054690605
 Transform:
   m_ObjectHideFlags: 0
@@ -1074,9 +1074,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d03f91d8c93a58242b9bcfbc01b71102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testTile: {fileID: 5358903232906739836, guid: 1058d64699d73de4589d03b61c54588d, type: 3}
-  testTile2: {fileID: 5358903232906739836, guid: 31ca8c3683d7cff4c99b16f82495e3f4, type: 3}
-  tempTile: {fileID: 5358903232906739836, guid: 75467045fb9d4ca4f855e92ae9e3fe1c, type: 3}
+  tilesPrefabs:
+  - {fileID: 5358903232906739836, guid: bb07e1767ec3b2a45b1e497eb1acb2a5, type: 3}
+  - {fileID: 5358903232906739836, guid: 31ca8c3683d7cff4c99b16f82495e3f4, type: 3}
+  - {fileID: 5358903232906739836, guid: a15fc320f48267348a7b8a9b257ffc60, type: 3}
+  - {fileID: 5358903232906739836, guid: 1058d64699d73de4589d03b61c54588d, type: 3}
+  - {fileID: 5358903232906739836, guid: 1a97e34847da2e147a662ccee9e84239, type: 3}
   isDragStarted: 0
   IsShifting: 0
   duration: 1

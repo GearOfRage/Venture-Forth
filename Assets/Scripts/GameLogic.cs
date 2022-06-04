@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class GameLogic : MonoBehaviour
 {
-    public GameObject testTile;  //Test tile prefab for first board filling
-    public GameObject testTile2; //Test tile prefab for generation
-    public GameObject tempTile;  //NULL tile prefab
+    [SerializeField] GameObject[] tilesPrefabs;  //Test tile prefab for first board filling
 
     public GameObject[,] tiles; //Tiles matrix
     public GameObject[,] extendedTiles; //Extended tiles matrix
+
     GameObject offset; //Tiles matrix offset
 
     static int gridSize = 6; //Size of both dimentions
@@ -42,10 +41,8 @@ public class GameLogic : MonoBehaviour
         {
             for (int j = 0; j < gridSize; j++) //Rows
             {
-                GameObject newTile = Instantiate(testTile, new Vector3(offset.transform.position.x + i, offset.transform.position.y + j, offset.transform.position.z), Quaternion.identity, offset.transform);
+                GameObject newTile = Instantiate(tilesPrefabs[Random.Range(0, tilesPrefabs.Length)], new Vector3(offset.transform.position.x + i, offset.transform.position.y + j, offset.transform.position.z), Quaternion.identity, offset.transform);
                 newTile.name = "[" + (j + 1).ToString() + "]" + "[" + (i + 1).ToString() + "]";
-                newTile.GetComponent<TileBehaviour>().indexY = j;
-                newTile.GetComponent<TileBehaviour>().indexX = i;
                 tiles[i, j] = newTile;
             }
         }
@@ -86,7 +83,7 @@ public class GameLogic : MonoBehaviour
         {
             for (int j = 0; j < numToGen[i]; j++)
             {
-                extendedTiles[i, j] = Instantiate(testTile2, new Vector3(offset.transform.position.x + i, offset.transform.position.y + gridSize + j, offset.transform.position.z), Quaternion.identity, offset.transform);
+                extendedTiles[i, j] = Instantiate(tilesPrefabs[Random.Range(0, tilesPrefabs.Length)], new Vector3(offset.transform.position.x + i, offset.transform.position.y + gridSize + j, offset.transform.position.z), Quaternion.identity, offset.transform);
                 extendedTiles[i, j].name = "[" + (j + 1).ToString() + "]" + "[" + (i + 1).ToString() + "] TMP";
             }
         }

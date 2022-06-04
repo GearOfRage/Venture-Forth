@@ -7,21 +7,14 @@ public class TileBehaviour : MonoBehaviour
 {
     GameLogic gl;
 
-    public int indexX;
-    public int indexY;
-
-    bool mouseOver = false;
-
     void Start()
     {
         gl = GameObject.Find("GameManager").GetComponent<GameLogic>();
-
         gameObject.GetComponent<SpriteRenderer>().transform.Rotate(0, 0, Random.Range(-10f, 10f), Space.Self);
     }
 
     void OnMouseDown()
     {
-        //Debug.Log("MouseDown " + gameObject.name);
         if (!gl.chain.Contains(gameObject))
         {
             Select(gameObject);
@@ -31,28 +24,19 @@ public class TileBehaviour : MonoBehaviour
 
     void OnMouseUp()
     {
-        //Debug.Log("MouseUp");
         gl.isDragStarted = false;
         gl.ChainDone();
     }
 
-    void OnMouseEnter()
-    {
-        //Debug.Log("MouseEnter");
-        mouseOver = true;
-    }
-
-    void OnMouseExit()
-    {
-        //Debug.Log("MouseExit");
-        mouseOver = false;
-    }
-
     void OnMouseOver()
     {
-        if (gl.isDragStarted && !gl.chain.Contains(gameObject) && Vector2.Distance(gl.chain[gl.chain.Count - 1].transform.position, gameObject.transform.position) < 1.5f)
+        if (gl.isDragStarted 
+            && !gl.chain.Contains(gameObject) 
+            && gl.chain[0].GetComponent<TileClass>().tileType == gameObject.GetComponent<TileClass>().tileType
+            && Vector2.Distance(gl.chain[gl.chain.Count - 1].transform.position, gameObject.transform.position) < 1.5f)
         {
             Select(gameObject);
+            return;
         }
         if (gl.chain.Count > 1)
         {
@@ -66,11 +50,7 @@ public class TileBehaviour : MonoBehaviour
 
     void Select(GameObject selectedObjet)
     {
-
         gl.chain.Add(selectedObjet);
-        //selectedObjet.GetComponent<SpriteRenderer>().material.color = Color.blue;
         gl.chainRenderer.DrawChain();
     }
-
-    
 }
