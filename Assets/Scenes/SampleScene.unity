@@ -1079,6 +1079,7 @@ MonoBehaviour:
   tempTile: {fileID: 5358903232906739836, guid: 75467045fb9d4ca4f855e92ae9e3fe1c, type: 3}
   isDragStarted: 0
   IsShifting: 0
+  duration: 1
   chain: []
   chainRenderer: {fileID: 1923584050}
   node: {fileID: 6486109109635851281, guid: 55c3d5580151e4e4ea55bbe014360ad3, type: 3}

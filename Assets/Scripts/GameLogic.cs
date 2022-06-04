@@ -4,25 +4,26 @@ using UnityEngine;
 
 public class GameLogic : MonoBehaviour
 {
-    public GameObject testTile;
-    public GameObject testTile2;
-    public GameObject tempTile;
-    public GameObject[,] tiles;
-    GameObject offset;
+    public GameObject testTile;  //Test tile prefab for first board filling
+    public GameObject testTile2; //Test tile prefab for generation
+    public GameObject tempTile;  //NULL tile prefab
 
-    static int gridSize = 6;
-    static int minChainSize = 3;
+    public GameObject[,] tiles; //Tiles matrix
+    GameObject offset; //Tiles matrix offset
 
+    static int gridSize = 6; //Size of both dimentions
+    static int minChainSize = 3; // Minimal chain size
 
-    public bool isDragStarted = false;
-    public bool IsShifting = false;
+    public bool isDragStarted = false; //Boolean for detection of draging the chain
+    public bool IsShifting = false; //Boolean for detection of starting shift down (unuseble)
+    float interpolationAmmount; //
+    [SerializeField] float duration = 1f; //Duration of shifting
 
-    //[HideInInspector]
-    public List<GameObject> chain;
+    public List<GameObject> chain; //List for chain elements
 
-    public ChainRenderer chainRenderer;
-    public GameObject node;
-
+    //Chain visuals
+    public ChainRenderer chainRenderer; //ChainRenderer script
+    public GameObject node; //Prefab for head and tail of chain
 
     void Start()
     {
@@ -55,22 +56,9 @@ public class GameLogic : MonoBehaviour
         {
             foreach (GameObject item in chain)
             {
-                for (int i = 0; i < gridSize; i++) //Columns
-                {
-                    for (int j = 0; j < gridSize; j++) //Rows
-                    {
-                        if (tiles[i, j] == item)
-                        {
-                            //change stuff below
-                            GameObject.Destroy(tiles[i, j]);
-                            tiles[i, j] = Instantiate(tempTile, new Vector3(tiles[i, j].transform.position.x, tiles[i, j].transform.position.y, tiles[i, j].transform.position.z), Quaternion.identity, offset.transform);
-                            tiles[i, j].name = "[" + (j + 1).ToString() + "]" + "[" + (i + 1).ToString() + "] TMP";
-                        }
-                    }
-                }
+                GenereteNewTile();
             }
-            //GenereteNewTile();
-            FindNulls();
+
             //Some game logic happens <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
         }
@@ -78,107 +66,59 @@ public class GameLogic : MonoBehaviour
         chainRenderer.DestroyNodes();
         chain.Clear(); //Clearing the chain elements
     }
-    
-    //Change checking direction
-    void FindNulls()
-    {
-        for (int i = 0; i < gridSize; i++) //Columns
-        {
-            for (int j = 0; j < gridSize; j++) //Rows
-            {
-                if (tiles[i, j].CompareTag("tmp"))
-                {
-                    ShiftTileDown(i, j);
-                }
-            }
-        }
-    }
-
-    void ShiftTileDown(int i, int j)
-    {
-        if (j + 1 < tiles.GetLength(1)) //Checking if isnt topmost row
-        {
-            GameObject tmp = new GameObject();
-
-            tmp = tiles[i, j];
-            tiles[i, j] = tiles[i, j + 1];
-            tiles[i, j + 1] = tmp;
-
-            Vector3 posUp = tiles[i, j].transform.position;
-            Vector3 posDown = tiles[i, j + 1].transform.position;
-
-            tiles[i, j].transform.position = Vector3.Lerp(posUp, posDown, 1);
-            tiles[i, j + 1].transform.position = Vector3.Lerp(posDown, posUp, 1);
-
-            Debug.Log("Swaped:" + tiles[i, j] + " : " + tiles[i, j + 1]);
-        }
-    }
 
     void GenereteNewTile()
     {
-        float[] numToGenerate = new float[gridSize];
-        float[] toGenerateX = new float[gridSize];
-        float[] toGenerateY = new float[gridSize];
-
+        int[] numToGen = new int[gridSize];
         for (int i = 0; i < gridSize; i++) //Columns
         {
             for (int j = 0; j < gridSize; j++) //Rows
             {
                 if (chain.Contains(tiles[i, j]))
                 {
-                    numToGenerate[i]++;
-                    toGenerateX[i] = tiles[i, j].transform.position.x;
-                    toGenerateY[j] = j + gridSize;
-                }
-            }
-            Debug.Log(numToGenerate[i].ToString());
-        }
-
-        //Failed atempt to generation
-        for (int i = 0; i < gridSize; i++)
-        {
-            for (int j = 0; j < numToGenerate[i]; j++)
-            {
-                Instantiate(testTile2, new Vector3(toGenerateX[i], toGenerateY[i], offset.transform.position.z), Quaternion.identity, offset.transform);
-            }
-        }
-
-        // In borodatiye vremena it was somewhat working
-
-        //int indexX = chainTile.GetComponent<TileBehaviour>().indexX;
-        //int indexY = chainTile.GetComponent<TileBehaviour>().indexY;
-        //GameObject newTile = Instantiate(testTile2, new Vector3(chainTile.transform.position.x, offset.transform.position.y + indexY + 1, offset.transform.position.z), Quaternion.identity, offset.transform);
-        //newTile.name = tiles[indexX, indexY].name;
-        //GameObject.Destroy(tiles[indexX, indexY]);
-        //tiles[indexX, indexY] = null;
-    }
-
-    void Fall()
-    {
-        for (int i = 0; i < gridSize; i++) //Columns
-        {
-            for (int j = 0; j < gridSize; j++) //Rows
-            {
-                if (tiles[i, j] == null)
-                {
-                    //MoveFirstFromTop(tiles[i, j].GetComponent<TileBehaviour>().indexX, tiles[i, j].GetComponent<TileBehaviour>().indexY);
+                    //numToGen[i]++;
+                    GameObject.Destroy(tiles[i, j]);
+                    tiles[i, j] = Instantiate(testTile2, new Vector3(tiles[i, j].transform.position.x, gridSize + j, offset.transform.position.z), Quaternion.identity, offset.transform);
+                    tiles[i, j].name = "[" + (j + 1).ToString() + "]" + "[" + (i + 1).ToString() + "] TMP";
+                    ShiftTile(i, j);
                 }
             }
         }
     }
 
-    void MoveFirstFromTop(int x, int y)
+    void ShiftTile(int nullIndexX, int nullIndexY)
     {
-        for (int i = 0; i < y; i++)
+        for (int i = nullIndexY; i < gridSize; i++)
         {
-            if (tiles[x, i] != null)
+            if (!tiles[nullIndexX, i].CompareTag("tmp"))
             {
-                Debug.Log("First: " + tiles[x, i].name);
-                //tiles[x, y] = tiles[x, i];
-                //tiles[x, y].transform.position = Vector3.Lerp(tiles[x, y].transform.position, tiles[x, i].transform.position, 2f);
-                return;
+                Debug.Log("Swaped:" + tiles[nullIndexX, i] + " : " + tiles[nullIndexX, nullIndexY]);
+
+                GameObject tmp;
+                tmp = tiles[nullIndexX, i];
+                tiles[nullIndexX, i] = tiles[nullIndexX, nullIndexY];
+                tiles[nullIndexX, nullIndexY] = tmp;
+
+                StartCoroutine(ShiftAnimation(tiles[nullIndexX, i], tiles[nullIndexX, nullIndexY]));
             }
-            Debug.Log("There is nothing on top");
+        }
+    }
+
+    IEnumerator ShiftAnimation(GameObject tileA, GameObject TileB)
+    {
+        float normalizedTime = 0;
+
+        Vector3 posA = tileA.transform.position;
+        Vector3 posB = TileB.transform.position;
+
+        while (normalizedTime <= duration)
+        {
+            normalizedTime = Time.deltaTime / duration;
+
+            tileA.transform.position = Vector3.Lerp(tileA.transform.position, posB, (interpolationAmmount + normalizedTime));
+            TileB.transform.position = Vector3.Lerp(TileB.transform.position, posA, (interpolationAmmount + normalizedTime));
+
+            yield return null;
         }
     }
 }

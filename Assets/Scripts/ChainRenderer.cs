@@ -16,8 +16,6 @@ public class ChainRenderer : MonoBehaviour
     {
         lr = GetComponent<LineRenderer>();
         gl = GameObject.Find("GameManager").GetComponent<GameLogic>();
-        head = new GameObject();
-        tail = new GameObject();
     }
 
     public void SetUpLine(Transform[] points)
