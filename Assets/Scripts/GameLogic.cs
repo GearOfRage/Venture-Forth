@@ -54,10 +54,7 @@ public class GameLogic : MonoBehaviour
     {
         if (chain.Count >= minChainSize)
         {
-            foreach (GameObject item in chain)
-            {
-                GenereteNewTile();
-            }
+            GenereteNewTiles();
 
             //Some game logic happens <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -67,21 +64,47 @@ public class GameLogic : MonoBehaviour
         chain.Clear(); //Clearing the chain elements
     }
 
-    void GenereteNewTile()
+    void GenereteNewTiles()
     {
         int[] numToGen = new int[gridSize];
+        //for (int i = 0; i < gridSize; i++) //Columns
+        //{
+        //    numToGen[i] = 0;
+        //    foreach (GameObject item in chain)
+        //    {
+        //        if (item.transform.position.x == offset.transform.position.x + 1 + i)
+        //        {
+        //            numToGen[i]++;
+        //        }
+        //    }
+        //    //for (int j = 0; j < gridSize; j++) //Rows
+        //    //{
+        //    //    if (chain.Contains(tiles[i, j]))
+        //    //    {
+        //    //        //numToGen[i]++;
+        //    //        GameObject.Destroy(tiles[i, j]);
+        //    //        ShiftTile(i, j);
+        //    //    }
+        //    //}
+        //}
+
         for (int i = 0; i < gridSize; i++) //Columns
         {
             for (int j = 0; j < gridSize; j++) //Rows
             {
                 if (chain.Contains(tiles[i, j]))
                 {
-                    //numToGen[i]++;
-                    GameObject.Destroy(tiles[i, j]);
-                    tiles[i, j] = Instantiate(testTile2, new Vector3(tiles[i, j].transform.position.x, gridSize + j, offset.transform.position.z), Quaternion.identity, offset.transform);
-                    tiles[i, j].name = "[" + (j + 1).ToString() + "]" + "[" + (i + 1).ToString() + "] TMP";
-                    ShiftTile(i, j);
+                    numToGen[i]++;
                 }
+            }
+        }
+
+        for (int i = 0; i < gridSize; i++)
+        {
+            for (int j = 0; j < numToGen[i]; j++)
+            {
+                tiles[i, j] = Instantiate(testTile2, new Vector3(offset.transform.position.x + i, offset.transform.position.y + gridSize + j, offset.transform.position.z), Quaternion.identity, offset.transform);
+                tiles[i, j].name = "[" + (j + 1).ToString() + "]" + "[" + (i + 1).ToString() + "] TMP";
             }
         }
     }
