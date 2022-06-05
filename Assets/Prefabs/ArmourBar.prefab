@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6975545931380999880
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 696400638533901445, guid: 908d092cdee5ba44283071075afd39e2, type: 3}
+      propertyPath: m_Name
+      value: ArmourBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133627264191264807, guid: 908d092cdee5ba44283071075afd39e2, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133627264191264807, guid: 908d092cdee5ba44283071075afd39e2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133627264191264807, guid: 908d092cdee5ba44283071075afd39e2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133627264191264807, guid: 908d092cdee5ba44283071075afd39e2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133627264191264807, guid: 908d092cdee5ba44283071075afd39e2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133627264191264807, guid: 908d092cdee5ba44283071075afd39e2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133627264191264807, guid: 908d092cdee5ba44283071075afd39e2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133627264191264807, guid: 908d092cdee5ba44283071075afd39e2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133627264191264807, guid: 908d092cdee5ba44283071075afd39e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133627264191264807, guid: 908d092cdee5ba44283071075afd39e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133627264191264807, guid: 908d092cdee5ba44283071075afd39e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227299731904048595, guid: 908d092cdee5ba44283071075afd39e2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227299731904048595, guid: 908d092cdee5ba44283071075afd39e2, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5276520306021821396, guid: 908d092cdee5ba44283071075afd39e2, type: 3}
+      propertyPath: m_Name
+      value: ArmourBarText
+      objectReference: {fileID: 0}
+    - target: {fileID: 6313980684974126668, guid: 908d092cdee5ba44283071075afd39e2, type: 3}
+      propertyPath: m_Name
+      value: ArmourBarMeter
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696696977501842131, guid: 908d092cdee5ba44283071075afd39e2, type: 3}
+      propertyPath: m_Name
+      value: ArmourBarBackground
+      objectReference: {fileID: 0}
+    - target: {fileID: 7814214532865513764, guid: 908d092cdee5ba44283071075afd39e2, type: 3}
+      propertyPath: m_Name
+      value: ArmourBarFrame
+      objectReference: {fileID: 0}
+    - target: {fileID: 8202416143052367336, guid: 908d092cdee5ba44283071075afd39e2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1518633345, guid: 40ce7f1967950ab44b00259119696b45, type: 3}
+    - target: {fileID: 8707000724668221301, guid: 908d092cdee5ba44283071075afd39e2, type: 3}
+      propertyPath: m_Text
+      value: 1/1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 908d092cdee5ba44283071075afd39e2, type: 3}
