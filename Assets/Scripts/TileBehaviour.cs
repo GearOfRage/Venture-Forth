@@ -10,7 +10,7 @@ public class TileBehaviour : MonoBehaviour
     void Start()
     {
         gl = GameObject.Find("GameManager").GetComponent<GameLogic>();
-        gameObject.GetComponent<SpriteRenderer>().transform.Rotate(0, 0, Random.Range(-10f, 10f), Space.Self);
+        gameObject.GetComponentInChildren<SpriteRenderer>().transform.Rotate(0, 0, Random.Range(-10f, 10f), Space.Self);
     }
 
     void OnMouseDown()

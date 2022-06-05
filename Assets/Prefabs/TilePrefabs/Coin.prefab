@@ -127,5 +127,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a2ff3430eb01c54a9bbe706a5de0c05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileType: Coin
+  tileType: 3
   tileName: Coin
