@@ -16,6 +16,7 @@ public class EnemyClass : MonoBehaviour
     [SerializeField] public int attack;
     [SerializeField] public int health;
     [SerializeField] public int armour;
+    [SerializeField] public int experienceGain;
     [SerializeField] public Text healthText;
     [SerializeField] public Text attackText;
     [SerializeField] public Text armourText;

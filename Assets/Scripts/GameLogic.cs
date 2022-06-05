@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class GameLogic : MonoBehaviour
 {
@@ -37,11 +38,21 @@ public class GameLogic : MonoBehaviour
         tiles = new GameObject[gridSize, gridSize];
         extendedTiles = new GameObject[gridSize, gridSize];
 
+        GameObject[] generatedTiles = GetRandomPrefabs(gridSize * gridSize, 3, 3);
+        int tileIndex = 0;
         for (int i = 0; i < gridSize; i++) //Columns
         {
             for (int j = 0; j < gridSize; j++) //Rows
             {
-                GameObject newTile = Instantiate(tilesPrefabs[Random.Range(0, tilesPrefabs.Length)], new Vector3(offset.transform.position.x + i, offset.transform.position.y + j, offset.transform.position.z), Quaternion.identity, offset.transform);
+                GameObject newTile = Instantiate(
+                    generatedTiles[tileIndex],
+                    new Vector3(
+                        offset.transform.position.x + i,
+                        offset.transform.position.y + j,
+                        offset.transform.position.z
+                        ), 
+                    Quaternion.identity, offset.transform);
+                tileIndex++;
                 newTile.name = "[" + (j + 1).ToString() + "]" + "[" + (i + 1).ToString() + "]";
                 tiles[i, j] = newTile;
             }
@@ -62,10 +73,61 @@ public class GameLogic : MonoBehaviour
         chain.Clear(); //Clearing the chain elements
     }
 
+    private System.Random rng = new();
+
+    GameObject[] GetRandomPrefabs(int prefabsCount, int minEnemyNumber, int maxEnemyNumber)
+    {
+        // generate prefabs randomly with enemies >= min number and <= max number
+        GameObject[] prefabs = tilesPrefabs; //prefabs from which to generate
+        int enemyNumber = 0; //how many enemies was generated
+
+        //shuffled list with numbers from 0 to prefabsCount count
+        int[] shuffledPositions = Enumerable.Range(0, prefabsCount)
+            .ToList()
+            .OrderBy(a => rng.Next()).ToArray();
+
+        // array with tiles to add. Now is empty
+        GameObject[] generatedTiles = new GameObject[prefabsCount];
+
+        // change this in the future when adding elite enemies
+        GameObject regularEnemyPrefab = prefabs.Where(val => val.GetComponent<TileClass>().tileName == TileName.RegularEnemy).First();
+        // add minimum enemies first
+        for (int i = 0; i < minEnemyNumber; i++)
+        {
+            generatedTiles[shuffledPositions[i]] = regularEnemyPrefab;
+            enemyNumber++;
+        }
+        if (minEnemyNumber == maxEnemyNumber)
+        {
+            prefabs = prefabs.Where(val => val.GetComponent<EnemyClass>() == null).ToArray();
+        }
+        // fill all other places randomly
+        for (int i = minEnemyNumber; i < prefabsCount; i++)
+        {
+            generatedTiles[shuffledPositions[i]] = prefabs[Random.Range(0, prefabs.Length)];
+            // if max enemies is generated, remove enemies prefab from prefab list
+            EnemyClass enemyClass = generatedTiles[shuffledPositions[i]].GetComponent<EnemyClass>();
+            // add here all enemies names
+            if (enemyClass != null)
+            {
+                enemyNumber++;
+                if (enemyNumber == maxEnemyNumber)
+                {
+                    prefabs = prefabs.Where(val => val.GetComponent<EnemyClass>() == null).ToArray();
+                }
+            }
+        }
+        return generatedTiles;
+    }
+
     void GenereteNewTiles()
     {
         int[] numToGen = new int[gridSize];
 
+        int maxEnemyNumber = Mathf.CeilToInt((float)chain.Count / 3); // max enemies to generate
+        int minEnemyNumber = Mathf.CeilToInt((float)maxEnemyNumber / 2); //min enemies to generate
+
+        // count how many tiles to generate in each column
         for (int i = 0; i < gridSize; i++) //Columns
         {
             for (int j = 0; j < gridSize; j++) //Rows
@@ -79,15 +141,27 @@ public class GameLogic : MonoBehaviour
             }
         }
 
+        // generate tiles
+        GameObject[] generatedTiles = GetRandomPrefabs(chain.Count, minEnemyNumber, maxEnemyNumber);
+
+        //instantiate tiles
+        int tileIndex = 0; 
         for (int i = 0; i < gridSize; i++)
         {
             for (int j = 0; j < numToGen[i]; j++)
             {
-                extendedTiles[i, j] = Instantiate(tilesPrefabs[Random.Range(0, tilesPrefabs.Length)], new Vector3(offset.transform.position.x + i, offset.transform.position.y + gridSize + j, offset.transform.position.z), Quaternion.identity, offset.transform);
+                extendedTiles[i, j] = Instantiate(
+                    generatedTiles[tileIndex],
+                    new Vector3(offset.transform.position.x + i,
+                    offset.transform.position.y + gridSize + j, 
+                    offset.transform.position.z),
+                    Quaternion.identity, offset.transform);
                 extendedTiles[i, j].name = "[" + (j + 1).ToString() + "]" + "[" + (i + 1).ToString() + "] TMP";
+                tileIndex++;
             }
         }
 
+        //shift tiles to empty spaces
         for (int i = 0; i < gridSize; i++) //Columns
         {
             for (int j = 0; j < gridSize; j++) //Rows
