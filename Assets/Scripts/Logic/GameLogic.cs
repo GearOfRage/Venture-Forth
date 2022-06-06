@@ -21,9 +21,10 @@ public class GameLogic : MonoBehaviour
 
     public List<GameObject> chain; //List for chain elements
 
-    //Chain visuals
+    //Visuals
     public ChainRenderer chainRenderer; //ChainRenderer script
     public GameObject node; //Prefab for head and tail of chain
+    public SpriteRenderer screenFader;
 
     [SerializeField]
     PlayerClass player;

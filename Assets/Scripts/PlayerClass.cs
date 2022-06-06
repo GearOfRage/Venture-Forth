@@ -18,11 +18,11 @@ public class PlayerClass : MonoBehaviour
 
     //Stats
     public int characterLevel = 1;
-    public int hpMax = 20;
+    public int hpMax = 20; //Basic stat
     public int hpCurrent = 20;
-    public int armourMax = 4;
+    public int armourMax = 4; //Basic stat
     public int armourCurrent = 0;
-    public int baseDamage = 2;
+    public int baseDamage = 2; //Basic stat
     public int weaponDamage = 2;
     public int coinProgressMax = 100;
     public int equipmentProgressMax = 100;
@@ -38,7 +38,7 @@ public class PlayerClass : MonoBehaviour
     public float addictionalExperienceProgressByEnemy = 0;
     public float addictionalCoinProgressByCoin = 0;
     public float addictionalEquipementProgressByShield = 0;
-    public float damageReductionByArmour = 0.1f;
+    public float damageReductionByArmour = 0.1f; //Basic stat
 
     [Header("Components")]
 
