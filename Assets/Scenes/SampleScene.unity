@@ -329,7 +329,7 @@ RectTransform:
   m_GameObject: {fileID: 198864146}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1.8313614}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.925, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 213232245}
@@ -1390,7 +1390,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7821320065720936720, guid: 136463dadaeecac41b7461351003df21, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.75
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7821320065720936720, guid: 136463dadaeecac41b7461351003df21, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2676,7 +2676,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7821320065720936720, guid: 136463dadaeecac41b7461351003df21, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.75
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7821320065720936720, guid: 136463dadaeecac41b7461351003df21, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3557,13 +3557,16 @@ MonoBehaviour:
   addictionalCoinProgressByCoin: 0
   statsText: {fileID: 0}
   levelText: {fileID: 0}
+  classIcon: {fileID: 0}
   healthBar: {fileID: 0}
   armourBar: {fileID: 0}
   coinProgressBar: {fileID: 0}
   equipmentProgressBar: {fileID: 0}
   experienceProgressBar: {fileID: 0}
-  healthBarText: {fileID: 0}
-  armourBarText: {fileID: 0}
+  healthBarUpperText: {fileID: 0}
+  armourBarUpperText: {fileID: 0}
+  healthBarLowerText: {fileID: 0}
+  armourBarLowerText: {fileID: 0}
   coinProgressBarText: {fileID: 0}
   equipmentProgressBarText: {fileID: 0}
   experienceProgressBarText: {fileID: 0}
@@ -3572,6 +3575,7 @@ MonoBehaviour:
   weaponSlot: {fileID: 0}
   itemSlot: {fileID: 0}
   spells: []
+  spellsText: []
 --- !u!4 &1982150893
 Transform:
   m_ObjectHideFlags: 0
