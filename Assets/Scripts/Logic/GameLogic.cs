@@ -149,8 +149,8 @@ public class GameLogic : MonoBehaviour
 
     void GenereteNewTiles(int[] numToGen)
     {
-        int maxEnemyNumber = Mathf.CeilToInt((float)chain.Count / 3); // max enemies to generate
-        int minEnemyNumber = Mathf.CeilToInt((float)maxEnemyNumber / 2); //min enemies to generate
+        int maxEnemyNumber = Mathf.CeilToInt((float)chain.Count / 2); // max enemies to generate
+        int minEnemyNumber = 1; //min enemies to generate
 
         // generate tiles
         GameObject[] generatedTiles = GetRandomPrefabs(chain.Count, minEnemyNumber, maxEnemyNumber);

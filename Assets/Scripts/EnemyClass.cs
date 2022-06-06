@@ -14,7 +14,8 @@ public class EnemyClass : MonoBehaviour
 {
     [SerializeField] public EnemyType enemyType = EnemyType.Regular;
     [SerializeField] public int attack = 1;
-    [SerializeField] public int health = 3;
+    [SerializeField] public int hp = 3;
+    [SerializeField] public int hpMax = 3;
     [SerializeField] public int armour = 1;
     [SerializeField] public int experienceGain = 10;
     [SerializeField] public Text healthText;
@@ -23,7 +24,7 @@ public class EnemyClass : MonoBehaviour
 
     private void Awake()
     {
-        healthText.text = health.ToString();
+        healthText.text = hp.ToString();
         attackText.text = attack.ToString();
         armourText.text = armour.ToString();
     }

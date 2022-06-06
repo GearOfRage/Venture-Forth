@@ -165,8 +165,9 @@ public class PlayerClass : MonoBehaviour
             + "Vampirism: " + vampirism.ToString() + "\n"
             + "Health by potion: " + hpByPotion.ToString() + "\n"
             + "Armour by shield: " + armourByShield.ToString() + "\n"
-            + "Addictional exp. gain: " + addictionalExperienceProgressByEnemy.ToString() + "\n"
-            + "Addictional coin gain: " + addictionalCoinProgressByCoin.ToString() + "\n" +
+            + "Additional exp. gain: " + addictionalExperienceProgressByEnemy.ToString() + "\n"
+            + "Additional coin gain: " + addictionalCoinProgressByCoin.ToString() + "\n"
+            + "Additional eq. gain: " + addictionalEquipementProgressByShield.ToString() + "\n" +
             "Damage Reduction: " + damageReductionByArmour.ToString();
         
     }
