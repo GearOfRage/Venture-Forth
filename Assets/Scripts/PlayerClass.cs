@@ -37,6 +37,7 @@ public class PlayerClass : MonoBehaviour
     public int armourByShield = 1;
     public float addictionalExperienceProgressByEnemy = 0;
     public float addictionalCoinProgressByCoin = 0;
+    public float damageReductionByArmour = 0.1f;
 
     [Header("Components")]
 
@@ -135,11 +136,11 @@ public class PlayerClass : MonoBehaviour
     public void UpdateBars()
     {
         //Setting fill amounts
-        coinProgressBar.fillAmount = coinProgressCurrent / coinProgressMax;
-        equipmentProgressBar.fillAmount = equipmentProgressCurrent / equipmentProgressMax;
-        experienceProgressBar.fillAmount = experienceProgressCurrent / equipmentProgressMax;
-        armourBar.fillAmount = armourCurrent / armourMax;
-        healthBar.fillAmount = hpCurrent / hpMax;
+        coinProgressBar.fillAmount = (float)coinProgressCurrent / (float)coinProgressMax;
+        equipmentProgressBar.fillAmount = (float)equipmentProgressCurrent / (float)equipmentProgressMax;
+        experienceProgressBar.fillAmount = (float)experienceProgressCurrent / (float)equipmentProgressMax;
+        armourBar.fillAmount = (float)armourCurrent / (float)armourMax;
+        healthBar.fillAmount = (float)hpCurrent / (float)hpMax;
 
         //Setting text
         coinProgressBarText.text = coinProgressCurrent + "/" + coinProgressMax;
@@ -164,6 +165,8 @@ public class PlayerClass : MonoBehaviour
             + "Health by potion: " + hpByPotion.ToString() + "\n"
             + "Armour by shield: " + armourByShield.ToString() + "\n"
             + "Addictional exp. gain: " + addictionalExperienceProgressByEnemy.ToString() + "\n"
-            + "Addictional coin gain: " + addictionalCoinProgressByCoin.ToString();
+            + "Addictional coin gain: " + addictionalCoinProgressByCoin.ToString() + "\n" +
+            "Damage Reduction: " + damageReductionByArmour.ToString();
+        
     }
 }

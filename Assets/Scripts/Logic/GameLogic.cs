@@ -12,7 +12,7 @@ public class GameLogic : MonoBehaviour
 
     GameObject offset; //Tiles matrix offset
 
-    static int gridSize = 6; //Size of both dimentions
+    public static int gridSize = 6; //Size of both dimentions
     static int minChainSize = 3; // Minimal chain size
 
     public bool isDragStarted = false; //Boolean for detection of draging the chain
@@ -63,10 +63,13 @@ public class GameLogic : MonoBehaviour
     {
         if (chain.Count >= minChainSize)
         {
-            GenereteNewTiles();
-
-            //Some game logic happens <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
+            // first destroy enemies
+            int[] numToGen = CalculateAndDestroyChainTiles();
+            // then calculate damage
+            TurnLogic tl = GetComponent<TurnLogic>();
+            tl.Next();
+            // then generate new tiles
+            GenereteNewTiles(numToGen);
         }
 
         chainRenderer.DestroyNodes();
@@ -119,13 +122,10 @@ public class GameLogic : MonoBehaviour
         }
         return generatedTiles;
     }
-
-    void GenereteNewTiles()
+    
+    int[] CalculateAndDestroyChainTiles()
     {
         int[] numToGen = new int[gridSize];
-
-        int maxEnemyNumber = Mathf.CeilToInt((float)chain.Count / 3); // max enemies to generate
-        int minEnemyNumber = Mathf.CeilToInt((float)maxEnemyNumber / 2); //min enemies to generate
 
         // count how many tiles to generate in each column
         for (int i = 0; i < gridSize; i++) //Columns
@@ -140,6 +140,14 @@ public class GameLogic : MonoBehaviour
                 }
             }
         }
+
+        return numToGen;
+    }
+
+    void GenereteNewTiles(int[] numToGen)
+    {
+        int maxEnemyNumber = Mathf.CeilToInt((float)chain.Count / 3); // max enemies to generate
+        int minEnemyNumber = Mathf.CeilToInt((float)maxEnemyNumber / 2); //min enemies to generate
 
         // generate tiles
         GameObject[] generatedTiles = GetRandomPrefabs(chain.Count, minEnemyNumber, maxEnemyNumber);
@@ -218,5 +226,10 @@ public class GameLogic : MonoBehaviour
             tile.transform.position = Vector3.Lerp(tile.transform.position, endPos, normalizedTime);
             yield return null;
         }
+    }
+
+    public void GameOver()
+    {
+        Debug.Log("You ded");
     }
 }
