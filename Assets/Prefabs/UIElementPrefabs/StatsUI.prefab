@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6167414573762443542}
   - component: {fileID: 8338490279398434618}
   m_Layer: 0
-  m_Name: HeaderText
+  m_Name: StatsUIHeaderText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 4.75}
+  m_AnchoredPosition: {x: 0, y: 4.7}
   m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6167414573762443542
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 443320480171604595}
   - component: {fileID: 1552429166816667969}
   m_Layer: 0
-  m_Name: Text
+  m_Name: StatsUIText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,7 +116,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -0.25}
-  m_SizeDelta: {x: 360, y: 925}
+  m_SizeDelta: {x: 375, y: 925}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &443320480171604595
 CanvasRenderer:
@@ -148,8 +148,8 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 334d5dd47647fa24383efac610ea58f2, type: 3}
-    m_FontSize: 32
-    m_FontStyle: 1
+    m_FontSize: 28
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 51
@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 1477119929884141050}
   - component: {fileID: 4933307853957300714}
   m_Layer: 0
-  m_Name: Frame
+  m_Name: StatsUIFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 2954320252408257586}
   - component: {fileID: 1956281855085600012}
   m_Layer: 0
-  m_Name: Background
+  m_Name: StatsUIBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

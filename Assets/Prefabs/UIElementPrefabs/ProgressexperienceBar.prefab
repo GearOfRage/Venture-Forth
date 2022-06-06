@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4668908416280164994}
   - component: {fileID: 8105665756389424950}
   m_Layer: 0
-  m_Name: ProgressExpirenceBar
+  m_Name: ProgressexperienceBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 5765274756588859914}
   - component: {fileID: 8707000724668221301}
   m_Layer: 0
-  m_Name: ProgressExpirenceBarText
+  m_Name: ProgressExperienceBarText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,7 +97,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.02}
   m_SizeDelta: {x: 450, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5765274756588859914
@@ -130,7 +130,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 334d5dd47647fa24383efac610ea58f2, type: 3}
-    m_FontSize: 32
+    m_FontSize: 26
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 637004799352039622}
   - component: {fileID: 2288388543408660168}
   m_Layer: 0
-  m_Name: ProgressExpirenceBarMeter
+  m_Name: ProgressExperienceBarMeter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -283,7 +283,7 @@ GameObject:
   - component: {fileID: 1410338300539033010}
   - component: {fileID: 6157281595420923858}
   m_Layer: 0
-  m_Name: ProgressExpirenceBarBackground
+  m_Name: ProgressExperienceBarBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 7161094059702306760}
   - component: {fileID: 2286220291279596833}
   m_Layer: 0
-  m_Name: ProgressExpirenceBarFrame
+  m_Name: ProgressExperienceBarFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
