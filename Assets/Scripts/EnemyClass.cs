@@ -13,10 +13,10 @@ public enum EnemyType
 public class EnemyClass : MonoBehaviour
 {
     [SerializeField] public EnemyType enemyType = EnemyType.Regular;
-    [SerializeField] public int attack;
-    [SerializeField] public int health;
-    [SerializeField] public int armour;
-    [SerializeField] public int experienceGain;
+    [SerializeField] public int attack = 1;
+    [SerializeField] public int health = 3;
+    [SerializeField] public int armour = 1;
+    [SerializeField] public int experienceGain = 10;
     [SerializeField] public Text healthText;
     [SerializeField] public Text attackText;
     [SerializeField] public Text armourText;
@@ -27,5 +27,4 @@ public class EnemyClass : MonoBehaviour
         attackText.text = attack.ToString();
         armourText.text = armour.ToString();
     }
-
 }

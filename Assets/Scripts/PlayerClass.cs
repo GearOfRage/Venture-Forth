@@ -130,7 +130,6 @@ public class PlayerClass : MonoBehaviour
         UpdateBars();
         UpdateStats();
         levelText.text = characterLevel.ToString();
-
     }
 
     public void UpdateBars()
