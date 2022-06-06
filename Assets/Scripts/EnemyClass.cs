@@ -24,6 +24,11 @@ public class EnemyClass : MonoBehaviour
 
     private void Awake()
     {
+        UpdateStats();
+    }
+
+    public void UpdateStats()
+    {
         healthText.text = hp.ToString();
         attackText.text = attack.ToString();
         armourText.text = armour.ToString();

@@ -53,7 +53,7 @@ public class GameLogic : MonoBehaviour
                         offset.transform.position.x + i,
                         offset.transform.position.y + j,
                         offset.transform.position.z
-                        ), 
+                        ),
                     Quaternion.identity, offset.transform);
                 tileIndex++;
                 newTile.name = "[" + (j + 1).ToString() + "]" + "[" + (i + 1).ToString() + "]";
@@ -66,11 +66,11 @@ public class GameLogic : MonoBehaviour
     {
         if (chain.Count >= minChainSize)
         {
-            // first destroy enemies
-            int[] numToGen = CalculateAndDestroyChainTiles();
-            // then calculate damage
+            // first handle chain
             TurnLogic tl = GetComponent<TurnLogic>();
             tl.Next();
+            // then destroy it
+            int[] numToGen = CalculateAndDestroyChainTiles();
             // then generate new tiles
             GenereteNewTiles(numToGen);
         }
@@ -125,7 +125,7 @@ public class GameLogic : MonoBehaviour
         }
         return generatedTiles;
     }
-    
+
     int[] CalculateAndDestroyChainTiles()
     {
         int[] numToGen = new int[gridSize];
@@ -135,11 +135,16 @@ public class GameLogic : MonoBehaviour
         {
             for (int j = 0; j < gridSize; j++) //Rows
             {
-                if (chain.Contains(tiles[i, j]))
+                int index = chain.IndexOf(tiles[i, j]);
+                if (index != -1)
                 {
-                    numToGen[i]++;
-                    GameObject.Destroy(tiles[i, j]);
-                    tiles[i, j] = null;
+                    EnemyClass e = tiles[i, j].GetComponent<EnemyClass>();
+                    if (e == null || e.hp <= 0)
+                    {
+                        numToGen[i]++;
+                        GameObject.Destroy(tiles[i, j]);
+                        tiles[i, j] = null;
+                    }
                 }
             }
         }
@@ -156,7 +161,7 @@ public class GameLogic : MonoBehaviour
         GameObject[] generatedTiles = GetRandomPrefabs(chain.Count, minEnemyNumber, maxEnemyNumber);
 
         //instantiate tiles
-        int tileIndex = 0; 
+        int tileIndex = 0;
         for (int i = 0; i < gridSize; i++)
         {
             for (int j = 0; j < numToGen[i]; j++)
@@ -164,7 +169,7 @@ public class GameLogic : MonoBehaviour
                 extendedTiles[i, j] = Instantiate(
                     generatedTiles[tileIndex],
                     new Vector3(offset.transform.position.x + i,
-                    offset.transform.position.y + gridSize + j, 
+                    offset.transform.position.y + gridSize + j,
                     offset.transform.position.z),
                     Quaternion.identity, offset.transform);
                 extendedTiles[i, j].name = "[" + (j + 1).ToString() + "]" + "[" + (i + 1).ToString() + "] TMP";

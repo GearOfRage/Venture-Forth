@@ -85,6 +85,7 @@ public class TurnLogic : MonoBehaviour
                                 expGain += enemy.experienceGain;
                                 killedEnemiesCount++;
                             }
+                            enemy.UpdateStats();
                             break;
                         case TileName.Sword:
                             break;
@@ -128,7 +129,7 @@ public class TurnLogic : MonoBehaviour
                     Debug.Log("Up " + equipmentLevelUps + " equipements now!");
                 }
                 player.equipmentProgressCurrent = equipmentProgressCurrent % player.equipmentProgressMax;
-                player.armourCurrent = Mathf.Max(player.armourMax, armourGain);
+                player.armourCurrent = Mathf.Min(player.armourMax, armourGain);
                 break;
             case TileType.Potion:
                 int healthChange = 0;
