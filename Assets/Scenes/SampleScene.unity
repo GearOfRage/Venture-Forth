@@ -3573,9 +3573,9 @@ MonoBehaviour:
   armourCurrent: 0
   baseDamage: 2
   weaponDamage: 2
-  coinProgressMax: 20
-  equipmentProgressMax: 20
-  experienceProgressMax: 20
+  coinProgressMax: 100
+  equipmentProgressMax: 100
+  experienceProgressMax: 100
   coinProgressCurrent: 0
   equipmentProgressCurrent: 0
   experienceProgressCurrent: 0
@@ -3586,6 +3586,7 @@ MonoBehaviour:
   armourByShield: 1
   addictionalExperienceProgressByEnemy: 0
   addictionalCoinProgressByCoin: 0
+  addictionalEquipementProgressByShield: 0
   damageReductionByArmour: 0.1
   statsText: {fileID: 0}
   levelText: {fileID: 0}

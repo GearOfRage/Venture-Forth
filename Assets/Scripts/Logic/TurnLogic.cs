@@ -80,7 +80,7 @@ public class TurnLogic : MonoBehaviour
                              );
                             enemy.hp = hpArmour.hp;
                             enemy.armour = hpArmour.armour;
-                            if (enemy.hp == 0)
+                            if (enemy.hp <= 0)
                             {
                                 expGain += enemy.experienceGain;
                                 killedEnemiesCount++;

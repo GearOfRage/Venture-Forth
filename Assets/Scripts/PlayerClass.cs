@@ -24,9 +24,9 @@ public class PlayerClass : MonoBehaviour
     public int armourCurrent = 0;
     public int baseDamage = 2;
     public int weaponDamage = 2;
-    public int coinProgressMax = 20;
-    public int equipmentProgressMax = 20;
-    public int experienceProgressMax = 20;
+    public int coinProgressMax = 100;
+    public int equipmentProgressMax = 100;
+    public int experienceProgressMax = 100;
     public int coinProgressCurrent = 0;
     public int equipmentProgressCurrent = 0;
     public int experienceProgressCurrent = 0;
@@ -146,11 +146,14 @@ public class PlayerClass : MonoBehaviour
         //Setting text
         coinProgressBarText.text = coinProgressCurrent + "/" + coinProgressMax;
         equipmentProgressBarText.text = equipmentProgressCurrent + "/" + equipmentProgressMax;
-        experienceProgressBarText.text = experienceProgressCurrent + "/" + equipmentProgressMax;
+        experienceProgressBarText.text = experienceProgressCurrent + "/" + experienceProgressMax;
         healthBarUpperText.text = hpCurrent.ToString();
         healthBarLowerText.text = hpMax.ToString();
         armourBarUpperText.text = armourCurrent.ToString();
         armourBarLowerText.text = armourMax.ToString();
+
+        //Setting level
+        levelText.text = characterLevel.ToString();
     }
 
     public void UpdateStats()
