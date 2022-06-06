@@ -7,7 +7,7 @@ public enum TileType
     Attack = 1,
     Armour = 2,
     Potion = 3,
-    Coin = 4
+    Gold = 4
 }
 public enum TileName
 {
@@ -17,7 +17,8 @@ public enum TileName
     HealthPotion = 4,
     Shield = 5,
     Coin = 6,
-    Sword = 7
+    Sword = 7,
+    Crown = 8
 }
 public class TileClass : MonoBehaviour
 {

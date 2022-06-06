@@ -24,12 +24,12 @@ public class PlayerClass : MonoBehaviour
     public int armourCurrent = 0;
     public int baseDamage = 2;
     public int weaponDamage = 2;
-    public float coinProgressMax = 20;
-    public float equipmentProgressMax = 20;
-    public float experienceProgressMax = 20;
-    public float coinProgressCurrent = 0;
-    public float equipmentProgressCurrent = 0;
-    public float experienceProgressCurrent = 0;
+    public int coinProgressMax = 20;
+    public int equipmentProgressMax = 20;
+    public int experienceProgressMax = 20;
+    public int coinProgressCurrent = 0;
+    public int equipmentProgressCurrent = 0;
+    public int experienceProgressCurrent = 0;
     public int spikes = 0;
     public int hpRegeneration = 0;
     public int vampirism = 0;
@@ -37,6 +37,7 @@ public class PlayerClass : MonoBehaviour
     public int armourByShield = 1;
     public float addictionalExperienceProgressByEnemy = 0;
     public float addictionalCoinProgressByCoin = 0;
+    public float addictionalEquipementProgressByShield = 0;
     public float damageReductionByArmour = 0.1f;
 
     [Header("Components")]

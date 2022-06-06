@@ -662,6 +662,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBarUI
       objectReference: {fileID: 0}
+    - target: {fileID: 3844235451288778328, guid: a38d60a261ea7d346a8e69a14d4ac5e0, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4668908416280164994, guid: a38d60a261ea7d346a8e69a14d4ac5e0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1199,6 +1203,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7821320065720936720, guid: a525b7ce1ec9fd4449eb29dac2474fd0, type: 3}
   m_PrefabInstance: {fileID: 1715727633}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &739734569 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1552429166816667969, guid: 226d8b41ef4940b42b8930559f124601, type: 3}
+  m_PrefabInstance: {fileID: 31417117159710045}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &787144580
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2299,6 +2314,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1440898222}
   - component: {fileID: 1440898223}
+  - component: {fileID: 1440898224}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2346,6 +2362,21 @@ MonoBehaviour:
   chain: []
   chainRenderer: {fileID: 1923584050}
   node: {fileID: 6486109109635851281, guid: 55c3d5580151e4e4ea55bbe014360ad3, type: 3}
+  player: {fileID: 1982150892}
+--- !u!114 &1440898224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440898220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06c443637b37c2643bde90363af56b32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnText: {fileID: 739734569}
+  player: {fileID: 1982150892}
 --- !u!1 &1444773055
 GameObject:
   m_ObjectHideFlags: 0
@@ -3555,6 +3586,7 @@ MonoBehaviour:
   armourByShield: 1
   addictionalExperienceProgressByEnemy: 0
   addictionalCoinProgressByCoin: 0
+  damageReductionByArmour: 0.1
   statsText: {fileID: 0}
   levelText: {fileID: 0}
   classIcon: {fileID: 0}

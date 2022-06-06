@@ -25,6 +25,9 @@ public class GameLogic : MonoBehaviour
     public ChainRenderer chainRenderer; //ChainRenderer script
     public GameObject node; //Prefab for head and tail of chain
 
+    [SerializeField]
+    PlayerClass player;
+
     void Start()
     {
         chain = new List<GameObject>();
@@ -228,8 +231,13 @@ public class GameLogic : MonoBehaviour
         }
     }
 
-    public void GameOver()
+    public void CheckGameOver()
     {
-        Debug.Log("You ded");
+        if (player.hpCurrent <= 0)
+        {
+            player.hpCurrent = 0;
+            Debug.Log("You ded");
+            Camera.main.backgroundColor = Color.red;
+        }
     }
 }
