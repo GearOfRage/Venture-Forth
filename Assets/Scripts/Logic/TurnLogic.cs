@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public struct HpArmour
 {
     public HpArmour(int hp, int armour)
@@ -13,21 +14,19 @@ public struct HpArmour
     public int hp { get; set; }
     public int armour { get; set; }
 }
+
 public class TurnLogic : MonoBehaviour
 {
-    [SerializeField]
-    Text turnText;
+    [SerializeField] Text turnText;
+    [SerializeField] PlayerClass player;
+    [SerializeField] CollectVisuals collectVisuals;
+    [SerializeField] GameLogic gl;
 
-    [SerializeField]
-    PlayerClass player;
-
-    GameLogic gl;
     int turnNumber = 1;
 
     private void Start()
     {
         turnText.text = turnNumber.ToString();
-        gl = GetComponent<GameLogic>();
     }
 
     public void Next()
@@ -95,11 +94,12 @@ public class TurnLogic : MonoBehaviour
                 }
                 expGain += Mathf.FloorToInt(killedEnemiesCount * player.addictionalExperienceProgressByEnemy);
                 int expProgressCurrent = player.experienceProgressCurrent + expGain;
+                collectVisuals.RunParticles(CollectParticle.ExpParticles);
                 int playerLvlUps = expProgressCurrent / player.experienceProgressMax;
                 if (playerLvlUps > 0)
                 {
                     Debug.Log("Up " + playerLvlUps + " player levels now!");
-                    player.characterLevel += playerLvlUps;
+                    player.characterExpLevel += playerLvlUps;
                 }
                 player.experienceProgressCurrent = expProgressCurrent % player.experienceProgressMax;
                 break;
@@ -123,6 +123,7 @@ public class TurnLogic : MonoBehaviour
                 }
                 equipmentProgressGain += Mathf.FloorToInt(shieldCount * player.addictionalEquipementProgressByShield);
                 int equipmentProgressCurrent = player.equipmentProgressCurrent + equipmentProgressGain;
+                collectVisuals.RunParticles(CollectParticle.EquipParticles);
                 int equipmentLevelUps = equipmentProgressCurrent / player.equipmentProgressMax;
                 if (equipmentLevelUps > 0)
                 {
@@ -175,6 +176,7 @@ public class TurnLogic : MonoBehaviour
                 }
                 goldGain += Mathf.FloorToInt(goldCount * player.addictionalCoinProgressByCoin);
                 int goldProgressCurrent = player.coinProgressCurrent + goldGain;
+                collectVisuals.RunParticles(CollectParticle.CoinParticles);
                 int goldLevelUps = goldProgressCurrent / player.coinProgressMax;
                 if (goldLevelUps > 0)
                 {

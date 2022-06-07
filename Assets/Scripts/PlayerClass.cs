@@ -17,7 +17,9 @@ public class PlayerClass : MonoBehaviour
     [Header("Stats")]
 
     //Stats
-    public int characterLevel = 1;
+    public int characterEqipLevel = 0;
+    public int characterGoldLevel = 0;
+    public int characterExpLevel = 1;
     public int hpMax = 20; //Basic stat
     public int hpCurrent = 20;
     public int armourMax = 4; //Basic stat
@@ -66,10 +68,10 @@ public class PlayerClass : MonoBehaviour
     public Text experienceProgressBarText;
 
     //Equipment
-    public SpriteRenderer chestSlot;
-    public SpriteRenderer headSlot;
-    public SpriteRenderer weaponSlot;
-    public SpriteRenderer itemSlot;
+    public GameObject chestSlot;
+    public GameObject headSlot;
+    public GameObject weaponSlot;
+    public GameObject itemSlot;
 
     //Spells gameobjects
     public GameObject[] spells;
@@ -103,10 +105,10 @@ public class PlayerClass : MonoBehaviour
         experienceProgressBarText = GameObject.Find("ProgressExperienceBarText").GetComponent<Text>();
 
         //Getting sprite renderer components for equipment
-        chestSlot = GameObject.Find("ChestSlot").transform.GetChild(1).GetComponent<SpriteRenderer>();
-        headSlot = GameObject.Find("HeadSlot").transform.GetChild(1).GetComponent<SpriteRenderer>();
-        weaponSlot = GameObject.Find("WeaponSlot").transform.GetChild(1).GetComponent<SpriteRenderer>();
-        itemSlot = GameObject.Find("ItemSlot").transform.GetChild(1).GetComponent<SpriteRenderer>();
+        chestSlot = GameObject.Find("ChestSlot").transform.GetChild(1).GetComponent<GameObject>();
+        headSlot = GameObject.Find("HeadSlot").transform.GetChild(1).GetComponent<GameObject>();
+        weaponSlot = GameObject.Find("WeaponSlot").transform.GetChild(1).GetComponent<GameObject>();
+        itemSlot = GameObject.Find("ItemSlot").transform.GetChild(1).GetComponent<GameObject>();
 
         //Getting gameobject for spells
         spells = new GameObject[4];
@@ -131,7 +133,7 @@ public class PlayerClass : MonoBehaviour
         //Setting up UI
         UpdateBars();
         UpdateStats();
-        levelText.text = characterLevel.ToString();
+        levelText.text = characterExpLevel.ToString();
     }
 
     public void UpdateBars()
@@ -153,7 +155,7 @@ public class PlayerClass : MonoBehaviour
         armourBarLowerText.text = armourMax.ToString();
 
         //Setting level
-        levelText.text = characterLevel.ToString();
+        levelText.text = characterExpLevel.ToString();
     }
 
     public void UpdateStats()

@@ -389,11 +389,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4441316749378736232, guid: 4b55ec8d5c995ed47b737b531ec6e101, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4441316749378736232, guid: 4b55ec8d5c995ed47b737b531ec6e101, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4441316749378736232, guid: 4b55ec8d5c995ed47b737b531ec6e101, type: 3}
       propertyPath: m_LocalPosition.x
@@ -732,7 +732,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4668908416280164994, guid: a38d60a261ea7d346a8e69a14d4ac5e0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 6.9399033
+      value: 9.939903
       objectReference: {fileID: 0}
     - target: {fileID: 4668908416280164994, guid: a38d60a261ea7d346a8e69a14d4ac5e0, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -993,7 +993,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4668908416280164994, guid: de9d278d39a29e6428d689396976d472, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 9.939903
+      value: 6.9399033
       objectReference: {fileID: 0}
     - target: {fileID: 4668908416280164994, guid: de9d278d39a29e6428d689396976d472, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2315,6 +2315,7 @@ GameObject:
   - component: {fileID: 1440898222}
   - component: {fileID: 1440898223}
   - component: {fileID: 1440898224}
+  - component: {fileID: 1440898225}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2363,7 +2364,7 @@ MonoBehaviour:
   chain: []
   chainRenderer: {fileID: 1923584050}
   node: {fileID: 6486109109635851281, guid: 55c3d5580151e4e4ea55bbe014360ad3, type: 3}
-  screenFader: {fileID: 0}
+  screenFader: {fileID: 2071907136}
   player: {fileID: 1982150892}
 --- !u!114 &1440898224
 MonoBehaviour:
@@ -2379,6 +2380,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnText: {fileID: 739734569}
   player: {fileID: 1982150892}
+  collectVisuals: {fileID: 1440898225}
+  gl: {fileID: 1440898223}
+--- !u!114 &1440898225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440898220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90298dbecee6aa44cb53cd396b129f14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CoinParticles: {fileID: 8736630169155016323, guid: ebbe5b31df47304409d2992d30195f8a, type: 3}
+  EquipParticles: {fileID: 8736630169155016323, guid: 4d4da535f0a3c9e44b37f818c2d45271, type: 3}
+  ExpParticles: {fileID: 8736630169155016323, guid: afce32edd97196148a648b0a5bd2bc47, type: 3}
+  player: {fileID: 1982150892}
+  lifeTime: 0.5
 --- !u!1 &1444773055
 GameObject:
   m_ObjectHideFlags: 0
