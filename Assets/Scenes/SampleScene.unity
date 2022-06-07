@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &115579188 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2111114880959709440, guid: 136463dadaeecac41b7461351003df21, type: 3}
+  m_PrefabInstance: {fileID: 1498136156}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &135102579
 GameObject:
   m_ObjectHideFlags: 0
@@ -2050,6 +2055,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2c1255385e69684cbcaccdfe4ff7d87, type: 3}
+--- !u!1 &1192361588 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2111114880959709440, guid: 136463dadaeecac41b7461351003df21, type: 3}
+  m_PrefabInstance: {fileID: 173745215}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1218240143
 GameObject:
   m_ObjectHideFlags: 0
@@ -2239,6 +2249,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0f5bdf87c22e0f4aa6f5b7b00a585b6, type: 3}
+--- !u!1 &1406608786 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2111114880959709440, guid: 136463dadaeecac41b7461351003df21, type: 3}
+  m_PrefabInstance: {fileID: 856439306}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1425696800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2316,6 +2331,7 @@ GameObject:
   - component: {fileID: 1440898223}
   - component: {fileID: 1440898224}
   - component: {fileID: 1440898225}
+  - component: {fileID: 1440898226}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2365,6 +2381,7 @@ MonoBehaviour:
   chainRenderer: {fileID: 1923584050}
   node: {fileID: 6486109109635851281, guid: 55c3d5580151e4e4ea55bbe014360ad3, type: 3}
   screenFader: {fileID: 2071907136}
+  isFaderOn: 0
   player: {fileID: 1982150892}
 --- !u!114 &1440898224
 MonoBehaviour:
@@ -2382,6 +2399,7 @@ MonoBehaviour:
   player: {fileID: 1982150892}
   collectVisuals: {fileID: 1440898225}
   gl: {fileID: 1440898223}
+  pl: {fileID: 1440898226}
 --- !u!114 &1440898225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2399,6 +2417,22 @@ MonoBehaviour:
   ExpParticles: {fileID: 8736630169155016323, guid: afce32edd97196148a648b0a5bd2bc47, type: 3}
   player: {fileID: 1982150892}
   lifeTime: 0.5
+--- !u!114 &1440898226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440898220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eac101ef4a8b4d409081013c32597a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldProgressPanel: {fileID: 3978991170868143285, guid: c50d50f029238a644b3643708b933c0f, type: 3}
+  equipProgressPanel: {fileID: 3978991170868143285, guid: b5a13fedfea86234d89cbadc74880711, type: 3}
+  expProgressPanel: {fileID: 3978991170868143285, guid: 6cd4b7ddb74935645a93db8a4cc1f6a7, type: 3}
+  gl: {fileID: 1440898223}
 --- !u!1 &1444773055
 GameObject:
   m_ObjectHideFlags: 0
@@ -3537,6 +3571,11 @@ Transform:
   m_Father: {fileID: 1559461971}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1917619348 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2111114880959709440, guid: 136463dadaeecac41b7461351003df21, type: 3}
+  m_PrefabInstance: {fileID: 269352735}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1923584049 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 267548005807283561, guid: bb36e9b22eb742940bf59844485e8191, type: 3}
@@ -3588,14 +3627,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterClass: 0
-  characterLevel: 1
+  characterEqipLevel: 0
+  characterGoldLevel: 0
+  characterExpLevel: 1
   hpMax: 20
   hpCurrent: 20
   armourMax: 4
   armourCurrent: 0
   baseDamage: 2
   weaponDamage: 2
-  coinProgressMax: 100
+  coinProgressMax: 6
   equipmentProgressMax: 100
   experienceProgressMax: 100
   coinProgressCurrent: 0
@@ -3625,10 +3666,10 @@ MonoBehaviour:
   coinProgressBarText: {fileID: 0}
   equipmentProgressBarText: {fileID: 0}
   experienceProgressBarText: {fileID: 0}
-  chestSlot: {fileID: 0}
-  headSlot: {fileID: 0}
-  weaponSlot: {fileID: 0}
-  itemSlot: {fileID: 0}
+  chestSlot: {fileID: 1192361588}
+  headSlot: {fileID: 1917619348}
+  weaponSlot: {fileID: 115579188}
+  itemSlot: {fileID: 1406608786}
   spells: []
   spellsText: []
 --- !u!4 &1982150893
@@ -3662,6 +3703,7 @@ GameObject:
   - component: {fileID: 2071907134}
   - component: {fileID: 2071907136}
   - component: {fileID: 2071907135}
+  - component: {fileID: 2071907137}
   m_Layer: 0
   m_Name: FadeScreen
   m_TagString: Untagged
@@ -3749,6 +3791,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2071907137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071907133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1001 &31417117159710045
 PrefabInstance:
   m_ObjectHideFlags: 0

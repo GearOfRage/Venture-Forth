@@ -21,6 +21,7 @@ public class TurnLogic : MonoBehaviour
     [SerializeField] PlayerClass player;
     [SerializeField] CollectVisuals collectVisuals;
     [SerializeField] GameLogic gl;
+    [SerializeField] ProgressLogic pl;
 
     int turnNumber = 1;
 
@@ -84,7 +85,10 @@ public class TurnLogic : MonoBehaviour
                                 expGain += enemy.experienceGain;
                                 killedEnemiesCount++;
                             }
-                            enemy.UpdateStats();
+                            else
+                            {
+                                enemy.UpdateStats();
+                            }
                             break;
                         case TileName.Sword:
                             break;
@@ -94,12 +98,16 @@ public class TurnLogic : MonoBehaviour
                 }
                 expGain += Mathf.FloorToInt(killedEnemiesCount * player.addictionalExperienceProgressByEnemy);
                 int expProgressCurrent = player.experienceProgressCurrent + expGain;
-                collectVisuals.RunParticles(CollectParticle.ExpParticles);
+                if (expGain > 0)
+                {
+                    collectVisuals.RunParticles(CollectParticle.ExpParticles);
+                }
                 int playerLvlUps = expProgressCurrent / player.experienceProgressMax;
                 if (playerLvlUps > 0)
                 {
                     Debug.Log("Up " + playerLvlUps + " player levels now!");
                     player.characterExpLevel += playerLvlUps;
+                    pl.ShowProgressPanel(ProgressType.Experience, playerLvlUps);
                 }
                 player.experienceProgressCurrent = expProgressCurrent % player.experienceProgressMax;
                 break;
@@ -180,6 +188,7 @@ public class TurnLogic : MonoBehaviour
                 int goldLevelUps = goldProgressCurrent / player.coinProgressMax;
                 if (goldLevelUps > 0)
                 {
+                    pl.ShowProgressPanel(ProgressType.Gold, goldLevelUps);
                     Debug.Log("Up " + goldLevelUps + " golds now!");
                 }
                 player.coinProgressCurrent = goldProgressCurrent % player.coinProgressMax;
@@ -203,7 +212,7 @@ public class TurnLogic : MonoBehaviour
                 }
 
                 EnemyClass enemy = tile.GetComponent<EnemyClass>();
-                if (enemy != null)
+                if (enemy != null && enemy.hp > 0)
                 {
                     dmgToPlayer += enemy.attack;
                 }

@@ -15,6 +15,10 @@ public class TileBehaviour : MonoBehaviour
 
     void OnMouseDown()
     {
+        if (gl.isFaderOn)
+        {
+            return;
+        }
         if (!gl.chain.Contains(gameObject))
         {
             Select(gameObject);
@@ -24,12 +28,20 @@ public class TileBehaviour : MonoBehaviour
 
     void OnMouseUp()
     {
+        if (gl.isFaderOn)
+        {
+            return;
+        }
         gl.isDragStarted = false;
         gl.ChainDone();
     }
 
     void OnMouseOver()
     {
+        if (gl.isFaderOn)
+        {
+            return;
+        }
         if (gl.isDragStarted 
             && !gl.chain.Contains(gameObject) 
             && gl.chain[0].GetComponent<TileClass>().tileType == gameObject.GetComponent<TileClass>().tileType

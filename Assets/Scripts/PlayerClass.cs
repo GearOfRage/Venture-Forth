@@ -10,6 +10,14 @@ public enum CharacterClass
     Sorcerer = 3
 }
 
+public struct Equipement
+{
+    public EquipItemClass chestSlot;
+    public EquipItemClass headSlot;
+    public EquipItemClass weaponSlot;
+    public EquipItemClass itemSlot;
+}
+
 public class PlayerClass : MonoBehaviour
 {
     public CharacterClass characterClass;
@@ -72,6 +80,7 @@ public class PlayerClass : MonoBehaviour
     public GameObject headSlot;
     public GameObject weaponSlot;
     public GameObject itemSlot;
+    public Equipement equipement = new();
 
     //Spells gameobjects
     public GameObject[] spells;
@@ -103,12 +112,6 @@ public class PlayerClass : MonoBehaviour
         coinProgressBarText = GameObject.Find("ProgressCoinBarText").GetComponent<Text>();
         equipmentProgressBarText = GameObject.Find("ProgressEquipmentBarText").GetComponent<Text>();
         experienceProgressBarText = GameObject.Find("ProgressExperienceBarText").GetComponent<Text>();
-
-        //Getting sprite renderer components for equipment
-        chestSlot = GameObject.Find("ChestSlot").transform.GetChild(1).GetComponent<GameObject>();
-        headSlot = GameObject.Find("HeadSlot").transform.GetChild(1).GetComponent<GameObject>();
-        weaponSlot = GameObject.Find("WeaponSlot").transform.GetChild(1).GetComponent<GameObject>();
-        itemSlot = GameObject.Find("ItemSlot").transform.GetChild(1).GetComponent<GameObject>();
 
         //Getting gameobject for spells
         spells = new GameObject[4];

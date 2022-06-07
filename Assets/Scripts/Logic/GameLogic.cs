@@ -25,9 +25,21 @@ public class GameLogic : MonoBehaviour
     public ChainRenderer chainRenderer; //ChainRenderer script
     public GameObject node; //Prefab for head and tail of chain
     public SpriteRenderer screenFader;
+    public bool isFaderOn = false;
 
-    [SerializeField]
-    PlayerClass player;
+    [SerializeField] PlayerClass player;
+
+    public void OpenFader()
+    {
+        isFaderOn = true;
+        screenFader.enabled = true;
+    }
+
+    public void CloseFader()
+    {
+        isFaderOn = false;
+        screenFader.enabled = false;
+    }
 
     void Start()
     {

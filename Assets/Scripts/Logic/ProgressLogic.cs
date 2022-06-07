@@ -11,27 +11,51 @@ public enum ProgressType
 
 public class ProgressLogic : MonoBehaviour
 {
-    GameObject goldProgressPanel;
-    GameObject equipProgressPanel;
-    GameObject expProgressPanel;
+    [SerializeField] GameObject goldProgressPanel;
+    [SerializeField] GameObject equipProgressPanel;
+    [SerializeField] GameObject expProgressPanel;
+    [SerializeField] GameLogic gl;
 
     GameObject showedPanel;
+    int toOpen = 0;
+    ProgressType panelProgressType;
 
-    public void ShowProgressPanel(ProgressType progressType)
+    Dictionary<ProgressType, GameObject> panels;
+
+    private void Start()
     {
-        switch (progressType)
+        panels = new()
         {
-            case ProgressType.Gold:
-                showedPanel = Instantiate(goldProgressPanel, Vector3.zero, Quaternion.identity);
-                break;
-            case ProgressType.Equipment:
-                showedPanel = Instantiate(equipProgressPanel, Vector3.zero, Quaternion.identity);
-                break;
-            case ProgressType.Experience:
-                showedPanel = Instantiate(expProgressPanel, Vector3.zero, Quaternion.identity);
-                break;
-            default:
-                break;
+            { ProgressType.Gold, goldProgressPanel },
+            { ProgressType.Equipment, equipProgressPanel },
+            { ProgressType.Experience, expProgressPanel },
+        };
+    }
+
+    public void Next()
+    {
+        showedPanel = Instantiate(panels[panelProgressType], Vector3.zero, Quaternion.identity);
+        showedPanel.GetComponent<Canvas>().sortingOrder = gl.screenFader.sortingOrder + 1;
+    }
+
+    public void ShowProgressPanel(ProgressType progressType, int uppedLevels = 1)
+    {
+        toOpen = uppedLevels;
+        panelProgressType = progressType;
+        gl.OpenFader();
+        Next();
+    }
+
+    public void CloseProgressPanel()
+    {
+        toOpen--;
+        Destroy(showedPanel);
+        if (toOpen == 0)
+        {
+            gl.CloseFader();
+        } else
+        {
+            Next();
         }
     }
 
