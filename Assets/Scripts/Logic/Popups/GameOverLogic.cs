@@ -19,7 +19,11 @@ public class GameOverLogic : MonoBehaviour
     void FillStats()
     {
         statsText.text =
-              "Total turns: " + gl.gameStats.turnNumber.ToString();
+              "Total turns: " + gl.gameStats.turnNumber.ToString() + "\n"
+              + "Total gold collected: " + gl.gameStats.collectedGold.ToString() + "\n"
+              + "Total regular enemies killed: " + gl.gameStats.killedRegularEnemies.ToString() + "\n"
+              + "Total elite enemies killed: " + gl.gameStats.killedEliteEnemies.ToString() + "\n"
+              + "Total boss enemies killed: " + gl.gameStats.killedBossEnemies.ToString() + "\n"
+              + "Total damage received: " + gl.gameStats.receivedDamage.ToString() + "\n";
     }
-
 }

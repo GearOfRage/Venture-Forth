@@ -6,4 +6,10 @@ public class GameStats : MonoBehaviour
 {
     [HideInInspector]
     public int turnNumber = 1;
+
+    public int collectedGold = 0;
+    public int killedRegularEnemies = 0;
+    public int killedEliteEnemies = 0;
+    public int killedBossEnemies = 0;
+    public int receivedDamage = 0;
 }

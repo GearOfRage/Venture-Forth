@@ -75,13 +75,14 @@ public class TurnLogic : MonoBehaviour
                     {
                         case TileName.RegularEnemy:
                             HpArmour hpArmour = CalculateDamageWithArmour(
-                                dmgAmount, enemy.armour, enemy.hpMax, enemy.hp,
+                                dmgAmount, enemy.armour, enemy.hp,
                                 0.1f
                              );
                             enemy.hp = hpArmour.hp;
                             enemy.armour = hpArmour.armour;
                             if (enemy.hp <= 0)
                             {
+                                gl.gameStats.killedRegularEnemies += 1;
                                 expGain += enemy.experienceGain;
                                 killedEnemiesCount++;
                             }
@@ -183,6 +184,7 @@ public class TurnLogic : MonoBehaviour
                     }
                 }
                 goldGain += Mathf.FloorToInt(goldCount * gl.player.addictionalCoinProgressByCoin);
+                gl.gameStats.collectedGold += goldGain;
                 int goldProgressCurrent = gl.player.coinProgressCurrent + goldGain;
                 collectVisuals.RunParticles(CollectParticle.CoinParticles);
                 int goldLevelUps = goldProgressCurrent / gl.player.coinProgressMax;
@@ -223,16 +225,17 @@ public class TurnLogic : MonoBehaviour
         HpArmour hpArmour = CalculateDamageWithArmour(
             dmgToPlayer,
             gl.player.armourCurrent,
-            gl.player.hpMax,
             gl.player.hpCurrent,
             gl.player.damageReductionByArmour
         );
+        int receivedDamage = gl.player.hpCurrent - hpArmour.hp;
+        gl.gameStats.receivedDamage += receivedDamage;
         gl.player.hpCurrent = hpArmour.hp;
         gl.player.armourCurrent = hpArmour.armour;
 
     }
 
-    HpArmour CalculateDamageWithArmour(int dmg, int armour, int maxHp, int hp, float dmgReductionByArmour)
+    HpArmour CalculateDamageWithArmour(int dmg, int armour, int hp, float dmgReductionByArmour)
     {
         /**
          * Armour logic explained:
@@ -252,7 +255,7 @@ public class TurnLogic : MonoBehaviour
          * damagedArmour = Min(1 (currentArmour), Floor(1.7), 1) = 1
          * gl.player now has 3 - 1 armour = 2, 50 - 17 + 2 = 35
         */
-        HpArmour res = new HpArmour(hp, armour);
+        HpArmour res = new(hp, armour);
         if (dmg == 0)
         {
             return res;

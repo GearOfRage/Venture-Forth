@@ -20,6 +20,7 @@ public class ChainBehaviour : MonoBehaviour
         tilesField = GetComponent<TilesField>();
         tg = GetComponent<TilesGeneration>();
     }
+    
     public void ChainDone()
     {
         if (chain.chain.Count >= chain.minChainSize)
@@ -36,6 +37,7 @@ public class ChainBehaviour : MonoBehaviour
         chainRenderer.DestroyNodes();
         chain.chain.Clear(); //Clearing the chain elements
     }
+
     int[] CalculateAndDestroyChainTiles()
     {
         int[] numToGen = new int[TilesField.gridSize];
