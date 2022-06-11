@@ -46,22 +46,22 @@ public class EquipItemClass : MonoBehaviour
             {
                 case EquipItemTypeE.Chest:
                     gl.player.equipement.chestSlot = this;
-                    gl.player.chestSlot.GetComponent<SpriteRenderer>().sprite = sprite;
+                    gl.player.chestSlot.sprite = sprite;
                     gl.player.armourMax += itemStat;
                     break;
                 case EquipItemTypeE.Head:
                     gl.player.equipement.headSlot = this;
-                    gl.player.headSlot.GetComponent<SpriteRenderer>().sprite = sprite;
+                    gl.player.headSlot.sprite = sprite;
                     gl.player.hpByPotion += itemStat;
                     break;
                 case EquipItemTypeE.Weapon:
                     gl.player.equipement.weaponSlot = this;
-                    gl.player.weaponSlot.GetComponent<SpriteRenderer>().sprite = sprite;
+                    gl.player.weaponSlot.sprite = sprite;
                     gl.player.weaponDamage += itemStat;
                     break;
                 case EquipItemTypeE.Support:
                     gl.player.equipement.itemSlot = this;
-                    gl.player.itemSlot.GetComponent<SpriteRenderer>().sprite = sprite;
+                    gl.player.itemSlot.sprite = sprite;
                     break;
                 default:
                     break;

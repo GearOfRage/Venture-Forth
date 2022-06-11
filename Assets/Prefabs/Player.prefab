@@ -55,9 +55,9 @@ MonoBehaviour:
   armourCurrent: 0
   baseDamage: 2
   weaponDamage: 2
-  coinProgressMax: 100
+  coinProgressMax: 3
   equipmentProgressMax: 100
-  experienceProgressMax: 100
+  experienceProgressMax: 3
   coinProgressCurrent: 0
   equipmentProgressCurrent: 0
   experienceProgressCurrent: 0
@@ -89,7 +89,12 @@ MonoBehaviour:
   headSlot: {fileID: 0}
   weaponSlot: {fileID: 0}
   itemSlot: {fileID: 0}
-  spells: []
+  spellSlots: []
+  spells:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   spellsText: []
 --- !u!114 &-6558736751599371213
 MonoBehaviour:
@@ -104,3 +109,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnNumber: 1
+  collectedGold: 0
+  killedRegularEnemies: 0
+  killedEliteEnemies: 0
+  killedBossEnemies: 0
+  receivedDamage: 0

@@ -76,14 +76,14 @@ public class PlayerClass : MonoBehaviour
     public Text experienceProgressBarText;
 
     //Equipment
-    public GameObject chestSlot;
-    public GameObject headSlot;
-    public GameObject weaponSlot;
-    public GameObject itemSlot;
+    public SpriteRenderer chestSlot;
+    public SpriteRenderer headSlot;
+    public SpriteRenderer weaponSlot;
+    public SpriteRenderer itemSlot;
     public EquipementS equipement = new();
 
     //Spells gameobjects
-    public GameObject[] spellSlots;
+    public SpriteRenderer[] spellSlots;
     public SpellClass[] spells = new SpellClass[4];
 
     //Spells text
@@ -114,19 +114,25 @@ public class PlayerClass : MonoBehaviour
         equipmentProgressBarText = GameObject.Find("ProgressEquipmentBarText").GetComponent<Text>();
         experienceProgressBarText = GameObject.Find("ProgressExperienceBarText").GetComponent<Text>();
 
+        //Getting gameobject for equip
+        chestSlot = GameObject.Find("ChestSlot").transform.GetChild(1).GetComponent<SpriteRenderer>();
+        headSlot = GameObject.Find("HeadSlot").transform.GetChild(1).GetComponent<SpriteRenderer>();
+        weaponSlot = GameObject.Find("WeaponSlot").transform.GetChild(1).GetComponent<SpriteRenderer>();
+        itemSlot = GameObject.Find("ItemSlot").transform.GetChild(1).GetComponent<SpriteRenderer>();
+
         //Getting gameobject for spells
-        spellSlots = new GameObject[4];
-        spellSlots[0] = GameObject.Find("SpellSlot1");
-        spellSlots[1] = GameObject.Find("SpellSlot2");
-        spellSlots[2] = GameObject.Find("SpellSlot3");
-        spellSlots[3] = GameObject.Find("SpellSlot4");
+        spellSlots = new SpriteRenderer[4];
+        spellSlots[0] = GameObject.Find("SpellSlot1").transform.GetChild(1).GetComponent<SpriteRenderer>();
+        spellSlots[1] = GameObject.Find("SpellSlot2").transform.GetChild(1).GetComponent<SpriteRenderer>();
+        spellSlots[2] = GameObject.Find("SpellSlot3").transform.GetChild(1).GetComponent<SpriteRenderer>();
+        spellSlots[3] = GameObject.Find("SpellSlot4").transform.GetChild(1).GetComponent<SpriteRenderer>();
 
         //Getting text for spells
         spellsText = new Text[4];
-        spellsText[0] = spellSlots[0].transform.GetChild(3).GetComponent<Text>();
-        spellsText[1] = spellSlots[1].transform.GetChild(3).GetComponent<Text>();
-        spellsText[2] = spellSlots[2].transform.GetChild(3).GetComponent<Text>();
-        spellsText[3] = spellSlots[3].transform.GetChild(3).GetComponent<Text>();
+        spellsText[0] = GameObject.Find("SpellSlot1").transform.GetChild(3).GetComponent<Text>();
+        spellsText[1] = GameObject.Find("SpellSlot2").transform.GetChild(3).GetComponent<Text>();
+        spellsText[2] = GameObject.Find("SpellSlot3").transform.GetChild(3).GetComponent<Text>();
+        spellsText[3] = GameObject.Find("SpellSlot4").transform.GetChild(3).GetComponent<Text>();
 
         //Hiding spells CD on start
         spellsText[0].text = "";
@@ -182,6 +188,5 @@ public class PlayerClass : MonoBehaviour
             + "Additional coin gain: " + addictionalCoinProgressByCoin.ToString() + "\n"
             + "Additional eq. gain: " + addictionalEquipementProgressByShield.ToString() + "\n" +
             "Damage Reduction: " + damageReductionByArmour.ToString();
-
     }
 }

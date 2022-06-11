@@ -31,7 +31,9 @@ public class ExpLvlUpLogic : MonoBehaviour
         SpellNameE spell = (SpellNameE)randomNumber;
         return new SpellS(
             spell,
-            spellSprites[randomNumber],
+            // todo: return this after adding all spell sprites
+            //spellSprites[randomNumber],
+            spellSprites[0],
             SpellClass.spellCooldowns[spell],
             SpellClass.spellsDescription[spell]
             );

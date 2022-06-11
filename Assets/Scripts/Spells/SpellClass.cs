@@ -131,7 +131,7 @@ public class SpellClass : MonoBehaviour
 
         int emptySlotIndex = FindEmptySlotIndex();
         gl.player.spells[emptySlotIndex] = this;
-        gl.player.spellSlots[emptySlotIndex].GetComponent<SpriteRenderer>().sprite = sprite;
+        gl.player.spellSlots[emptySlotIndex].sprite = sprite;
 
         isOnPlayer = true;
         pl.CloseProgressPanel();
