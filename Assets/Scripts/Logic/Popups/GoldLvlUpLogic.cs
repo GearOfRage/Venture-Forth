@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EquipLvlUpLogic : MonoBehaviour
+public class GoldLvlUpLogic : MonoBehaviour
 {
-    PlayerClass player;
-
     //Later change this atleast support items to to be precreated by developer
     [SerializeField] Sprite[] possibleChestArts;
     [SerializeField] Sprite[] possibleHeadArts;
@@ -15,9 +13,10 @@ public class EquipLvlUpLogic : MonoBehaviour
 
     [SerializeField] GameObject[] Items;
 
+    GameLogic gl;
     void Start()
     {
-        player = GameObject.Find("Player").GetComponent<PlayerClass>();
+        gl = GameObject.Find("GameManager").GetComponent<GameLogic>();
         FillProgressPanel();
     }
 
@@ -50,7 +49,7 @@ public class EquipLvlUpLogic : MonoBehaviour
             default:
                 break;
         }
-        item.itemStat = player.characterEqipLevel + 1;
+        item.itemStat = gl.player.characterEqipLevel + 1;
         return item;
     }
 
@@ -59,11 +58,15 @@ public class EquipLvlUpLogic : MonoBehaviour
     {
         for (int i = 0; i < Items.Length; i++)
         {
-            //panel.transform.Find("Item" + i.ToString()).transform.GetChild(0).gameObject
             EquipItem item = GenerateItem();
+
             Items[i].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = item.itemImage;
             string name = item.itemStat == 0 ? item.itemBaseStatName : item.itemBaseStatName + " +" + item.itemStat;
             Items[i].transform.GetChild(1).GetComponent<Text>().text = name;
+            EquipItemClass equipItem = Items[i].GetComponent<EquipItemClass>();
+            equipItem.itemStat = item.itemStat;
+            equipItem.itemType = item.itemType;
+            equipItem.itemImage = item.itemImage;
         }
 
 

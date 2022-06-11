@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8301178950110941875}
   - component: {fileID: 1691175098366535601}
   - component: {fileID: 4751497246816592533}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Item1Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3651404967957458011}
   - component: {fileID: 3977935922467539870}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Item1Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 1464538500675986262}
   - component: {fileID: 7607218521671495293}
   - component: {fileID: 688042280847221497}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Item4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,7 +285,7 @@ GameObject:
   - component: {fileID: 865624714500800892}
   - component: {fileID: 7773193192686966034}
   - component: {fileID: 3633412317079468430}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Item2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -394,7 +394,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2985039048872493142}
   - component: {fileID: 8905178995187856694}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ExperienceLvlUpUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,7 +459,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2927682762113935823}
   - component: {fileID: 8084582008594919553}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ExperienceLvlUpUIFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -543,7 +543,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8365134350759736229}
   - component: {fileID: 437448389508205744}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Item1Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -628,7 +628,7 @@ GameObject:
   - component: {fileID: 830923826022385314}
   - component: {fileID: 6872581685096427962}
   - component: {fileID: 8745364689338551897}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Item1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -737,7 +737,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7141048963043516555}
   - component: {fileID: 7900663188020669056}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ExperienceLvlUpUIBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -821,7 +821,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1693919437686784532}
   - component: {fileID: 813072770572570850}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ExperienceLvlUpUISeparator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -905,7 +905,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5377486217395390650}
   - component: {fileID: 4007069553103846663}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Item1Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -989,7 +989,7 @@ GameObject:
   m_Component:
   - component: {fileID: 374934641214618700}
   - component: {fileID: 8543850099107247850}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Item1Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1074,7 +1074,7 @@ GameObject:
   - component: {fileID: 778737662338453539}
   - component: {fileID: 3945635797728136362}
   - component: {fileID: 7345531625502654201}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Item3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1184,7 +1184,7 @@ GameObject:
   - component: {fileID: 981383726602798106}
   - component: {fileID: 7891367790323931489}
   - component: {fileID: 1714309158201083759}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Item1Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1264,7 +1264,7 @@ GameObject:
   - component: {fileID: 7372960017945295962}
   - component: {fileID: 2160211312199204058}
   - component: {fileID: 5290917785936958314}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Item1Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1344,7 +1344,7 @@ GameObject:
   - component: {fileID: 9085313319279604509}
   - component: {fileID: 1482096499438507990}
   - component: {fileID: 4144685931228593171}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Item1Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}

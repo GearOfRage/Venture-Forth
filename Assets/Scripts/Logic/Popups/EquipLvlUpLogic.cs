@@ -3,23 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum ExpItemType
+public class EquipLvlUpLogic : MonoBehaviour
 {
-    MaxHealth = 1,
-    BaseDamage = 2,
-}
-public class ExpLvlUpLogic : MonoBehaviour
-{
-    PlayerClass player;
+    GameLogic gl;
 
     //Later change this atleast support items to to be precreated by developer
-    [SerializeField] Sprite[] statsSprites;
+    [SerializeField] Sprite[] possibleChestArts;
+    [SerializeField] Sprite[] possibleHeadArts;
+    [SerializeField] Sprite[] possibleWeaponArts;
+    [SerializeField] Sprite[] possibleSupportArts;
 
     [SerializeField] GameObject[] Items;
 
     void Start()
     {
-        player = GameObject.Find("Player").GetComponent<PlayerClass>();
+        gl = GameObject.Find("GameManager").GetComponent<GameLogic>();
         FillProgressPanel();
     }
 
@@ -27,7 +25,7 @@ public class ExpLvlUpLogic : MonoBehaviour
     {
         EquipItem item = new();
         item.itemStat = 0;
-        /*switch (Random.Range(1, 5))
+        switch (Random.Range(1, 5))
         {
             case 1:
                 item.itemType = EquipItemType.Chest;
@@ -52,7 +50,7 @@ public class ExpLvlUpLogic : MonoBehaviour
             default:
                 break;
         }
-        */item.itemStat = player.characterEqipLevel + 1;
+        item.itemStat = gl.player.characterEqipLevel + 1;
         return item;
     }
 

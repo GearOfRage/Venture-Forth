@@ -17,17 +17,17 @@ public struct HpArmour
 
 public class TurnLogic : MonoBehaviour
 {
-    [SerializeField] Text turnText;
-    [SerializeField] PlayerClass player;
+    [SerializeField] public Text turnText;
     [SerializeField] CollectVisuals collectVisuals;
+    [SerializeField] TilesField tilesField;
     [SerializeField] GameLogic gl;
+    [SerializeField] Chain chain;
     [SerializeField] ProgressLogic pl;
-
-    int turnNumber = 1;
 
     private void Start()
     {
-        turnText.text = turnNumber.ToString();
+        turnText.text = gl.gameStats.turnNumber.ToString();
+        chain = GetComponent<Chain>();
     }
 
     public void Next()
@@ -39,21 +39,21 @@ public class TurnLogic : MonoBehaviour
         CalculateDamageToPlayer();
 
         gl.CheckGameOver();
-        player.UpdateBars();
-        turnNumber++;
-        turnText.text = turnNumber.ToString();
+        gl.player.UpdateBars();
+        gl.gameStats.turnNumber++;
+        turnText.text = gl.gameStats.turnNumber.ToString();
     }
 
     void HandleChain()
     {
-        TileType chainType = gl.chain[0].GetComponent<TileClass>().tileType;
+        TileType chainType = chain.chain[0].GetComponent<TileClass>().tileType;
         switch (chainType)
         {
             case TileType.Attack:
-                int dmgAmount = player.baseDamage;
+                int dmgAmount = gl.player.baseDamage;
                 int expGain = 0;
                 int killedEnemiesCount = 0;
-                foreach (GameObject item in gl.chain)
+                foreach (GameObject item in chain.chain)
                 {
                     TileName tileName = item.GetComponent<TileClass>().tileName;
                     switch (tileName)
@@ -61,13 +61,13 @@ public class TurnLogic : MonoBehaviour
                         case TileName.RegularEnemy:
                             break;
                         case TileName.Sword:
-                            dmgAmount += player.weaponDamage;
+                            dmgAmount += gl.player.weaponDamage;
                             break;
                         default:
                             throw new System.Exception("Unexpected attack " + tileName);
                     }
                 }
-                foreach (GameObject item in gl.chain)
+                foreach (GameObject item in chain.chain)
                 {
                     TileName tileName = item.GetComponent<TileClass>().tileName;
                     EnemyClass enemy = item.GetComponent<EnemyClass>();
@@ -96,26 +96,26 @@ public class TurnLogic : MonoBehaviour
                             throw new System.Exception("Unexpected attack " + tileName);
                     }
                 }
-                expGain += Mathf.FloorToInt(killedEnemiesCount * player.addictionalExperienceProgressByEnemy);
-                int expProgressCurrent = player.experienceProgressCurrent + expGain;
+                expGain += Mathf.FloorToInt(killedEnemiesCount * gl.player.addictionalExperienceProgressByEnemy);
+                int expProgressCurrent = gl.player.experienceProgressCurrent + expGain;
                 if (expGain > 0)
                 {
                     collectVisuals.RunParticles(CollectParticle.ExpParticles);
                 }
-                int playerLvlUps = expProgressCurrent / player.experienceProgressMax;
+                int playerLvlUps = expProgressCurrent / gl.player.experienceProgressMax;
                 if (playerLvlUps > 0)
                 {
-                    Debug.Log("Up " + playerLvlUps + " player levels now!");
-                    player.characterExpLevel += playerLvlUps;
+                    Debug.Log("Up " + playerLvlUps + " gl.player levels now!");
+                    gl.player.characterExpLevel += playerLvlUps;
                     pl.ShowProgressPanel(ProgressType.Experience, playerLvlUps);
                 }
-                player.experienceProgressCurrent = expProgressCurrent % player.experienceProgressMax;
+                gl.player.experienceProgressCurrent = expProgressCurrent % gl.player.experienceProgressMax;
                 break;
             case TileType.Armour:
                 int armourGain = 0;
                 int shieldCount = 0;
                 int equipmentProgressGain = 0;
-                foreach (GameObject item in gl.chain)
+                foreach (GameObject item in chain.chain)
                 {
                     TileName tileName = item.GetComponent<TileClass>().tileName;
                     switch (tileName)
@@ -129,43 +129,43 @@ public class TurnLogic : MonoBehaviour
                             throw new System.Exception("Unexpected armour " + tileName);
                     }
                 }
-                equipmentProgressGain += Mathf.FloorToInt(shieldCount * player.addictionalEquipementProgressByShield);
-                int equipmentProgressCurrent = player.equipmentProgressCurrent + equipmentProgressGain;
+                equipmentProgressGain += Mathf.FloorToInt(shieldCount * gl.player.addictionalEquipementProgressByShield);
+                int equipmentProgressCurrent = gl.player.equipmentProgressCurrent + equipmentProgressGain;
                 collectVisuals.RunParticles(CollectParticle.EquipParticles);
-                int equipmentLevelUps = equipmentProgressCurrent / player.equipmentProgressMax;
+                int equipmentLevelUps = equipmentProgressCurrent / gl.player.equipmentProgressMax;
                 if (equipmentLevelUps > 0)
                 {
                     Debug.Log("Up " + equipmentLevelUps + " equipements now!");
                 }
-                player.equipmentProgressCurrent = equipmentProgressCurrent % player.equipmentProgressMax;
-                player.armourCurrent = Mathf.Min(player.armourMax, armourGain);
+                gl.player.equipmentProgressCurrent = equipmentProgressCurrent % gl.player.equipmentProgressMax;
+                gl.player.armourCurrent = Mathf.Min(gl.player.armourMax, armourGain);
                 break;
             case TileType.Potion:
                 int healthChange = 0;
-                foreach (GameObject item in gl.chain)
+                foreach (GameObject item in chain.chain)
                 {
                     TileName tileName = item.GetComponent<TileClass>().tileName;
                     switch (tileName)
                     {
                         case TileName.ExperiencePotion:
-                            player.experienceProgressCurrent += 10;
+                            gl.player.experienceProgressCurrent += 10;
                             break;
                         case TileName.PosionPoition:
-                            healthChange -= player.hpByPotion;
+                            healthChange -= gl.player.hpByPotion;
                             break;
                         case TileName.HealthPotion:
-                            healthChange += player.hpByPotion;
+                            healthChange += gl.player.hpByPotion;
                             break;
                         default:
                             throw new System.Exception("Unexpected potion " + tileName);
                     }
                 }
-                player.hpCurrent = Mathf.Clamp(player.hpCurrent + healthChange, 0, player.hpMax);
+                gl.player.hpCurrent = Mathf.Clamp(gl.player.hpCurrent + healthChange, 0, gl.player.hpMax);
                 break;
             case TileType.Gold:
                 int goldGain = 0;
                 int goldCount = 0;
-                foreach (GameObject item in gl.chain)
+                foreach (GameObject item in chain.chain)
                 {
                     TileName tileName = item.GetComponent<TileClass>().tileName;
                     switch (tileName)
@@ -182,16 +182,16 @@ public class TurnLogic : MonoBehaviour
                             throw new System.Exception("Unexpected coin " + tileName);
                     }
                 }
-                goldGain += Mathf.FloorToInt(goldCount * player.addictionalCoinProgressByCoin);
-                int goldProgressCurrent = player.coinProgressCurrent + goldGain;
+                goldGain += Mathf.FloorToInt(goldCount * gl.player.addictionalCoinProgressByCoin);
+                int goldProgressCurrent = gl.player.coinProgressCurrent + goldGain;
                 collectVisuals.RunParticles(CollectParticle.CoinParticles);
-                int goldLevelUps = goldProgressCurrent / player.coinProgressMax;
+                int goldLevelUps = goldProgressCurrent / gl.player.coinProgressMax;
                 if (goldLevelUps > 0)
                 {
                     pl.ShowProgressPanel(ProgressType.Gold, goldLevelUps);
                     Debug.Log("Up " + goldLevelUps + " golds now!");
                 }
-                player.coinProgressCurrent = goldProgressCurrent % player.coinProgressMax;
+                gl.player.coinProgressCurrent = goldProgressCurrent % gl.player.coinProgressMax;
                 break;
             default:
                 break;
@@ -201,11 +201,11 @@ public class TurnLogic : MonoBehaviour
     void CalculateDamageToPlayer()
     {
         int dmgToPlayer = 0;
-        for (int i = 0; i < GameLogic.gridSize; i++) //Columns
+        for (int i = 0; i < TilesField.gridSize; i++) //Columns
         {
-            for (int j = 0; j < GameLogic.gridSize; j++) //Rows
-            {
-                GameObject tile = gl.tiles[i, j];
+            for (int j = 0; j < TilesField.gridSize; j++) //Rows
+            {   
+                GameObject tile = tilesField.tiles[i, j];
                 if (tile == null)
                 {
                     continue;
@@ -222,13 +222,13 @@ public class TurnLogic : MonoBehaviour
 
         HpArmour hpArmour = CalculateDamageWithArmour(
             dmgToPlayer,
-            player.armourCurrent,
-            player.hpMax,
-            player.hpCurrent,
-            player.damageReductionByArmour
+            gl.player.armourCurrent,
+            gl.player.hpMax,
+            gl.player.hpCurrent,
+            gl.player.damageReductionByArmour
         );
-        player.hpCurrent = hpArmour.hp;
-        player.armourCurrent = hpArmour.armour;
+        gl.player.hpCurrent = hpArmour.hp;
+        gl.player.armourCurrent = hpArmour.armour;
 
     }
 
@@ -237,20 +237,20 @@ public class TurnLogic : MonoBehaviour
         /**
          * Armour logic explained:
          * case 1
-         * player has 1 armour, 50 hp, damageReductionByArmour 0.1
+         * gl.player has 1 armour, 50 hp, damageReductionByArmour 0.1
          * enemy attack 27
          * potentialDmgToArmour = 27 * 0.1 = 2.7
          * dmg to armour = Min(1 (currentArmour), Round(2.7), 1) = 1;
          * damagedArmour = Min(1 (currentArmour), Floor(2.7), 1) = 1
-         * player now has 1 - 1 armour = 0, 50 - 27 + 1 = 24
+         * gl.player now has 1 - 1 armour = 0, 50 - 27 + 1 = 24
          * 
          * case 2
-         * player has 3 armour, 50 hp, damageReductionByArmour 0.1
+         * gl.player has 3 armour, 50 hp, damageReductionByArmour 0.1
          * enemy attack 17
          * potentialDmgToArmour = 17 * 0.1 = 1.7
          * dmg to armour = Min(3 (currentArmour), Round(1.7), 1) = 2;
          * damagedArmour = Min(1 (currentArmour), Floor(1.7), 1) = 1
-         * player now has 3 - 1 armour = 2, 50 - 17 + 2 = 35
+         * gl.player now has 3 - 1 armour = 2, 50 - 17 + 2 = 35
         */
         HpArmour res = new HpArmour(hp, armour);
         if (dmg == 0)

@@ -9,6 +9,8 @@ public class ChainRenderer : MonoBehaviour
     public GameLogic gl;
     GameObject head;
     GameObject tail;
+    ChainBehaviour cb;
+    Chain chain;
 
     public GameObject node;
 
@@ -16,12 +18,14 @@ public class ChainRenderer : MonoBehaviour
     {
         lr = GetComponent<LineRenderer>();
         gl = GameObject.Find("GameManager").GetComponent<GameLogic>();
+        cb = GameObject.Find("GameManager").GetComponent<ChainBehaviour>();
+        chain = GameObject.Find("GameManager").GetComponent<Chain>();
     }
 
     public void SetUpLine(Transform[] points)
     {
-        GameObject.Destroy(head);
-        GameObject.Destroy(tail);
+        Destroy(head);
+        Destroy(tail);
         head = Instantiate(node, new Vector3(points[0].position.x, points[0].position.y, -1), Quaternion.identity, lr.transform);
         tail = Instantiate(node, new Vector3(points[points.Length - 1].position.x, points[points.Length - 1].position.y, -1), Quaternion.identity, lr.transform);
         head.name = "ChainHead";
@@ -36,12 +40,12 @@ public class ChainRenderer : MonoBehaviour
 
     public void DrawChain()
     {
-        Transform[] chainPoints = new Transform[gl.chain.Count];
-        for (int i = 0; i < gl.chain.Count; i++)
+        Transform[] chainPoints = new Transform[chain.chain.Count];
+        for (int i = 0; i < chain.chain.Count; i++)
         {
-            chainPoints[i] = gl.chain[i].transform;
+            chainPoints[i] = chain.chain[i].transform;
         }
-        gl.chainRenderer.SetUpLine(chainPoints);
+        cb.chainRenderer.SetUpLine(chainPoints);
     }
 
     public void DestroyNodes()

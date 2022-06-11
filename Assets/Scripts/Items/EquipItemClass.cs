@@ -28,13 +28,13 @@ public class EquipItemClass : MonoBehaviour
     public Sprite itemImage;
     public int itemStat;
 
-    PlayerClass player;
+    GameLogic gl;
     ProgressLogic pl;
 
     void Start()
     {
-        player = GameObject.Find("Player").GetComponent<PlayerClass>();
         pl = GameObject.Find("GameManager").GetComponent<ProgressLogic>();
+        gl = GameObject.Find("GameManager").GetComponent<GameLogic>();
     }
 
     void OnMouseDown()
@@ -45,29 +45,29 @@ public class EquipItemClass : MonoBehaviour
             switch (itemType)
             {
                 case EquipItemType.Chest:
-                    player.equipement.chestSlot = this;
-                    player.chestSlot.GetComponent<SpriteRenderer>().sprite = sprite;
-                    player.armourMax += itemStat;
+                    gl.player.equipement.chestSlot = this;
+                    gl.player.chestSlot.GetComponent<SpriteRenderer>().sprite = sprite;
+                    gl.player.armourMax += itemStat;
                     break;
                 case EquipItemType.Head:
-                    player.equipement.headSlot = this;
-                    player.headSlot.GetComponent<SpriteRenderer>().sprite = sprite;
-                    player.hpByPotion += itemStat;
+                    gl.player.equipement.headSlot = this;
+                    gl.player.headSlot.GetComponent<SpriteRenderer>().sprite = sprite;
+                    gl.player.hpByPotion += itemStat;
                     break;
                 case EquipItemType.Weapon:
-                    player.equipement.weaponSlot = this;
-                    player.weaponSlot.GetComponent<SpriteRenderer>().sprite = sprite;
-                    player.weaponDamage += itemStat;
+                    gl.player.equipement.weaponSlot = this;
+                    gl.player.weaponSlot.GetComponent<SpriteRenderer>().sprite = sprite;
+                    gl.player.weaponDamage += itemStat;
                     break;
                 case EquipItemType.Support:
-                    player.equipement.itemSlot = this;
-                    player.itemSlot.GetComponent<SpriteRenderer>().sprite = sprite;
+                    gl.player.equipement.itemSlot = this;
+                    gl.player.itemSlot.GetComponent<SpriteRenderer>().sprite = sprite;
                     break;
                 default:
                     break;
             }
-            player.UpdateBars();
-            player.UpdateStats();
+            gl.player.UpdateBars();
+            gl.player.UpdateStats();
             isOnPlayer = true;
         }
         pl.CloseProgressPanel();

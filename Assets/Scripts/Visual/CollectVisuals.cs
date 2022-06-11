@@ -15,14 +15,16 @@ public class CollectVisuals : MonoBehaviour
     [SerializeField] GameObject CoinParticles;
     [SerializeField] GameObject EquipParticles;
     [SerializeField] GameObject ExpParticles;
-
-    [SerializeField] PlayerClass player;
-
+    
+    GameLogic gl;
     GameObject particlesPrefab;
-    GameObject particles;
 
     public float lifeTime = 1f;
 
+    private void Start()
+    {
+        gl = GameObject.Find("GameManager").GetComponent<GameLogic>();
+    }
     public void RunParticles(CollectParticle particle)
     {
         Vector3 pos = new Vector3();
@@ -30,22 +32,22 @@ public class CollectVisuals : MonoBehaviour
         {
             case CollectParticle.CoinParticles:
                 particlesPrefab = CoinParticles;
-                pos = player.coinProgressBar.transform.position;
+                pos = gl.player.coinProgressBar.transform.position;
                 break;
 
             case CollectParticle.EquipParticles:
                 particlesPrefab = EquipParticles;
-                pos = player.equipmentProgressBar.transform.position;
+                pos = gl.player.equipmentProgressBar.transform.position;
                 break;
 
             case CollectParticle.ExpParticles:
                 particlesPrefab = ExpParticles;
-                pos = player.experienceProgressBar.transform.position;
+                pos = gl.player.experienceProgressBar.transform.position;
                 break;
 
             default:
                 break;
         }
-        particles = Instantiate(particlesPrefab, pos, Quaternion.identity);
+        Instantiate(particlesPrefab, pos, Quaternion.identity);
     }
 }

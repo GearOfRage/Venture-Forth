@@ -14,7 +14,7 @@ public class ProgressLogic : MonoBehaviour
     [SerializeField] GameObject goldProgressPanel;
     [SerializeField] GameObject equipProgressPanel;
     [SerializeField] GameObject expProgressPanel;
-    [SerializeField] GameLogic gl;
+    [SerializeField] Fader fader;
 
     GameObject showedPanel;
     int toOpen = 0;
@@ -35,14 +35,13 @@ public class ProgressLogic : MonoBehaviour
     public void Next()
     {
         showedPanel = Instantiate(panels[panelProgressType], Vector3.zero, Quaternion.identity);
-        showedPanel.GetComponent<Canvas>().sortingOrder = gl.screenFader.sortingOrder + 1;
     }
 
     public void ShowProgressPanel(ProgressType progressType, int uppedLevels = 1)
     {
         toOpen = uppedLevels;
         panelProgressType = progressType;
-        gl.OpenFader();
+        fader.OpenFader();
         Next();
     }
 
@@ -52,7 +51,7 @@ public class ProgressLogic : MonoBehaviour
         Destroy(showedPanel);
         if (toOpen == 0)
         {
-            gl.CloseFader();
+            fader.CloseFader();
         } else
         {
             Next();

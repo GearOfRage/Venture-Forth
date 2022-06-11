@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8227244635199712535
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8227244635199712529}
+  - component: {fileID: 8227244635199712528}
+  - component: {fileID: -6558736751599371213}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8227244635199712529
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8227244635199712535}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.9399033, y: -0.124375656, z: 1.8313614}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8227244635199712528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8227244635199712535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 547ec377e29058d49803d33b4655bcb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterClass: 0
+  characterEqipLevel: 0
+  characterGoldLevel: 0
+  characterExpLevel: 1
+  hpMax: 20
+  hpCurrent: 20
+  armourMax: 4
+  armourCurrent: 0
+  baseDamage: 2
+  weaponDamage: 2
+  coinProgressMax: 100
+  equipmentProgressMax: 100
+  experienceProgressMax: 100
+  coinProgressCurrent: 0
+  equipmentProgressCurrent: 0
+  experienceProgressCurrent: 0
+  spikes: 0
+  hpRegeneration: 0
+  vampirism: 0
+  hpByPotion: 1
+  armourByShield: 1
+  addictionalExperienceProgressByEnemy: 0
+  addictionalCoinProgressByCoin: 0
+  addictionalEquipementProgressByShield: 0
+  damageReductionByArmour: 0.1
+  statsText: {fileID: 0}
+  levelText: {fileID: 0}
+  classIcon: {fileID: 0}
+  healthBar: {fileID: 0}
+  armourBar: {fileID: 0}
+  coinProgressBar: {fileID: 0}
+  equipmentProgressBar: {fileID: 0}
+  experienceProgressBar: {fileID: 0}
+  healthBarUpperText: {fileID: 0}
+  armourBarUpperText: {fileID: 0}
+  healthBarLowerText: {fileID: 0}
+  armourBarLowerText: {fileID: 0}
+  coinProgressBarText: {fileID: 0}
+  equipmentProgressBarText: {fileID: 0}
+  experienceProgressBarText: {fileID: 0}
+  chestSlot: {fileID: 0}
+  headSlot: {fileID: 0}
+  weaponSlot: {fileID: 0}
+  itemSlot: {fileID: 0}
+  spells: []
+  spellsText: []
+--- !u!114 &-6558736751599371213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8227244635199712535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 031cb140e6e6e954781a9ce9ee4292ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnNumber: 1

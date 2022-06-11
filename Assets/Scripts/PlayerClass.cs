@@ -88,7 +88,7 @@ public class PlayerClass : MonoBehaviour
     //Spells text
     public Text[] spellsText;
 
-    private void Start()
+    private void Init()
     {
         //Getting text component for level and stats display
         statsText = GameObject.Find("StatsUIText").GetComponent<Text>();
@@ -139,6 +139,10 @@ public class PlayerClass : MonoBehaviour
         levelText.text = characterExpLevel.ToString();
     }
 
+    private void Start()
+    {
+        Init();
+    }
     public void UpdateBars()
     {
         //Setting fill amounts
@@ -177,6 +181,6 @@ public class PlayerClass : MonoBehaviour
             + "Additional coin gain: " + addictionalCoinProgressByCoin.ToString() + "\n"
             + "Additional eq. gain: " + addictionalEquipementProgressByShield.ToString() + "\n" +
             "Damage Reduction: " + damageReductionByArmour.ToString();
-        
+
     }
 }

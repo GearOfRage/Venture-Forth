@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1107753374909860097}
   - component: {fileID: 4612651499406099047}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ItemImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 8301178950110941875}
   - component: {fileID: 1691175098366535601}
   - component: {fileID: 4751497246816592533}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ItemText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 7773193192686966034}
   - component: {fileID: 340115187377038338}
   - component: {fileID: 7205477838748089010}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Item2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 2985039048872493142}
   - component: {fileID: 8905178995187856694}
   - component: {fileID: 8390338133432295940}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GoldLvlUpUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -418,7 +418,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2927682762113935823}
   - component: {fileID: 8084582008594919553}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GoldLvlUpUIFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -502,7 +502,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5314056282226865041}
   - component: {fileID: 496446827422857463}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ItemImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -588,7 +588,7 @@ GameObject:
   - component: {fileID: 6872581685096427962}
   - component: {fileID: 2841462163171393294}
   - component: {fileID: 7104510079270349667}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Item1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -712,7 +712,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7141048963043516555}
   - component: {fileID: 7900663188020669056}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GoldLvlUpUIBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -796,7 +796,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1693919437686784532}
   - component: {fileID: 813072770572570850}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GoldLvlUpUISeparator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -882,7 +882,7 @@ GameObject:
   - component: {fileID: 3945635797728136362}
   - component: {fileID: 3376017081889602620}
   - component: {fileID: 2877178381730898323}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Item3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1007,7 +1007,7 @@ GameObject:
   - component: {fileID: 981383726602798106}
   - component: {fileID: 7891367790323931489}
   - component: {fileID: 1714309158201083759}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ItemText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1086,7 +1086,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8966478542890400653}
   - component: {fileID: 3689500811565265131}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ItemImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1171,7 +1171,7 @@ GameObject:
   - component: {fileID: 7372960017945295962}
   - component: {fileID: 2160211312199204058}
   - component: {fileID: 5290917785936958314}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ItemText
   m_TagString: Untagged
   m_Icon: {fileID: 0}

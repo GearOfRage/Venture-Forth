@@ -5,64 +5,69 @@ using UnityEngine;
 
 public class TileBehaviour : MonoBehaviour
 {
-    GameLogic gl;
+    Fader fader;
+    ChainBehaviour cb;
+    Chain chain;
 
     void Start()
     {
-        gl = GameObject.Find("GameManager").GetComponent<GameLogic>();
+        fader = GameObject.Find("GameManager").GetComponent<Fader>();
+        cb = GameObject.Find("GameManager").GetComponent<ChainBehaviour>();
+        chain = GameObject.Find("GameManager").GetComponent<Chain>();
+
         gameObject.GetComponentInChildren<SpriteRenderer>().transform.Rotate(0, 0, Random.Range(-10f, 10f), Space.Self);
     }
 
     void OnMouseDown()
     {
-        if (gl.isFaderOn)
+        if (fader.isFaderOn)
         {
             return;
         }
-        if (!gl.chain.Contains(gameObject))
+        if (!chain.chain.Contains(gameObject))
         {
             Select(gameObject);
         }
-        gl.isDragStarted = true;
+        cb.isDragStarted = true;
     }
 
     void OnMouseUp()
     {
-        if (gl.isFaderOn)
+        if (fader.isFaderOn)
         {
             return;
         }
-        gl.isDragStarted = false;
-        gl.ChainDone();
+        cb.isDragStarted = false;
+        cb.ChainDone();
     }
 
     void OnMouseOver()
     {
-        if (gl.isFaderOn)
+        if (fader.isFaderOn)
         {
             return;
         }
-        if (gl.isDragStarted 
-            && !gl.chain.Contains(gameObject) 
-            && gl.chain[0].GetComponent<TileClass>().tileType == gameObject.GetComponent<TileClass>().tileType
-            && Vector2.Distance(gl.chain[gl.chain.Count - 1].transform.position, gameObject.transform.position) < 1.5f)
+        if (cb.isDragStarted 
+            && !chain.chain.Contains(gameObject) 
+            && chain.chain[0].GetComponent<TileClass>().tileType == gameObject.GetComponent<TileClass>().tileType
+            && Vector2.Distance(chain.chain[chain.chain.Count - 1].transform.position, gameObject.transform.position) < 1.5f)
         {
             Select(gameObject);
             return;
         }
-        if (gl.chain.Count > 1)
+        if (chain.chain.Count > 1)
         {
-            if (gl.isDragStarted && gameObject == gl.chain[gl.chain.Count - 2])
+            if (cb.isDragStarted && gameObject == chain.chain[chain.chain.Count - 2])
             {
-                gl.chain.RemoveAt(gl.chain.Count - 1);
-                gl.chainRenderer.DrawChain();
+                chain.chain.RemoveAt(chain.chain.Count - 1);
+                cb.chainRenderer.DrawChain();
             }
         }
     }
 
     void Select(GameObject selectedObjet)
     {
-        gl.chain.Add(selectedObjet);
-        gl.chainRenderer.DrawChain();
+        chain.chain.Add(selectedObjet);
+        cb.chainRenderer.DrawChain();
     }
 }
