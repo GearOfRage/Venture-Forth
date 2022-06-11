@@ -94,6 +94,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8988953045170706744}
   - component: {fileID: 5499449625247016122}
+  - component: {fileID: 2454663321953997693}
+  - component: {fileID: 5558653554146345745}
   m_Layer: 0
   m_Name: SpellSlot
   m_TagString: Untagged
@@ -146,6 +148,47 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &2454663321953997693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4349959613877302130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66be6497eb4ecea49baccaf5d8489206, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellName: 0
+  spellImage: {fileID: 0}
+  cooldown: 0
+--- !u!61 &5558653554146345745
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4349959613877302130}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &5718120575741893191
 GameObject:
   m_ObjectHideFlags: 0

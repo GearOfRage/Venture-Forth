@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EquipItemType
+public enum EquipItemTypeE
 {
     Chest = 1,
     Head = 2,
@@ -10,9 +10,9 @@ public enum EquipItemType
     Support = 4
 }
 
-public struct EquipItem
+public struct EquipItemS
 {
-    public EquipItemType itemType;
+    public EquipItemTypeE itemType;
     public Sprite itemImage;
     public int itemStat;
     public string itemBaseStatName;
@@ -24,7 +24,7 @@ public class EquipItemClass : MonoBehaviour
 {
     bool isOnPlayer = false;
 
-    public EquipItemType itemType;
+    public EquipItemTypeE itemType;
     public Sprite itemImage;
     public int itemStat;
 
@@ -44,22 +44,22 @@ public class EquipItemClass : MonoBehaviour
             Sprite sprite = gameObject.GetComponentInChildren<SpriteRenderer>().sprite;
             switch (itemType)
             {
-                case EquipItemType.Chest:
+                case EquipItemTypeE.Chest:
                     gl.player.equipement.chestSlot = this;
                     gl.player.chestSlot.GetComponent<SpriteRenderer>().sprite = sprite;
                     gl.player.armourMax += itemStat;
                     break;
-                case EquipItemType.Head:
+                case EquipItemTypeE.Head:
                     gl.player.equipement.headSlot = this;
                     gl.player.headSlot.GetComponent<SpriteRenderer>().sprite = sprite;
                     gl.player.hpByPotion += itemStat;
                     break;
-                case EquipItemType.Weapon:
+                case EquipItemTypeE.Weapon:
                     gl.player.equipement.weaponSlot = this;
                     gl.player.weaponSlot.GetComponent<SpriteRenderer>().sprite = sprite;
                     gl.player.weaponDamage += itemStat;
                     break;
-                case EquipItemType.Support:
+                case EquipItemTypeE.Support:
                     gl.player.equipement.itemSlot = this;
                     gl.player.itemSlot.GetComponent<SpriteRenderer>().sprite = sprite;
                     break;

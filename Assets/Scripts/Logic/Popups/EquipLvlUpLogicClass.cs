@@ -21,29 +21,29 @@ public class EquipLvlUpLogic : MonoBehaviour
         FillProgressPanel();
     }
 
-    public EquipItem GenerateItem()
+    public EquipItemS GenerateItem()
     {
-        EquipItem item = new();
+        EquipItemS item = new();
         item.itemStat = 0;
         switch (Random.Range(1, 5))
         {
             case 1:
-                item.itemType = EquipItemType.Chest;
+                item.itemType = EquipItemTypeE.Chest;
                 item.itemImage = possibleChestArts[Random.Range(0, possibleChestArts.Length)];
                 item.itemBaseStatName = "Max armour";
                 break;
             case 2:
-                item.itemType = EquipItemType.Head;
+                item.itemType = EquipItemTypeE.Head;
                 item.itemImage = possibleHeadArts[Random.Range(0, possibleHeadArts.Length)];
                 item.itemBaseStatName = "HP by potion";
                 break;
             case 3:
-                item.itemType = EquipItemType.Weapon;
+                item.itemType = EquipItemTypeE.Weapon;
                 item.itemImage = possibleWeaponArts[Random.Range(0, possibleWeaponArts.Length)];
                 item.itemBaseStatName = "Weapon damage";
                 break;
             case 4:
-                item.itemType = EquipItemType.Support;
+                item.itemType = EquipItemTypeE.Support;
                 item.itemImage = possibleSupportArts[Random.Range(0, possibleSupportArts.Length)];
                 item.itemBaseStatName = "Gives some strange shit";
                 break;
@@ -60,7 +60,7 @@ public class EquipLvlUpLogic : MonoBehaviour
         for (int i = 0; i < Items.Length; i++)
         {
             //panel.transform.Find("Item" + i.ToString()).transform.GetChild(0).gameObject
-            EquipItem item = GenerateItem();
+            EquipItemS item = GenerateItem();
             Items[i].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = item.itemImage;
             string name = item.itemStat == 0 ? item.itemBaseStatName : item.itemBaseStatName + " +" + item.itemStat;
             Items[i].transform.GetChild(1).GetComponent<Text>().text = name;

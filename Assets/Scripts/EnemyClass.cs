@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum EnemyType
+public enum EnemyTypeE
 {
     Regular = 1,
     Elite = 2,
@@ -12,7 +12,7 @@ public enum EnemyType
 
 public class EnemyClass : MonoBehaviour
 {
-    [SerializeField] public EnemyType enemyType = EnemyType.Regular;
+    [SerializeField] public EnemyTypeE enemyType = EnemyTypeE.Regular;
     [SerializeField] public int attack = 1;
     [SerializeField] public int hp = 3;
     [SerializeField] public int hpMax = 3;

@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum CharacterClass
+public enum CharacterClassE
 {
     Brawler = 1,
     TreasureHunter = 2,
     Sorcerer = 3
 }
 
-public struct Equipement
+public struct EquipementS
 {
     public EquipItemClass chestSlot;
     public EquipItemClass headSlot;
@@ -20,7 +20,7 @@ public struct Equipement
 
 public class PlayerClass : MonoBehaviour
 {
-    public CharacterClass characterClass;
+    public CharacterClassE characterClass;
 
     [Header("Stats")]
 
@@ -80,10 +80,11 @@ public class PlayerClass : MonoBehaviour
     public GameObject headSlot;
     public GameObject weaponSlot;
     public GameObject itemSlot;
-    public Equipement equipement = new();
+    public EquipementS equipement = new();
 
     //Spells gameobjects
-    public GameObject[] spells;
+    public GameObject[] spellSlots;
+    public SpellClass[] spells = new SpellClass[4];
 
     //Spells text
     public Text[] spellsText;
@@ -114,18 +115,18 @@ public class PlayerClass : MonoBehaviour
         experienceProgressBarText = GameObject.Find("ProgressExperienceBarText").GetComponent<Text>();
 
         //Getting gameobject for spells
-        spells = new GameObject[4];
-        spells[0] = GameObject.Find("SpellSlot1");
-        spells[1] = GameObject.Find("SpellSlot2");
-        spells[2] = GameObject.Find("SpellSlot3");
-        spells[3] = GameObject.Find("SpellSlot4");
+        spellSlots = new GameObject[4];
+        spellSlots[0] = GameObject.Find("SpellSlot1");
+        spellSlots[1] = GameObject.Find("SpellSlot2");
+        spellSlots[2] = GameObject.Find("SpellSlot3");
+        spellSlots[3] = GameObject.Find("SpellSlot4");
 
         //Getting text for spells
         spellsText = new Text[4];
-        spellsText[0] = spells[0].transform.GetChild(3).GetComponent<Text>();
-        spellsText[1] = spells[1].transform.GetChild(3).GetComponent<Text>();
-        spellsText[2] = spells[2].transform.GetChild(3).GetComponent<Text>();
-        spellsText[3] = spells[3].transform.GetChild(3).GetComponent<Text>();
+        spellsText[0] = spellSlots[0].transform.GetChild(3).GetComponent<Text>();
+        spellsText[1] = spellSlots[1].transform.GetChild(3).GetComponent<Text>();
+        spellsText[2] = spellSlots[2].transform.GetChild(3).GetComponent<Text>();
+        spellsText[3] = spellSlots[3].transform.GetChild(3).GetComponent<Text>();
 
         //Hiding spells CD on start
         spellsText[0].text = "";

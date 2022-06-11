@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ProgressType
+public enum ProgressTypeE
 {
     Gold = 1,
     Equipment = 2,
@@ -18,17 +18,17 @@ public class ProgressLogic : MonoBehaviour
 
     GameObject showedPanel;
     int toOpen = 0;
-    ProgressType panelProgressType;
+    ProgressTypeE panelProgressType;
 
-    Dictionary<ProgressType, GameObject> panels;
+    Dictionary<ProgressTypeE, GameObject> panels;
 
     private void Start()
     {
         panels = new()
         {
-            { ProgressType.Gold, goldProgressPanel },
-            { ProgressType.Equipment, equipProgressPanel },
-            { ProgressType.Experience, expProgressPanel },
+            { ProgressTypeE.Gold, goldProgressPanel },
+            { ProgressTypeE.Equipment, equipProgressPanel },
+            { ProgressTypeE.Experience, expProgressPanel },
         };
     }
 
@@ -37,7 +37,7 @@ public class ProgressLogic : MonoBehaviour
         showedPanel = Instantiate(panels[panelProgressType], Vector3.zero, Quaternion.identity);
     }
 
-    public void ShowProgressPanel(ProgressType progressType, int uppedLevels = 1)
+    public void ShowProgressPanel(ProgressTypeE progressType, int uppedLevels = 1)
     {
         toOpen = uppedLevels;
         panelProgressType = progressType;

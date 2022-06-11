@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum TileType
+public enum TileTypeE
 {
     Attack = 1,
     Armour = 2,
     Potion = 3,
     Gold = 4
 }
-public enum TileName
+public enum TileNameE
 {
     RegularEnemy = 1,
     ExperiencePotion = 2,
@@ -22,6 +22,6 @@ public enum TileName
 }
 public class TileClass : MonoBehaviour
 {
-    [SerializeField] public TileType tileType;
-    [SerializeField] public TileName tileName;
+    [SerializeField] public TileTypeE tileType;
+    [SerializeField] public TileNameE tileName;
 }

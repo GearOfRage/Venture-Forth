@@ -3,7 +3,10 @@ guid: 90298dbecee6aa44cb53cd396b129f14
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - CoinParticles: {fileID: 8736630169155016323, guid: ebbe5b31df47304409d2992d30195f8a, type: 3}
+  - EquipParticles: {fileID: 8736630169155016323, guid: 4d4da535f0a3c9e44b37f818c2d45271, type: 3}
+  - ExpParticles: {fileID: 8736630169155016323, guid: afce32edd97196148a648b0a5bd2bc47, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

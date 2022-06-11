@@ -60,7 +60,7 @@ public class TilesGeneration : MonoBehaviour
         GameObject[] generatedTiles = new GameObject[prefabsCount];
 
         // change this in the future when adding elite enemies
-        GameObject regularEnemyPrefab = prefabs.Where(val => val.GetComponent<TileClass>().tileName == TileName.RegularEnemy).First();
+        GameObject regularEnemyPrefab = prefabs.Where(val => val.GetComponent<TileClass>().tileName == TileNameE.RegularEnemy).First();
         // add minimum enemies first
         for (int i = 0; i < minEnemyNumber; i++)
         {

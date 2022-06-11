@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum CollectParticle
+public enum CollectParticleE
 {
     CoinParticles = 1,
     EquipParticles = 2,
@@ -25,22 +25,22 @@ public class CollectVisuals : MonoBehaviour
     {
         gl = GameObject.Find("GameManager").GetComponent<GameLogic>();
     }
-    public void RunParticles(CollectParticle particle)
+    public void RunParticles(CollectParticleE particle)
     {
         Vector3 pos = new Vector3();
         switch (particle)
         {
-            case CollectParticle.CoinParticles:
+            case CollectParticleE.CoinParticles:
                 particlesPrefab = CoinParticles;
                 pos = gl.player.coinProgressBar.transform.position;
                 break;
 
-            case CollectParticle.EquipParticles:
+            case CollectParticleE.EquipParticles:
                 particlesPrefab = EquipParticles;
                 pos = gl.player.equipmentProgressBar.transform.position;
                 break;
 
-            case CollectParticle.ExpParticles:
+            case CollectParticleE.ExpParticles:
                 particlesPrefab = ExpParticles;
                 pos = gl.player.experienceProgressBar.transform.position;
                 break;

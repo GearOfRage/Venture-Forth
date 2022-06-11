@@ -13,8 +13,8 @@ public class GameLogic : MonoBehaviour
     TilesField tilesField;
     TurnLogic tl;
 
-    public GameStats gameStats;
-    public PlayerClass player;
+    [HideInInspector] public GameStats gameStats;
+    [HideInInspector] public PlayerClass player;
 
     Fader fader;
 
