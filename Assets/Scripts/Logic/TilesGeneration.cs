@@ -7,8 +7,8 @@ public class TilesGeneration : MonoBehaviour
 {
     [SerializeField] GameObject[] tilesPrefabs;  //Test tile prefab for first board filling
     [SerializeField] float duration = 1f; //Duration of shifting
+    [SerializeField] TilesField tilesField;
 
-    TilesField tilesField;
     Chain chain;
 
     GameObject offset; //Tiles matrix offset
@@ -17,7 +17,6 @@ public class TilesGeneration : MonoBehaviour
     private void Start()
     {
         chain = GetComponent<Chain>();
-        tilesField = GetComponent<TilesField>();
     }
 
     public void FirstGenerate()

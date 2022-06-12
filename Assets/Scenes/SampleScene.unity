@@ -2320,8 +2320,8 @@ GameObject:
   - component: {fileID: 1440898229}
   - component: {fileID: 1440898228}
   - component: {fileID: 1440898231}
-  - component: {fileID: 1440898232}
   - component: {fileID: 1440898233}
+  - component: {fileID: 1440898234}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2376,7 +2376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnText: {fileID: 739734569}
   collectVisuals: {fileID: 1440898225}
-  tilesField: {fileID: 1440898232}
+  tilesField: {fileID: 1440898234}
   gl: {fileID: 1440898223}
   pl: {fileID: 1440898226}
 --- !u!114 &1440898225
@@ -2453,18 +2453,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenFader: {fileID: 2071907136}
   isFaderOn: 0
---- !u!114 &1440898232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1440898220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 174a43cdec9b80849835f50edcc3d955, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1440898233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2484,6 +2472,19 @@ MonoBehaviour:
   - {fileID: 5358903232906739836, guid: bb07e1767ec3b2a45b1e497eb1acb2a5, type: 3}
   - {fileID: 5358903232906739836, guid: 1a97e34847da2e147a662ccee9e84239, type: 3}
   duration: 1
+  tilesField: {fileID: 1440898234}
+--- !u!114 &1440898234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440898220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 174a43cdec9b80849835f50edcc3d955, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1444773055
 GameObject:
   m_ObjectHideFlags: 0

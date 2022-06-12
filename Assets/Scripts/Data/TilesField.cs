@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class TilesField : MonoBehaviour
 {
-    public GameObject[,] tiles; //Tiles matrix
-    public GameObject[,] extendedTiles; //Extended tiles matrix
-
     public static int gridSize = 6; //Size of both dimentions
+
+    public GameObject[,] tiles = new GameObject[gridSize, gridSize]; //Tiles matrix
+    public GameObject[,] extendedTiles = new GameObject[gridSize, gridSize]; //Extended tiles matrix
+
     void Start()
     {
-        tiles = new GameObject[gridSize, gridSize];
-        extendedTiles = new GameObject[gridSize, gridSize];
     }
 
     public void Clear()
