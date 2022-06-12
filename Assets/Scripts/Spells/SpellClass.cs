@@ -48,7 +48,7 @@ public struct SpellS
 
 public class SpellClass : MonoBehaviour
 {
-    bool isOnPlayer = false;
+    bool isLearned = false; //does player have this spell in the spellSlot
 
     public SpellNameE spellName;
     public Sprite spellImage;
@@ -76,29 +76,38 @@ public class SpellClass : MonoBehaviour
 
     public static Dictionary<SpellNameE, string> spellsDescription = new()
     {
-        { SpellNameE.Conjure, "Super cool, super nice fancy-shmency spell"},
-        { SpellNameE.WishForChalenge, "Super cool, super nice fancy-shmency spell"},
-        { SpellNameE.WishForConsume, "Super cool, super nice fancy-shmency spell"},
-        { SpellNameE.WishForTreasure, "Super cool, super nice fancy-shmency spell"},
-        { SpellNameE.MagicSword, "Super cool, super nice fancy-shmency spell"},
-        { SpellNameE.MagicPotion, "Super cool, super nice fancy-shmency spell"},
-        { SpellNameE.TouchOfGold, "Super cool, super nice fancy-shmency spell"},
-        { SpellNameE.TouchOfWar, "Super cool, super nice fancy-shmency spell"},
-        { SpellNameE.Devastate, "Super cool, super nice fancy-shmency spell"},
-        { SpellNameE.Thirst, "Super cool, super nice fancy-shmency spell"},
-        { SpellNameE.ShieldsUp, "Super cool, super nice fancy-shmency spell"},
+        { SpellNameE.Conjure, "Super cool Conjure"},
+        { SpellNameE.WishForChalenge, "Super cool WishForChalenge"},
+        { SpellNameE.WishForConsume, "Super cool WishForConsume"},
+        { SpellNameE.WishForTreasure, "Super cool WishForTreasure"},
+        { SpellNameE.MagicSword, "Super cool MagicSword"},
+        { SpellNameE.MagicPotion, "Super cool MagicPotion"},
+        { SpellNameE.TouchOfGold, "Super cool TouchOfGold"},
+        { SpellNameE.TouchOfWar, "Super cool TouchOfWar"},
+        { SpellNameE.Devastate, "Super cool Devastate"},
+        { SpellNameE.Thirst, "Super cool Thirst"},
+        { SpellNameE.ShieldsUp, "Super cool ShieldsUp"},
     };
 
+    public void Learn(SpellClass spellToLearn)
+    {
+        isLearned = true;
+        spellName = spellToLearn.spellName;
+        spellImage = spellToLearn.spellImage;
+        description = spellToLearn.description;
+        cooldown = spellToLearn.cooldown;
+        currentCooldown = spellToLearn.currentCooldown;
+    }
 
     void Start()
     {
         pl = GameObject.Find("GameManager").GetComponent<ProgressLogic>();
         gl = GameObject.Find("GameManager").GetComponent<GameLogic>();
     }
-
+    
     void OnMouseDown()
     {
-        if (isOnPlayer)
+        if (isLearned)
         {
             CastSpell();
         }
@@ -115,9 +124,9 @@ public class SpellClass : MonoBehaviour
 
     int FindEmptySlotIndex()
     {
-        for (int i = 0; i < gl.player.spells.Length; i++)
+        for (int i = 0; i < gl.player.spellSlots.Length; i++)
         {
-            if (gl.player.spells[i] == null)
+            if (gl.player.spellSlots[i].sprite == null)
             {
                 return i;
             }
@@ -130,10 +139,10 @@ public class SpellClass : MonoBehaviour
         Sprite sprite = gameObject.GetComponentInChildren<SpriteRenderer>().sprite;
 
         int emptySlotIndex = FindEmptySlotIndex();
-        gl.player.spells[emptySlotIndex] = this;
+        gl.player.spells[emptySlotIndex].Learn(this);
         gl.player.spellSlots[emptySlotIndex].sprite = sprite;
 
-        isOnPlayer = true;
+        isLearned = true;
         pl.CloseProgressPanel();
     }
 }

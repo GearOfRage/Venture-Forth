@@ -23,10 +23,14 @@ public class TurnLogic : MonoBehaviour
     [SerializeField] GameLogic gl;
     Chain chain;
     [SerializeField] ProgressLogic pl;
+    ChainBehaviour cb;
+
+    public bool isPanelOpen = false;
 
     private void Start()
     {
         turnText.text = gl.gameStats.turnNumber.ToString();
+        cb = GameObject.Find("GameManager").GetComponent<ChainBehaviour>();
         chain = GetComponent<Chain>();
     }
 
@@ -35,6 +39,17 @@ public class TurnLogic : MonoBehaviour
         //Some game logic happens <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
         HandleChain();
+        if (isPanelOpen)
+        {
+            return;
+        }
+        OnPanelClose();
+    }
+
+    public void OnPanelClose()
+    {
+
+        cb.OnPanelClose();
         // no regeneration for 0 hp!
         CalculateDamageToPlayer();
 
@@ -42,6 +57,7 @@ public class TurnLogic : MonoBehaviour
         gl.player.UpdateBars();
         gl.gameStats.turnNumber++;
         turnText.text = gl.gameStats.turnNumber.ToString();
+
     }
 
     void HandleChain()

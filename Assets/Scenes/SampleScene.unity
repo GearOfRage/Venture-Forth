@@ -123,6 +123,16 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &41900894 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3200912796016247642, guid: 136463dadaeecac41b7461351003df21, type: 3}
+  m_PrefabInstance: {fileID: 856439306}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &79012601 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3200912796016247642, guid: 136463dadaeecac41b7461351003df21, type: 3}
+  m_PrefabInstance: {fileID: 173745215}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &135102579
 GameObject:
   m_ObjectHideFlags: 0
@@ -1198,6 +1208,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1981fb7d7f5620f4bb45c63cb43dec9a, type: 3}
+--- !u!1 &551814419 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3200912796016247642, guid: 136463dadaeecac41b7461351003df21, type: 3}
+  m_PrefabInstance: {fileID: 1498136156}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &698154605 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3200912796016247642, guid: 136463dadaeecac41b7461351003df21, type: 3}
+  m_PrefabInstance: {fileID: 269352735}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &731476884 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7821320065720936720, guid: a525b7ce1ec9fd4449eb29dac2474fd0, type: 3}
@@ -1546,6 +1566,21 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7821320065720936720, guid: 136463dadaeecac41b7461351003df21, type: 3}
   m_PrefabInstance: {fileID: 856439306}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &916304597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41900894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1779dcf5b4bb7e449c509780d20248e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: 0
+  itemImage: {fileID: 0}
+  itemStat: 0
 --- !u!1 &941670847
 GameObject:
   m_ObjectHideFlags: 0
@@ -3047,6 +3082,21 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7821320065720936720, guid: 136463dadaeecac41b7461351003df21, type: 3}
   m_PrefabInstance: {fileID: 173745215}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1559556256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79012601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1779dcf5b4bb7e449c509780d20248e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: 0
+  itemImage: {fileID: 0}
+  itemStat: 0
 --- !u!1 &1599650475
 GameObject:
   m_ObjectHideFlags: 0
@@ -3582,6 +3632,21 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7821320065720936720, guid: 136463dadaeecac41b7461351003df21, type: 3}
   m_PrefabInstance: {fileID: 1498136156}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1731770550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551814419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1779dcf5b4bb7e449c509780d20248e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: 0
+  itemImage: {fileID: 0}
+  itemStat: 0
 --- !u!1001 &1749646689
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3746,6 +3811,21 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7821320065720936720, guid: 136463dadaeecac41b7461351003df21, type: 3}
   m_PrefabInstance: {fileID: 269352735}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2035097216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698154605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1779dcf5b4bb7e449c509780d20248e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: 0
+  itemImage: {fileID: 0}
+  itemStat: 0
 --- !u!1 &2071907133
 GameObject:
   m_ObjectHideFlags: 0

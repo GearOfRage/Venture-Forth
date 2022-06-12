@@ -9,11 +9,13 @@ public class ChainBehaviour : MonoBehaviour
     Chain chain;
     TilesField tilesField;
     TilesGeneration tg;
+    TurnLogic tl;
 
     public bool isDragStarted;
 
     void Start()
     {
+        tl = GetComponent<TurnLogic>();
         isDragStarted = false;
         chainRenderer = gameObject.GetComponentInChildren<ChainRenderer>();
         chain = GetComponent<Chain>();
@@ -25,15 +27,17 @@ public class ChainBehaviour : MonoBehaviour
     {
         if (chain.chain.Count >= chain.minChainSize)
         {
-            // first handle chain
-            TurnLogic tl = GetComponent<TurnLogic>();
             tl.Next();
-            // then destroy it
-            int[] numToGen = CalculateAndDestroyChainTiles();
-            // then generate new tiles
-            tg.GenereteNewTilesAfterChain(numToGen);
         }
+    }
 
+    public void OnPanelClose()
+    {
+
+        // then destroy it
+        int[] numToGen = CalculateAndDestroyChainTiles();
+        // then generate new tiles
+        tg.GenereteNewTilesAfterChain(numToGen);
         chainRenderer.DestroyNodes();
         chain.chain.Clear(); //Clearing the chain elements
     }

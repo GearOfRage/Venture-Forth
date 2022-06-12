@@ -46,6 +46,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterClass: 0
+  spells: []
+  headItem: {fileID: 0}
+  weaponItem: {fileID: 0}
+  itemItem: {fileID: 0}
+  chestItem: {fileID: 0}
   characterEqipLevel: 0
   characterGoldLevel: 0
   characterExpLevel: 1
@@ -55,9 +60,9 @@ MonoBehaviour:
   armourCurrent: 0
   baseDamage: 2
   weaponDamage: 2
-  coinProgressMax: 3
+  coinProgressMax: 100
   equipmentProgressMax: 100
-  experienceProgressMax: 3
+  experienceProgressMax: 100
   coinProgressCurrent: 0
   equipmentProgressCurrent: 0
   experienceProgressCurrent: 0
@@ -90,11 +95,6 @@ MonoBehaviour:
   weaponSlot: {fileID: 0}
   itemSlot: {fileID: 0}
   spellSlots: []
-  spells:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   spellsText: []
 --- !u!114 &-6558736751599371213
 MonoBehaviour:

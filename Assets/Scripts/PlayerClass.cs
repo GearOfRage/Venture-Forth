@@ -10,17 +10,16 @@ public enum CharacterClassE
     Sorcerer = 3
 }
 
-public struct EquipementS
-{
-    public EquipItemClass chestSlot;
-    public EquipItemClass headSlot;
-    public EquipItemClass weaponSlot;
-    public EquipItemClass itemSlot;
-}
-
 public class PlayerClass : MonoBehaviour
 {
     public CharacterClassE characterClass;
+
+    [Header("Internal data")]
+    public SpellClass[] spells;
+    public EquipItemClass headItem;
+    public EquipItemClass weaponItem;
+    public EquipItemClass itemItem;
+    public EquipItemClass chestItem;
 
     [Header("Stats")]
 
@@ -80,14 +79,13 @@ public class PlayerClass : MonoBehaviour
     public SpriteRenderer headSlot;
     public SpriteRenderer weaponSlot;
     public SpriteRenderer itemSlot;
-    public EquipementS equipement = new();
 
     //Spells gameobjects
     public SpriteRenderer[] spellSlots;
-    public SpellClass[] spells = new SpellClass[4];
 
     //Spells text
     public Text[] spellsText;
+
 
     private void Init()
     {
@@ -114,31 +112,39 @@ public class PlayerClass : MonoBehaviour
         equipmentProgressBarText = GameObject.Find("ProgressEquipmentBarText").GetComponent<Text>();
         experienceProgressBarText = GameObject.Find("ProgressExperienceBarText").GetComponent<Text>();
 
-        //Getting gameobject for equip
-        chestSlot = GameObject.Find("ChestSlot").transform.GetChild(1).GetComponent<SpriteRenderer>();
-        headSlot = GameObject.Find("HeadSlot").transform.GetChild(1).GetComponent<SpriteRenderer>();
-        weaponSlot = GameObject.Find("WeaponSlot").transform.GetChild(1).GetComponent<SpriteRenderer>();
-        itemSlot = GameObject.Find("ItemSlot").transform.GetChild(1).GetComponent<SpriteRenderer>();
+        //Initing equip
+        GameObject chest = GameObject.Find("ChestSlot");
+        chestItem = chest.GetComponent<EquipItemClass>();
+        chestSlot = chest.transform.GetChild(1).GetComponent<SpriteRenderer>();
 
-        //Getting gameobject for spells
+        GameObject head = GameObject.Find("HeadSlot");
+        headItem = head.GetComponent<EquipItemClass>();
+        headSlot = head.transform.GetChild(1).GetComponent<SpriteRenderer>();
+
+        GameObject weapon = GameObject.Find("WeaponSlot");
+        weaponItem = weapon.GetComponent<EquipItemClass>();
+        weaponSlot = weapon.transform.GetChild(1).GetComponent<SpriteRenderer>();
+
+        GameObject item = GameObject.Find("ItemSlot");
+        itemItem = item.GetComponent<EquipItemClass>();
+        itemSlot = item.transform.GetChild(1).GetComponent<SpriteRenderer>();
+
+        //Initing spells
+        spells = new SpellClass[4];
         spellSlots = new SpriteRenderer[4];
-        spellSlots[0] = GameObject.Find("SpellSlot1").transform.GetChild(1).GetComponent<SpriteRenderer>();
-        spellSlots[1] = GameObject.Find("SpellSlot2").transform.GetChild(1).GetComponent<SpriteRenderer>();
-        spellSlots[2] = GameObject.Find("SpellSlot3").transform.GetChild(1).GetComponent<SpriteRenderer>();
-        spellSlots[3] = GameObject.Find("SpellSlot4").transform.GetChild(1).GetComponent<SpriteRenderer>();
-
-        //Getting text for spells
         spellsText = new Text[4];
-        spellsText[0] = GameObject.Find("SpellSlot1").transform.GetChild(3).GetComponent<Text>();
-        spellsText[1] = GameObject.Find("SpellSlot2").transform.GetChild(3).GetComponent<Text>();
-        spellsText[2] = GameObject.Find("SpellSlot3").transform.GetChild(3).GetComponent<Text>();
-        spellsText[3] = GameObject.Find("SpellSlot4").transform.GetChild(3).GetComponent<Text>();
-
-        //Hiding spells CD on start
-        spellsText[0].text = "";
-        spellsText[1].text = "";
-        spellsText[2].text = "";
-        spellsText[3].text = "";
+        for (int i = 0; i < spells.Length; i++)
+        {
+            GameObject spell = GameObject.Find("SpellSlot" + (i + 1).ToString());
+            //Saving SpellClass
+            spells[i] = spell.GetComponent<SpellClass>();
+            //Getting gameobject for spells
+            spellSlots[i] = spell.transform.GetChild(1).GetComponent<SpriteRenderer>();
+            //Getting text for spells
+            spellsText[i] = spell.transform.GetChild(3).GetComponent<Text>();
+            //Hiding spells CD on start
+            spellsText[i].text = "";
+        }
 
         //Setting up UI
         UpdateBars();
