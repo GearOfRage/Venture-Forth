@@ -69,7 +69,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 334d5dd47647fa24383efac610ea58f2, type: 3}
-    m_FontSize: 30
+    m_FontSize: 17
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -80,7 +80,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Spell
+  m_Text: 'Spell
+
+    Spell
+
+    Spell'
 --- !u!114 &5988913834254812066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1364,7 +1368,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 334d5dd47647fa24383efac610ea58f2, type: 3}
-    m_FontSize: 30
+    m_FontSize: 18
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -1460,18 +1464,19 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 334d5dd47647fa24383efac610ea58f2, type: 3}
-    m_FontSize: 30
+    m_FontSize: 17
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 66
+    m_MaxSize: 300
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Spell
+  m_Text: Knowledge\nTransforms all potions in experience potions. Experience potion
+    gives experience equals amount of health by potion.
 --- !u!114 &2712804184995783649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1556,7 +1561,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 334d5dd47647fa24383efac610ea58f2, type: 3}
-    m_FontSize: 30
+    m_FontSize: 18
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
