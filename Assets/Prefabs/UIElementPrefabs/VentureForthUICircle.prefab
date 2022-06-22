@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5523484175751463264}
   - component: {fileID: 1884103619723621563}
+  - component: {fileID: 6390183513848024222}
   m_Layer: 0
   m_Name: VentureForthUICircle
   m_TagString: Untagged
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 3277fbb8d37882b40af16534514625db, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -84,3 +85,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!122 &6390183513848024222
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6486109109635851281}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4279107328
+  m_Size: 0.28

@@ -27,13 +27,13 @@ public class ExpLvlUpLogic : MonoBehaviour
 
     public SpellS GenerateSpell()
     {
-        int randomNumber = UnityEngine.Random.Range(0, SpellClass.spellCooldowns.Count);
+        int randomNumber = UnityEngine.Random.Range(0, SpellClass.spellsDescription.Count);
         SpellNameE spell = (SpellNameE)randomNumber;
         return new SpellS(
             spell,
             // todo: return this after adding all spell sprites
-            //spellSprites[randomNumber],
-            spellSprites[0],
+            spellSprites[randomNumber],
+            //spellSprites[0],
             SpellClass.spellCooldowns[spell],
             SpellClass.spellsDescription[spell]
             );

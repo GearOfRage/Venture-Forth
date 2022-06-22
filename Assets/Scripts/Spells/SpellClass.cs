@@ -17,7 +17,7 @@ public enum SpellNameE
     // Закрепить защиту - собирает все щиты.
     // Превращение - заменяет все тайлы на случайные. (кроме элиток и боссов)
 
-    Conjure = 0,
+    Conversion = 0,
     WishForChalenge = 1,
     WishForConsume = 2,
     WishForTreasure = 3,
@@ -25,9 +25,10 @@ public enum SpellNameE
     MagicPotion = 5,
     TouchOfGold = 6,
     TouchOfWar = 7,
-    Devastate = 8,
+    Break = 8,
     Thirst = 9,
     ShieldsUp = 10,
+    Knowledge = 11
 }
 
 public struct SpellS
@@ -61,7 +62,7 @@ public class SpellClass : MonoBehaviour
 
     public static Dictionary<SpellNameE, int> spellCooldowns = new()
     {
-        { SpellNameE.Conjure, 30 },
+        { SpellNameE.Conversion, 30 },
         { SpellNameE.WishForChalenge, 30 },
         { SpellNameE.WishForConsume, 30 },
         { SpellNameE.WishForTreasure, 30 },
@@ -69,24 +70,42 @@ public class SpellClass : MonoBehaviour
         { SpellNameE.MagicPotion, 30 },
         { SpellNameE.TouchOfGold, 30 },
         { SpellNameE.TouchOfWar, 30 },
-        { SpellNameE.Devastate, 30 },
+        { SpellNameE.Break, 30 },
         { SpellNameE.Thirst, 30 },
         { SpellNameE.ShieldsUp, 30 },
-    };
+        { SpellNameE.Knowledge, 30 },
+    }; 
+
+    //public static Dictionary<SpellNameE, int> spellSprite = new()
+    //{
+    //    { SpellNameE.Conversion, 30 },
+    //    { SpellNameE.WishForChalenge, 30 },
+    //    { SpellNameE.WishForConsume, 30 },
+    //    { SpellNameE.WishForTreasure, 30 },
+    //    { SpellNameE.MagicSword, 30 },
+    //    { SpellNameE.MagicPotion, 30 },
+    //    { SpellNameE.TouchOfGold, 30 },
+    //    { SpellNameE.TouchOfWar, 30 },
+    //    { SpellNameE.Break, 30 },
+    //    { SpellNameE.Thirst, 30 },
+    //    { SpellNameE.ShieldsUp, 30 },
+    //    { SpellNameE.Knowledge, 30 },
+    //};
 
     public static Dictionary<SpellNameE, string> spellsDescription = new()
     {
-        { SpellNameE.Conjure, "Super cool Conjure"},
-        { SpellNameE.WishForChalenge, "Super cool WishForChalenge"},
-        { SpellNameE.WishForConsume, "Super cool WishForConsume"},
-        { SpellNameE.WishForTreasure, "Super cool WishForTreasure"},
-        { SpellNameE.MagicSword, "Super cool MagicSword"},
-        { SpellNameE.MagicPotion, "Super cool MagicPotion"},
-        { SpellNameE.TouchOfGold, "Super cool TouchOfGold"},
-        { SpellNameE.TouchOfWar, "Super cool TouchOfWar"},
-        { SpellNameE.Devastate, "Super cool Devastate"},
-        { SpellNameE.Thirst, "Super cool Thirst"},
-        { SpellNameE.ShieldsUp, "Super cool ShieldsUp"},
+        { SpellNameE.Conversion, "Conjure\nChanges all tiles. Exepts for Bosses and Elites."},
+        { SpellNameE.WishForChalenge, "Wish For Chalenge\nTransforms random tile in Elite."},
+        { SpellNameE.WishForConsume, "Wish For Consume\nAll the damage inflicted to enemies this turn, will restore the same amount of health."},
+        { SpellNameE.WishForTreasure, "Wish For Treasure\nAll new tiles after this turn will be coins."},
+        { SpellNameE.MagicSword, "Magic Sword\nTransforms random sword in magic sword. Magic sword have 3x amount of weapon damage."},
+        { SpellNameE.MagicPotion, "Magic Potion\nTransforms random potion in magic potion. Magic potion have 3x amount of health by potion."},
+        { SpellNameE.TouchOfGold, "Touch Of Gold\nTransforms all swords in coins."},
+        { SpellNameE.TouchOfWar, "Touch Of War\nTransforms all coins in swords."},
+        { SpellNameE.Break, "Break\nSets armour of all enemies to 0."},
+        { SpellNameE.Thirst, "Thirst\nCollects all potions."},
+        { SpellNameE.ShieldsUp, "Shields Up\nCollects all shields."},
+        { SpellNameE.Knowledge, "Knowledge\nTransforms all potions in experience potions. Experience potion gives experience equals amount of health by potion."},
     };
 
     public void Learn(SpellClass spellToLearn)

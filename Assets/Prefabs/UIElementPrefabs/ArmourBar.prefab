@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 8115427204107883516}
   - component: {fileID: 7902505254511012047}
   - component: {fileID: 7820545898322357457}
+  - component: {fileID: 119813548790605427}
   m_Layer: 0
   m_Name: ArmourBarSplitterText
   m_TagString: Untagged
@@ -144,6 +145,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u2013"
+--- !u!114 &119813548790605427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842873127344647836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &5276520306021821396
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,6 +171,7 @@ GameObject:
   - component: {fileID: 4227299731904048595}
   - component: {fileID: 5765274756588859914}
   - component: {fileID: 8707000724668221301}
+  - component: {fileID: 7609488086501287736}
   m_Layer: 0
   m_Name: ArmourBarUpperText
   m_TagString: Untagged
@@ -224,6 +241,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 100
+--- !u!114 &7609488086501287736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5276520306021821396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &6313980684974126668
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,6 +396,7 @@ GameObject:
   - component: {fileID: 3383332284093362815}
   - component: {fileID: 9051451169447739253}
   - component: {fileID: 5068043685412319582}
+  - component: {fileID: 1547228544226671001}
   m_Layer: 0
   m_Name: ArmourBarLowerText
   m_TagString: Untagged
@@ -433,6 +466,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 100
+--- !u!114 &1547228544226671001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7403839590054676448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &7696696977501842131
 GameObject:
   m_ObjectHideFlags: 0
