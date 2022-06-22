@@ -161,6 +161,8 @@ public class SpellClass : MonoBehaviour
         gl.player.spells[emptySlotIndex].Learn(this);
         gl.player.spellSlots[emptySlotIndex].sprite = sprite;
 
+        Debug.Log(gl.player.spells[emptySlotIndex].spellName);
+        Debug.Log(gl.player.spellSlots[emptySlotIndex].sprite);
         isLearned = true;
         pl.CloseProgressPanel();
     }
