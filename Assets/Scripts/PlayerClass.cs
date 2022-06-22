@@ -129,6 +129,11 @@ public class PlayerClass : MonoBehaviour
         itemItem = item.GetComponent<EquipItemClass>();
         itemSlot = item.transform.GetChild(1).GetComponent<SpriteRenderer>();
 
+        chestSlot.sprite = null;
+        headSlot.sprite = null;
+        weaponSlot.sprite = null;
+        itemSlot.sprite = null;
+
         //Initing spells
         spells = new SpellClass[4];
         spellSlots = new SpriteRenderer[4];
@@ -140,6 +145,7 @@ public class PlayerClass : MonoBehaviour
             spells[i] = spell.GetComponent<SpellClass>();
             //Getting gameobject for spells
             spellSlots[i] = spell.transform.GetChild(1).GetComponent<SpriteRenderer>();
+            spellSlots[i].sprite = null;
             //Getting text for spells
             spellsText[i] = spell.transform.GetChild(3).GetComponent<Text>();
             //Hiding spells CD on start

@@ -16,7 +16,7 @@ public class ProgressLogic : MonoBehaviour
     [SerializeField] GameObject expProgressPanel;
     [SerializeField] Fader fader;
 
-    GameObject showedPanel;
+    [HideInInspector] public GameObject showedPanel;
     int toOpen = 0;
     ProgressTypeE panelProgressType;
 

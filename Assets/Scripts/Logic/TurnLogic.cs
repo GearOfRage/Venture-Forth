@@ -36,22 +36,21 @@ public class TurnLogic : MonoBehaviour
 
     public void Next()
     {
-        //Some game logic happens <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
         HandleChain();
         if (isPanelOpen)
         {
             return;
         }
-        OnPanelClose();
+        TurnEnd();
     }
 
-    public void OnPanelClose()
+    public void TurnEnd()
     {
 
-        cb.OnPanelClose();
         // no regeneration for 0 hp!
         CalculateDamageToPlayer();
+
+        cb.OnPanelClose();
 
         gl.CheckGameOver();
         gl.player.UpdateBars();

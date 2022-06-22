@@ -6,6 +6,7 @@ public class GameLogic : MonoBehaviour
 {
     [SerializeField] GameObject playerPrefab;
     [SerializeField] GameObject gameOverScreenPrefab;
+    [SerializeField] ProgressLogic pl;
 
     GameObject gameOverScreen;
     GameObject playerObject;
@@ -33,6 +34,11 @@ public class GameLogic : MonoBehaviour
         if (player.hpCurrent <= 0)
         {
             player.hpCurrent = 0;
+            if (pl.showedPanel != null)
+            {
+                Destroy(pl.showedPanel);
+                pl.showedPanel = null;
+            }
             fader.OpenFader();
             gameOverScreen = Instantiate(gameOverScreenPrefab, Vector3.zero, Quaternion.identity);
             gameOverScreen.GetComponent<Canvas>().sortingOrder = fader.screenFader.sortingOrder + 1;

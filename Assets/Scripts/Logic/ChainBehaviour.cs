@@ -28,6 +28,10 @@ public class ChainBehaviour : MonoBehaviour
         if (chain.chain.Count >= chain.minChainSize)
         {
             tl.Next();
+        } else
+        {
+            chainRenderer.DestroyNodes();
+            chain.chain.Clear(); //Clearing the chain elements
         }
     }
 
