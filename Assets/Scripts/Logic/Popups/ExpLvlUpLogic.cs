@@ -19,8 +19,6 @@ public class ExpLvlUpLogic : MonoBehaviour
 
     [SerializeField] GameObject[] Items;
 
-
-
     void Start()
     {
         gl = GameObject.Find("GameManager").GetComponent<GameLogic>();
@@ -33,39 +31,91 @@ public class ExpLvlUpLogic : MonoBehaviour
     public SpellS[] GenerateSpells(int number)
     {
         SpellS[] spells = new SpellS[number];
-        int[] randomNumbers = new int[number];
-        for (int i = 0; i < number; i++)
+        
+        // check which skills are learned by player and where CD can be decreased
+        int availableSpellsCount = SpellClass.spellsDescription.Count;
+        bool[,] hasSpellCanDecreaseCD = new bool[SpellClass.spellsDescription.Count, 2];
+        int takenSlots = 0;
+        int maximisedCD = 0;
+        for (int j = 0; j < gl.player.spells.Length; j++)
         {
-            int randomNumber;
-            while (true)
+            if (gl.player.spells[j].isLearned)
             {
-                randomNumber = UnityEngine.Random.Range(0, SpellClass.spellsDescription.Count);
-                bool repeat = false;
-                for (int j = 0; j < number; j++)
+                takenSlots++;
+                hasSpellCanDecreaseCD[(int)gl.player.spells[j].spellName, 0] = true;
+                hasSpellCanDecreaseCD[(int)gl.player.spells[j].spellName, 1] = gl.player.spells[j].cooldown > 6;
+                if (!hasSpellCanDecreaseCD[(int)gl.player.spells[j].spellName, 1])
                 {
-                    if (randomNumbers[j] == randomNumber)
-                    {
-                        repeat = true;
-                    }
-                }
-                if (!repeat)
-                {
-                    break;
+                    maximisedCD++;
                 }
             }
-            // todo: delete the line below
-            randomNumber = 7;
-            randomNumbers[i] = randomNumber;
-
-            SpellNameE spell = (SpellNameE)randomNumber;
-            spells[i] = new SpellS(
-                spell,
-                spellSprites[randomNumber],
-                SpellClass.spellCooldowns[spell],
-                SpellClass.spellsDescription[spell]
-            );
         }
 
+        if (takenSlots == gl.player.spells.Length && maximisedCD == gl.player.spells.Length)
+        {
+            throw new SystemException("Does not have " + number + " more spells to generate :(");
+        }
+
+        availableSpellsCount = takenSlots == gl.player.spells.Length
+            ? gl.player.spells.Length - maximisedCD
+            : availableSpellsCount;
+        
+        // create array with available spells ids
+        int[] availableSpells = new int[availableSpellsCount];
+        int l = 0;
+        if (takenSlots == gl.player.spells.Length)
+        {
+            int m = 0;
+            for (int j = 0; j < gl.player.spells.Length; j++)
+            {
+                if (hasSpellCanDecreaseCD[(int)gl.player.spells[j].spellName, 1])
+                {
+                    availableSpells[m] = (int)gl.player.spells[j].spellName;
+                    m++;
+                }
+            }
+        } else
+        {
+            for (int k = 0; k < SpellClass.spellsDescription.Count; k++)
+            {
+                if (!hasSpellCanDecreaseCD[k, 0] || hasSpellCanDecreaseCD[k, 1])
+                {
+                    availableSpells[l] = k;
+                    l++;
+                }
+            }
+        }
+
+        // generate skills
+        for (int i = 0; i < number; i++)
+        {
+            int randomNumber = availableSpells[UnityEngine.Random.Range(0, availableSpellsCount)];
+
+            // todo: delete the line below
+            //randomNumber = 7;
+            SpellNameE spell = (SpellNameE)randomNumber;
+
+            if (hasSpellCanDecreaseCD[randomNumber, 0])
+            {
+                spells[i] = new SpellS(
+                    spell,
+                    spellSprites[randomNumber],
+                    SpellClass.spellCooldowns[spell],
+                    "Decrease cooldown by 2",
+                    true
+                );
+            }
+            else
+            {
+                spells[i] = new SpellS(
+                    spell,
+                    spellSprites[randomNumber],
+                    SpellClass.spellCooldowns[spell],
+                    SpellClass.spellsDescription[spell],
+                    false
+                );
+            }
+        }
 
         return spells;
     }
@@ -84,6 +134,17 @@ public class ExpLvlUpLogic : MonoBehaviour
             spellClass.cooldown = spells[i].cooldown;
             spellClass.currentCooldown = 0;
             spellClass.spellImage = spells[i].spellImage;
+            if (spells[i].isLeaned)
+            {
+                for (int j = 0; j < gl.player.spells.Length; j++)
+                {
+                    if (gl.player.spells[j].spellName == spells[i].spellName)
+                    {
+                        spellClass.myIndex = gl.player.spells[j].myIndex;
+                        break;
+                    }
+                }
+            }
         }
     }
 }

@@ -117,7 +117,7 @@ public class TurnLogic : MonoBehaviour
                 int expProgressCurrent = gl.player.experienceProgressCurrent + expGain;
                 if (expGain > 0)
                 {
-                    collectVisuals.RunParticles(CollectParticleE.ExpParticles);
+                    //collectVisuals.RunParticles(CollectParticleE.ExpParticles);
                 }
                 int playerLvlUps = expProgressCurrent / gl.player.experienceProgressMax;
                 if (playerLvlUps > 0)
@@ -148,7 +148,7 @@ public class TurnLogic : MonoBehaviour
                 }
                 equipmentProgressGain += Mathf.FloorToInt(shieldCount * gl.player.addictionalEquipementProgressByShield);
                 int equipmentProgressCurrent = gl.player.equipmentProgressCurrent + equipmentProgressGain;
-                collectVisuals.RunParticles(CollectParticleE.EquipParticles);
+                //collectVisuals.RunParticles(CollectParticleE.EquipParticles);
                 int equipmentLevelUps = equipmentProgressCurrent / gl.player.equipmentProgressMax;
                 if (equipmentLevelUps > 0)
                 {
@@ -202,7 +202,7 @@ public class TurnLogic : MonoBehaviour
                 goldGain += Mathf.FloorToInt(goldCount * gl.player.addictionalCoinProgressByCoin);
                 gl.gameStats.collectedGold += goldGain;
                 int goldProgressCurrent = gl.player.coinProgressCurrent + goldGain;
-                collectVisuals.RunParticles(CollectParticleE.CoinParticles);
+                //collectVisuals.RunParticles(CollectParticleE.CoinParticles);
                 int goldLevelUps = goldProgressCurrent / gl.player.coinProgressMax;
                 if (goldLevelUps > 0)
                 {

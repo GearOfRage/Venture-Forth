@@ -38,21 +38,23 @@ public struct SpellS
     public Sprite spellImage;
     public int cooldown;
     public string description;
+    public bool isLeaned;
 
-    public SpellS(SpellNameE n, Sprite img, int cd, string text)
+    public SpellS(SpellNameE n, Sprite img, int cd, string text, bool l)
     {
         spellImage = img;
         spellName = n;
         cooldown = cd;
         description = text;
+        isLeaned = l;
     }
 }
 
 public class SpellClass : MonoBehaviour
 {
-    bool isLearned = false; //does player have this spell in the spellSlot
+    public bool isLearned = false; //does player have this spell in the spellSlot
 
-    public int myIndex;
+    public int myIndex = -1;
     public SpellNameE spellName;
     public Sprite spellImage;
     public string description;
@@ -64,7 +66,7 @@ public class SpellClass : MonoBehaviour
 
     public static Dictionary<SpellNameE, int> spellCooldowns = new()
     {
-        { SpellNameE.Conversion, 3 },
+        { SpellNameE.Conversion, 30 },
         { SpellNameE.WishForChalenge, 30 },
         { SpellNameE.WishForConsume, 30 },
         { SpellNameE.WishForTreasure, 30 },
@@ -114,13 +116,20 @@ public class SpellClass : MonoBehaviour
 
     public void Learn(SpellClass spellToLearn)
     {
-        isLearned = true;
-        spellName = spellToLearn.spellName;
-        spellImage = spellToLearn.spellImage;
-        description = spellToLearn.description;
-        cooldown = spellToLearn.cooldown;
-        currentCooldown = spellToLearn.currentCooldown;
-        myIndex = spellToLearn.myIndex;
+        if (isLearned)
+        {
+            cooldown -= 2;
+        }
+        else
+        {
+            isLearned = true;
+            spellName = spellToLearn.spellName;
+            spellImage = spellToLearn.spellImage;
+            description = spellToLearn.description;
+            cooldown = spellToLearn.cooldown;
+            currentCooldown = spellToLearn.currentCooldown;
+            myIndex = spellToLearn.myIndex;
+        }
     }
 
     void Start()
@@ -171,17 +180,16 @@ public class SpellClass : MonoBehaviour
                 return i;
             }
         }
-        throw new System.Exception("No empty slot for the spell ><'");
+        throw new Exception("No empty slot for the spell ><'");
     }
 
     void ChooseSpellFromLvlUpPanel()
     {
         Sprite sprite = gameObject.GetComponentInChildren<SpriteRenderer>().sprite;
 
-        myIndex = FindEmptySlotIndex();
+        myIndex = myIndex == -1 ? FindEmptySlotIndex() : myIndex;
         gl.player.spells[myIndex].Learn(this);
         gl.player.spellSlots[myIndex].sprite = sprite;
-
         isLearned = true;
         pl.CloseProgressPanel();
     }
