@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,6 +28,7 @@ public class TurnLogic : MonoBehaviour
 
     public bool isPanelOpen = false;
 
+    public static Action OnTurnEnd;
     private void Start()
     {
         turnText.text = gl.gameStats.turnNumber.ToString();
@@ -53,10 +55,9 @@ public class TurnLogic : MonoBehaviour
         cb.OnPanelClose();
 
         gl.CheckGameOver();
-        gl.player.UpdateBars();
         gl.gameStats.turnNumber++;
         turnText.text = gl.gameStats.turnNumber.ToString();
-
+        OnTurnEnd?.Invoke();
     }
 
     void HandleChain()

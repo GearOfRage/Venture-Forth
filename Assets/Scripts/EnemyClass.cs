@@ -22,9 +22,24 @@ public class EnemyClass : MonoBehaviour
     [SerializeField] public Text attackText;
     [SerializeField] public Text armourText;
 
-    private void Awake()
+    GameLogic gl;
+    GameStats gs;
+
+    private void Start()
     {
+        gl = GameObject.Find("GameManager").GetComponent<GameLogic>();
+        gs = gl.player.GetComponent<GameStats>();
+
+        ScaleStats();
         UpdateStats();
+    }
+
+    void ScaleStats()
+    {
+        attack = gl.player.characterEqipLevel + 1 + (gs.turnNumber / 10);
+        hp = gl.player.characterEqipLevel + gl.player.characterExpLevel + gl.player.characterGoldLevel + (gs.turnNumber / 8) + 2;
+        hpMax = gl.player.characterEqipLevel + gl.player.characterExpLevel + gl.player.characterGoldLevel + (gs.turnNumber / 8);
+        armour = gl.player.characterEqipLevel + 1;
     }
 
     public void UpdateStats()

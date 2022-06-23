@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -27,14 +28,14 @@ public class PlayerClass : MonoBehaviour
     public int characterEqipLevel = 0;
     public int characterGoldLevel = 0;
     public int characterExpLevel = 1;
-    public int hpMax = 20; //Basic stat
-    public int hpCurrent = 20;
-    public int armourMax = 4; //Basic stat
-    public int armourCurrent = 0;
+    public int hpMax = 40; //Basic stat
+    public int hpCurrent = 40;
+    public int armourMax = 5; //Basic stat
+    public int armourCurrent = 5;
     public int baseDamage = 2; //Basic stat
     public int weaponDamage = 2;
-    public int coinProgressMax = 100;
-    public int equipmentProgressMax = 100;
+    public int coinProgressMax = 10;
+    public int equipmentProgressMax = 10;
     public int experienceProgressMax = 100;
     public int coinProgressCurrent = 0;
     public int equipmentProgressCurrent = 0;
@@ -86,7 +87,7 @@ public class PlayerClass : MonoBehaviour
     //Spells text
     public Text[] spellsText;
 
-
+    public static Action onStatUpdate;
     private void Init()
     {
         //Getting text component for level and stats display
@@ -161,13 +162,16 @@ public class PlayerClass : MonoBehaviour
     private void Start()
     {
         Init();
+        onStatUpdate += UpdateStats;
+        TurnLogic.OnTurnEnd += UpdateStats;
+        TurnLogic.OnTurnEnd += UpdateBars;
     }
     public void UpdateBars()
     {
         //Setting fill amounts
         coinProgressBar.fillAmount = (float)coinProgressCurrent / (float)coinProgressMax;
         equipmentProgressBar.fillAmount = (float)equipmentProgressCurrent / (float)equipmentProgressMax;
-        experienceProgressBar.fillAmount = (float)experienceProgressCurrent / (float)equipmentProgressMax;
+        experienceProgressBar.fillAmount = (float)experienceProgressCurrent / (float)experienceProgressMax;
         armourBar.fillAmount = (float)armourCurrent / (float)armourMax;
         healthBar.fillAmount = (float)hpCurrent / (float)hpMax;
 
@@ -200,5 +204,11 @@ public class PlayerClass : MonoBehaviour
             + "Additional coin gain: " + addictionalCoinProgressByCoin.ToString() + "\n"
             + "Additional eq. gain: " + addictionalEquipementProgressByShield.ToString() + "\n" +
             "Damage Reduction: " + damageReductionByArmour.ToString();
+
+        for (int i = 0; i < spellsText.Length; i++)
+        {
+            spellsText[i].text = spells[i].currentCooldown == 0 ? "" : spells[i].currentCooldown.ToString();
+        }
+        
     }
 }

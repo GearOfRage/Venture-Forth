@@ -24,6 +24,9 @@ public class ExpLvlUpLogic : MonoBehaviour
     void Start()
     {
         gl = GameObject.Find("GameManager").GetComponent<GameLogic>();
+        gl.player.experienceProgressMax += 20;
+        gl.player.UpdateBars();
+        PlayerClass.onStatUpdate.Invoke();
         FillProgressPanel();
     }
 
@@ -50,6 +53,8 @@ public class ExpLvlUpLogic : MonoBehaviour
                     break;
                 }
             }
+            // todo: delete the line below
+            randomNumber = 0;
             randomNumbers[i] = randomNumber;
 
             SpellNameE spell = (SpellNameE)randomNumber;

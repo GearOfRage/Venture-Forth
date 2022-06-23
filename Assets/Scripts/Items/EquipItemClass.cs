@@ -75,7 +75,7 @@ public class EquipItemClass : MonoBehaviour
                     break;
             }
             gl.player.UpdateBars();
-            gl.player.UpdateStats();
+            PlayerClass.onStatUpdate.Invoke();
             isOnPlayer = true;
         }
         pl.CloseProgressPanel();

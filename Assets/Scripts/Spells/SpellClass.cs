@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -51,6 +52,7 @@ public class SpellClass : MonoBehaviour
 {
     bool isLearned = false; //does player have this spell in the spellSlot
 
+    public int myIndex;
     public SpellNameE spellName;
     public Sprite spellImage;
     public string description;
@@ -62,7 +64,7 @@ public class SpellClass : MonoBehaviour
 
     public static Dictionary<SpellNameE, int> spellCooldowns = new()
     {
-        { SpellNameE.Conversion, 30 },
+        { SpellNameE.Conversion, 3 },
         { SpellNameE.WishForChalenge, 30 },
         { SpellNameE.WishForConsume, 30 },
         { SpellNameE.WishForTreasure, 30 },
@@ -74,7 +76,7 @@ public class SpellClass : MonoBehaviour
         { SpellNameE.Thirst, 30 },
         { SpellNameE.ShieldsUp, 30 },
         { SpellNameE.Knowledge, 30 },
-    }; 
+    };
 
     //public static Dictionary<SpellNameE, int> spellSprite = new()
     //{
@@ -108,6 +110,8 @@ public class SpellClass : MonoBehaviour
         { SpellNameE.Knowledge, "Knowledge\nTransforms all potions in experience potions. Experience potion gives experience equals amount of health by potion."},
     };
 
+    public static Action<SpellClass> OnCast;
+
     public void Learn(SpellClass spellToLearn)
     {
         isLearned = true;
@@ -116,29 +120,46 @@ public class SpellClass : MonoBehaviour
         description = spellToLearn.description;
         cooldown = spellToLearn.cooldown;
         currentCooldown = spellToLearn.currentCooldown;
+        myIndex = spellToLearn.myIndex;
     }
 
     void Start()
     {
         pl = GameObject.Find("GameManager").GetComponent<ProgressLogic>();
         gl = GameObject.Find("GameManager").GetComponent<GameLogic>();
+        TurnLogic.OnTurnEnd += TurnEndHandler;
+
     }
-    
+
+    void TurnEndHandler()
+    {
+        if (currentCooldown > 0)
+        {
+            currentCooldown--;
+            if (currentCooldown == 0)
+            {
+                gl.player.spellSlots[myIndex].color = new Color(1f, 1f, 1f, 1f);
+            }
+        }
+    }
+
     void OnMouseDown()
     {
         if (isLearned)
         {
-            CastSpell();
+            if (currentCooldown == 0)
+            {
+                OnCast?.Invoke(this);
+                gl.player.spellSlots[myIndex].color = new Color(0.5f, 0.5f, 0.5f, 1f);
+
+                currentCooldown = cooldown;
+                PlayerClass.onStatUpdate.Invoke();
+            }
         }
         else
         {
-            ChooseSpellFromLvlUpPanel();
+            if (spellImage != null) ChooseSpellFromLvlUpPanel();
         }
-    }
-
-    void CastSpell()
-    {
-
     }
 
     int FindEmptySlotIndex()
@@ -157,12 +178,10 @@ public class SpellClass : MonoBehaviour
     {
         Sprite sprite = gameObject.GetComponentInChildren<SpriteRenderer>().sprite;
 
-        int emptySlotIndex = FindEmptySlotIndex();
-        gl.player.spells[emptySlotIndex].Learn(this);
-        gl.player.spellSlots[emptySlotIndex].sprite = sprite;
+        myIndex = FindEmptySlotIndex();
+        gl.player.spells[myIndex].Learn(this);
+        gl.player.spellSlots[myIndex].sprite = sprite;
 
-        Debug.Log(gl.player.spells[emptySlotIndex].spellName);
-        Debug.Log(gl.player.spellSlots[emptySlotIndex].sprite);
         isLearned = true;
         pl.CloseProgressPanel();
     }

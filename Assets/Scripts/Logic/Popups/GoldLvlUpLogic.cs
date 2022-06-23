@@ -17,6 +17,9 @@ public class GoldLvlUpLogic : MonoBehaviour
     void Start()
     {
         gl = GameObject.Find("GameManager").GetComponent<GameLogic>();
+        gl.player.coinProgressMax += 5;
+        gl.player.UpdateBars();
+        PlayerClass.onStatUpdate.Invoke();
         FillProgressPanel();
     }
 

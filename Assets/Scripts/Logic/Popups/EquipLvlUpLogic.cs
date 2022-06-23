@@ -18,6 +18,9 @@ public class EquipLvlUpLogic : MonoBehaviour
     void Start()
     {
         gl = GameObject.Find("GameManager").GetComponent<GameLogic>();
+        gl.player.equipmentProgressMax += 5;
+        gl.player.UpdateBars();
+        PlayerClass.onStatUpdate.Invoke();
         FillProgressPanel();
     }
 

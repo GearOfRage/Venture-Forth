@@ -7,7 +7,7 @@ public class TilesGeneration : MonoBehaviour
 {
     [SerializeField] GameObject[] tilesPrefabs;  //Test tile prefab for first board filling
     [SerializeField] float duration = 1f; //Duration of shifting
-    [SerializeField] TilesField tilesField;
+    [SerializeField] public TilesField tilesField;
 
     Chain chain;
 
@@ -176,11 +176,5 @@ public class TilesGeneration : MonoBehaviour
             tile.transform.position = Vector3.Lerp(tile.transform.position, endPos, normalizedTime);
             yield return null;
         }
-    }
-
-    //For testing purposes
-    void Move(GameObject tile, Vector3 endPos)
-    {
-        tile.transform.position = endPos;
     }
 }

@@ -54,7 +54,7 @@ public class GameLogic : MonoBehaviour
 
     public void Restart()
     {
-        Destroy(player);
+        Destroy(playerObject);
         CreatePlayer();
         tilesField.Clear();
         tg.FirstGenerate();
