@@ -5,7 +5,7 @@ using System.Linq;
 
 public class TilesGeneration : MonoBehaviour
 {
-    [SerializeField] GameObject[] tilesPrefabs;  //Test tile prefab for first board filling
+    [SerializeField] public GameObject[] tilesPrefabs;  //Test tile prefab for first board filling
     [SerializeField] float duration = 1f; //Duration of shifting
     [SerializeField] public TilesField tilesField;
 

@@ -54,7 +54,7 @@ public class ExpLvlUpLogic : MonoBehaviour
                 }
             }
             // todo: delete the line below
-            randomNumber = 0;
+            randomNumber = 7;
             randomNumbers[i] = randomNumber;
 
             SpellNameE spell = (SpellNameE)randomNumber;
