@@ -62,6 +62,73 @@ public class TurnLogic : MonoBehaviour
         OnTurnEnd?.Invoke();
     }
 
+    int GetDmgToEnemyByTileName(TileNameE tileName)
+    {
+        return tileName switch
+        {
+            TileNameE.RegularEnemy => 0,
+            TileNameE.Sword => gl.player.weaponDamage,
+            TileNameE.MagicSword => gl.player.weaponDamage * 5,
+            _ => throw new Exception("Unexpected attack " + tileName),
+        };
+    }
+
+    public void CalculatePotentialDamageToEnemies()
+    {
+        for (int i = 0; i < TilesField.gridSize; i++) //Columns
+        {
+            for (int j = 0; j < TilesField.gridSize; j++) //Rows
+            {
+                GameObject tile = tilesField.tiles[i, j];
+                if (tile == null)
+                {
+                    continue;
+                }
+
+                if (tile.TryGetComponent<EnemyClass>(out var enemy))
+                {
+                    enemy.killMark.SetActive(false);
+                }
+            }
+        }
+
+        TileTypeE chainType = chain.chain[0].GetComponent<TileClass>().tileType;
+        switch (chainType)
+        {
+            case TileTypeE.Attack:
+                int dmgAmount = gl.player.baseDamage;
+                foreach (GameObject item in chain.chain)
+                {
+                    dmgAmount += GetDmgToEnemyByTileName(item.GetComponent<TileClass>().tileName);
+                }
+                foreach (GameObject item in chain.chain)
+                {
+                    TileNameE tileName = item.GetComponent<TileClass>().tileName;
+                    EnemyClass enemy = item.GetComponent<EnemyClass>();
+                    switch (tileName)
+                    {
+                        case TileNameE.RegularEnemy:
+                            HpArmourS hpArmour = CalculateDamageWithArmour(
+                                dmgAmount, enemy.armour, enemy.hp,
+                                0.1f
+                             );
+                            if (hpArmour.hp <= 0)
+                            {
+                                enemy.killMark.SetActive(true);
+                            }
+                            break;
+                        case TileNameE.Sword:
+                            break;
+                        default:
+                            throw new Exception("Unexpected attack " + tileName);
+                    }
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
     void HandleChain()
     {
         TileTypeE chainType = chain.chain[0].GetComponent<TileClass>().tileType;
@@ -73,20 +140,7 @@ public class TurnLogic : MonoBehaviour
                 int killedEnemiesCount = 0;
                 foreach (GameObject item in chain.chain)
                 {
-                    TileNameE tileName = item.GetComponent<TileClass>().tileName;
-                    switch (tileName)
-                    {
-                        case TileNameE.RegularEnemy:
-                            break;
-                        case TileNameE.Sword:
-                            dmgAmount += gl.player.weaponDamage;
-                            break;
-                        case TileNameE.MagicSword:
-                            dmgAmount += gl.player.weaponDamage * 5;
-                            break;
-                        default:
-                            throw new System.Exception("Unexpected attack " + tileName);
-                    }
+                    dmgAmount += GetDmgToEnemyByTileName(item.GetComponent<TileClass>().tileName);
                 }
                 foreach (GameObject item in chain.chain)
                 {

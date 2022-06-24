@@ -37,6 +37,11 @@ public class MagicSwordSpell : MonoBehaviour
             }
         }
 
+        if (counter == 0)
+        {
+            return;
+        }
+
         int rand = Random.Range(0, counter);
 
         for (int i = 0; i < TilesField.gridSize; i++) //Columns
@@ -45,9 +50,9 @@ public class MagicSwordSpell : MonoBehaviour
             {
                 if (tg.tilesField.tiles[i, j].GetComponent<TileClass>().tileName == TileNameE.Sword)
                 {
-                    counter--;
+                    rand--;
                 }
-                if (counter == 0)
+                if (rand <= 0)
                 {
                     GameObject newTile = Instantiate(
                         tilePrefab,

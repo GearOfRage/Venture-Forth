@@ -8,12 +8,14 @@ public class TileBehaviour : MonoBehaviour
     Fader fader;
     ChainBehaviour cb;
     Chain chain;
+    TurnLogic tl;
 
     void Start()
     {
         fader = GameObject.Find("GameManager").GetComponent<Fader>();
         cb = GameObject.Find("GameManager").GetComponent<ChainBehaviour>();
         chain = GameObject.Find("GameManager").GetComponent<Chain>();
+        tl = GameObject.Find("GameManager").GetComponent<TurnLogic>();
 
         gameObject.GetComponentInChildren<SpriteRenderer>().transform.Rotate(0, 0, Random.Range(-10f, 10f), Space.Self);
     }
@@ -49,13 +51,14 @@ public class TileBehaviour : MonoBehaviour
         {
             return;
         }
-        if (cb.isDragStarted 
-            && !chain.chain.Contains(gameObject) 
+        if (cb.isDragStarted
+            && !chain.chain.Contains(gameObject)
             && chain.chain[0].GetComponent<TileClass>().tileType == gameObject.GetComponent<TileClass>().tileType
             && Vector2.Distance(chain.chain[chain.chain.Count - 1].transform.position, gameObject.transform.position) < 1.5f)
         {
             PlaySound();
             Select(gameObject);
+            tl.CalculatePotentialDamageToEnemies();
             return;
         }
         if (chain.chain.Count > 1)
@@ -63,7 +66,8 @@ public class TileBehaviour : MonoBehaviour
             if (cb.isDragStarted && gameObject == chain.chain[chain.chain.Count - 2])
             {
                 chain.chain.RemoveAt(chain.chain.Count - 1);
-                cb.chainRenderer.DrawChain();
+                cb.chainRenderer.DrawChain(); 
+                tl.CalculatePotentialDamageToEnemies();
             }
         }
     }
