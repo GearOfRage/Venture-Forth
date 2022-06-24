@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TouchOfWar : MonoBehaviour
+public class TouchOfGoldSpell : MonoBehaviour
 {
-    readonly SpellNameE mySpellName = SpellNameE.TouchOfWar;
+    readonly SpellNameE mySpellName = SpellNameE.TouchOfGold;
     [SerializeField] GameObject tilePrefab;
 
     TilesGeneration tg;
@@ -28,7 +28,7 @@ public class TouchOfWar : MonoBehaviour
         {
             for (int j = 0; j < TilesField.gridSize; j++) //Rows
             {
-                if (tg.tilesField.tiles[i, j].GetComponent<TileClass>().tileName == TileNameE.Coin)
+                if (tg.tilesField.tiles[i, j].GetComponent<TileClass>().tileName == TileNameE.Sword)
                 {
                     GameObject newTile = Instantiate(
                         tilePrefab, 

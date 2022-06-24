@@ -54,14 +54,14 @@ MonoBehaviour:
   characterEqipLevel: 0
   characterGoldLevel: 0
   characterExpLevel: 1
-  hpMax: 30
-  hpCurrent: 30
+  hpMax: 40
+  hpCurrent: 40
   armourMax: 5
   armourCurrent: 5
   baseDamage: 2
   weaponDamage: 2
-  coinProgressMax: 100
-  equipmentProgressMax: 100
+  coinProgressMax: 10
+  equipmentProgressMax: 10
   experienceProgressMax: 100
   coinProgressCurrent: 0
   equipmentProgressCurrent: 0

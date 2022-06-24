@@ -26,6 +26,7 @@ public class TileBehaviour : MonoBehaviour
         }
         if (!chain.chain.Contains(gameObject))
         {
+            PlaySound();
             Select(gameObject);
         }
         cb.isDragStarted = true;
@@ -53,43 +54,7 @@ public class TileBehaviour : MonoBehaviour
             && chain.chain[0].GetComponent<TileClass>().tileType == gameObject.GetComponent<TileClass>().tileType
             && Vector2.Distance(chain.chain[chain.chain.Count - 1].transform.position, gameObject.transform.position) < 1.5f)
         {
-            AudioManager am = FindObjectOfType<AudioManager>();
-            switch (gameObject.GetComponent<TileClass>().tileName)
-            {
-                case TileNameE.RegularEnemy:
-                    am.Play("SkullPick");
-                    break;
-                case TileNameE.ExperiencePotion:
-                    break;
-                case TileNameE.Poison:
-                    break;
-                case TileNameE.HealthPotion:
-                    am.Play("PotionPick");
-                    break;
-                case TileNameE.Shield:
-                    am.Play("ShieldPick");
-                    break;
-                case TileNameE.Coin:
-                    am.Play("CoinPick");
-                    break;
-                case TileNameE.Sword:
-                    am.Play("SwordPick");
-                    break;
-                case TileNameE.Crown:
-                    break;
-                case TileNameE.MagicSword:
-                    break;
-                case TileNameE.ManaPotion:
-                    break;
-                case TileNameE.BrokenSword:
-                    break;
-                case TileNameE.BrokenShield:
-                    break;
-                case TileNameE.EliteEnemy:
-                    break;
-                default:
-                    break;
-            }
+            PlaySound();
             Select(gameObject);
             return;
         }
@@ -100,6 +65,47 @@ public class TileBehaviour : MonoBehaviour
                 chain.chain.RemoveAt(chain.chain.Count - 1);
                 cb.chainRenderer.DrawChain();
             }
+        }
+    }
+
+    void PlaySound()
+    {
+        AudioManager am = FindObjectOfType<AudioManager>();
+        switch (gameObject.GetComponent<TileClass>().tileName)
+        {
+            case TileNameE.RegularEnemy:
+                am.Play("SkullPick");
+                break;
+            case TileNameE.ExperiencePotion:
+                break;
+            case TileNameE.Poison:
+                break;
+            case TileNameE.HealthPotion:
+                am.Play("PotionPick");
+                break;
+            case TileNameE.Shield:
+                am.Play("ShieldPick");
+                break;
+            case TileNameE.Coin:
+                am.Play("CoinPick");
+                break;
+            case TileNameE.Sword:
+                am.Play("SwordPick");
+                break;
+            case TileNameE.Crown:
+                break;
+            case TileNameE.MagicSword:
+                break;
+            case TileNameE.ManaPotion:
+                break;
+            case TileNameE.BrokenSword:
+                break;
+            case TileNameE.BrokenShield:
+                break;
+            case TileNameE.EliteEnemy:
+                break;
+            default:
+                break;
         }
     }
 

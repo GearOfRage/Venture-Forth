@@ -894,11 +894,11 @@ MonoBehaviour:
   - name: GameTheme
     clip: {fileID: 8300000, guid: 3a536a9fe90da9f48ad783fc79881e7b, type: 3}
     volume: 0.5
-    pitch: 1
+    pitch: 0.8
     loop: 1
     source: {fileID: 0}
   - name: CoinPick
-    clip: {fileID: 8300000, guid: ecba1e7e1ec7ae84280c2c8c3780fd84, type: 3}
+    clip: {fileID: 8300000, guid: dfbac33b6e07f6b40b2e396c86e7f3dc, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
@@ -912,7 +912,7 @@ MonoBehaviour:
   - name: ShieldPick
     clip: {fileID: 8300000, guid: 3e027f0109b2755408dc01086cef7a8b, type: 3}
     volume: 0.1
-    pitch: 1
+    pitch: 0.8
     loop: 0
     source: {fileID: 0}
   - name: SkullPick
@@ -922,7 +922,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: SwordPick
-    clip: {fileID: 8300000, guid: 5b866c739585abf44b9ddc923dfd676c, type: 3}
+    clip: {fileID: 8300000, guid: dbd58810c392aef4ca62588cebe2ce62, type: 3}
     volume: 0.25
     pitch: 1
     loop: 0
@@ -930,6 +930,12 @@ MonoBehaviour:
   - name: ConversionSpellCast
     clip: {fileID: 8300000, guid: 2b2b1b84c79dbd949b85deba434e3070, type: 3}
     volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: GameOver
+    clip: {fileID: 8300000, guid: 9b0c90635daa1ca40b73a7c8f973bf59, type: 3}
+    volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}

@@ -40,6 +40,7 @@ public class GameLogic : MonoBehaviour
                 pl.showedPanel = null;
             }
             fader.OpenFader();
+            FindObjectOfType<AudioManager>().Play("GameOver");
             gameOverScreen = Instantiate(gameOverScreenPrefab, Vector3.zero, Quaternion.identity);
             gameOverScreen.GetComponent<Canvas>().sortingOrder = fader.screenFader.sortingOrder + 1;
         }
