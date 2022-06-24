@@ -32,7 +32,6 @@ public class EnemyClass : MonoBehaviour
     {
         gl = GameObject.Find("GameManager").GetComponent<GameLogic>();
         gs = gl.player.GetComponent<GameStats>();
-        killMark.active = false;
 
         ScaleStats();
         UpdateStats();

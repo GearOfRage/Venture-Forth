@@ -94,8 +94,13 @@ public class TilesGeneration : MonoBehaviour
         int maxEnemyNumber = 3; //Mathf.CeilToInt((float)chain.chain.Count / 2); // max enemies to generate
         int minEnemyNumber = 0; //min enemies to generate
 
+        int toGenerate = 0;
+        for (int i = 0; i < numToGen.Length; i++)
+        {
+            toGenerate += numToGen[i];
+        }
         // generate tiles
-        GameObject[] generatedTiles = GetRandomPrefabs(chain.chain.Count, minEnemyNumber, maxEnemyNumber);
+        GameObject[] generatedTiles = GetRandomPrefabs(toGenerate, minEnemyNumber, maxEnemyNumber);
 
         //instantiate tiles
         int tileIndex = 0;

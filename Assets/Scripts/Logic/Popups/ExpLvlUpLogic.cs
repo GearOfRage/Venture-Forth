@@ -89,7 +89,10 @@ public class ExpLvlUpLogic : MonoBehaviour
         // generate skills
         for (int i = 0; i < number; i++)
         {
-            int randomNumber = availableSpells[UnityEngine.Random.Range(0, availableSpellsCount)];
+            int index = UnityEngine.Random.Range(0, availableSpellsCount - i);
+            int randomNumber = availableSpells[index];
+            availableSpells[index] = availableSpells[availableSpells.Length - i - 1];
+            availableSpells[availableSpells.Length - 1 - i] = randomNumber;
 
             // todo: delete the line below
             //randomNumber = 4;

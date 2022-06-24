@@ -8,7 +8,6 @@ public class ShieldsUpSpell : MonoBehaviour
 
     GameLogic gl;
     TilesGeneration tg;
-    PlayerClass player;
     void Start()
     {
         gl = GameObject.Find("GameManager").GetComponent<GameLogic>();

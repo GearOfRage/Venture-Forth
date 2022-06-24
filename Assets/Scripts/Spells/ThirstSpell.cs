@@ -8,7 +8,6 @@ public class ThirstSpell : MonoBehaviour
 
     GameLogic gl;
     TilesGeneration tg;
-    PlayerClass player;
     void Start()
     {
         gl = GameObject.Find("GameManager").GetComponent<GameLogic>();
@@ -38,7 +37,7 @@ public class ThirstSpell : MonoBehaviour
                     switch (tile)
                     {
                         case TileNameE.ExperiencePotion:
-                            player.experienceProgressCurrent += player.hpByPotion;
+                            gl.player.experienceProgressCurrent += gl.player.hpByPotion;
                             break;
                         case TileNameE.Poison:
                             healthChange -= gl.player.hpByPotion;
@@ -58,7 +57,7 @@ public class ThirstSpell : MonoBehaviour
                 }
             }
         }
-        player.hpCurrent = Mathf.Clamp(player.hpCurrent + healthChange, 0, player.hpMax);
+        gl.player.hpCurrent = Mathf.Clamp(gl.player.hpCurrent + healthChange, 0, gl.player.hpMax);
         tg.GenereteNewTilesAfterChain(numToGen);
     }
 }

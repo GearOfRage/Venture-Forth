@@ -893,7 +893,7 @@ MonoBehaviour:
   sounds:
   - name: GameTheme
     clip: {fileID: 8300000, guid: 3a536a9fe90da9f48ad783fc79881e7b, type: 3}
-    volume: 0.5
+    volume: 0.25
     pitch: 0.8
     loop: 1
     source: {fileID: 0}
@@ -923,7 +923,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: SwordPick
     clip: {fileID: 8300000, guid: dbd58810c392aef4ca62588cebe2ce62, type: 3}
-    volume: 0.25
+    volume: 0.15
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -1770,6 +1770,7 @@ GameObject:
   - component: {fileID: 943439866}
   - component: {fileID: 943439865}
   - component: {fileID: 943439864}
+  - component: {fileID: 943439867}
   m_Layer: 0
   m_Name: SpellManager
   m_TagString: Untagged
@@ -1881,6 +1882,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 5358903232906739836, guid: c7c01d53bd54f3c4c8c8559826aef2c6, type: 3}
+--- !u!114 &943439867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943439858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfb6daf86f68ec94fadc388169eaaed6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &996487450
 GameObject:
   m_ObjectHideFlags: 0

@@ -66,6 +66,11 @@ public class PlayerClass : MonoBehaviour
     public Image equipmentProgressBar;
     public Image experienceProgressBar;
 
+    //Bars particle systems
+    GameObject coinProgressBarPS;
+    GameObject equipmentProgressBarPS;
+    GameObject experienceProgressBarPS;
+
     //Bars text
     public Text healthBarUpperText;
     public Text armourBarUpperText;
@@ -97,7 +102,7 @@ public class PlayerClass : MonoBehaviour
         //Getting sprite renderer component for class icon
         classIcon = GameObject.Find("ClassUISprite").GetComponent<SpriteRenderer>();
 
-        //Getting image components for bars
+        //Getting and setting image components for bars
         healthBar = GameObject.Find("HealthBarMeter").GetComponent<Image>();
         armourBar = GameObject.Find("ArmourBarMeter").GetComponent<Image>();
         coinProgressBar = GameObject.Find("ProgressCoinBarMeter").GetComponent<Image>();
@@ -108,6 +113,11 @@ public class PlayerClass : MonoBehaviour
         experienceProgressBar.fillAmount = (float)experienceProgressCurrent / (float)experienceProgressMax;
         armourBar.fillAmount = (float)armourCurrent / (float)armourMax;
         healthBar.fillAmount = (float)hpCurrent / (float)hpMax;
+
+        //Getting particle systems components for bars
+        //coinProgressBarPS = GameObject.Find("ProgressCoinBarMeter").transform.Find("ProgressCoinBarParticles").gameObject;
+        //equipmentProgressBarPS = GameObject.Find("ProgressEquipmentBarMeter").transform.Find("ProgressEquipmentBarParticles").gameObject;
+        //experienceProgressBarPS = GameObject.Find("ProgressExperienceBarMeter").transform.Find("ProgressExperienceBarParticles").gameObject;
 
         //Getting text components for bars
         healthBarUpperText = GameObject.Find("HealthBarUpperText").GetComponent<Text>();
@@ -171,14 +181,22 @@ public class PlayerClass : MonoBehaviour
         TurnLogic.OnTurnEnd += UpdateStats;
         TurnLogic.OnTurnEnd += UpdateBars;
     }
+
+    private void OnDestroy()
+    {
+        onStatUpdate -= UpdateStats;
+        TurnLogic.OnTurnEnd -= UpdateStats;
+        TurnLogic.OnTurnEnd -= UpdateBars;
+    }
+
     public void UpdateBars()
     {
         //Setting fill amounts
-        StartCoroutine(SmoothBarFill(coinProgressBar, coinProgressCurrent, coinProgressMax));
-        StartCoroutine(SmoothBarFill(equipmentProgressBar, equipmentProgressCurrent, equipmentProgressMax));
-        StartCoroutine(SmoothBarFill(experienceProgressBar, experienceProgressCurrent, experienceProgressMax));
-        StartCoroutine(SmoothBarFill(armourBar, armourCurrent, armourMax));
-        StartCoroutine(SmoothBarFill(healthBar, hpCurrent, hpMax));
+        StartCoroutine(SmoothBarFill(coinProgressBar, coinProgressBarPS, coinProgressCurrent, coinProgressMax));
+        StartCoroutine(SmoothBarFill(equipmentProgressBar, equipmentProgressBarPS, equipmentProgressCurrent, equipmentProgressMax));
+        StartCoroutine(SmoothBarFill(experienceProgressBar, experienceProgressBarPS, experienceProgressCurrent, experienceProgressMax));
+        StartCoroutine(SmoothBarFill(armourBar, null, armourCurrent, armourMax));
+        StartCoroutine(SmoothBarFill(healthBar, null, hpCurrent, hpMax));
 
         //Setting text
         coinProgressBarText.text = coinProgressCurrent + "/" + coinProgressMax;
@@ -193,7 +211,7 @@ public class PlayerClass : MonoBehaviour
         levelText.text = characterExpLevel.ToString();
     }
 
-    IEnumerator SmoothBarFill(Image image, int current, int max)
+    IEnumerator SmoothBarFill(Image image, GameObject ps, int current, int max)
     {
         float fillSmoothness = 0.005f;
         float prevFill = image.fillAmount;
@@ -202,9 +220,19 @@ public class PlayerClass : MonoBehaviour
         while (currFill != prevFill)
         {
             if (currFill > prevFill)
+            {
                 prevFill = Mathf.Min(prevFill + fillSmoothness, currFill);
+                //ps.transform.position.Set(Mathf.Min(ps.transform.position.y+fillSmoothness, currFill),
+                //    ps.transform.position.y,
+                //    ps.transform.position.z);
+            }
             if (currFill < prevFill)
+            {
                 prevFill = Mathf.Max(prevFill - fillSmoothness, currFill);
+                //ps.transform.position.Set(Mathf.Max(ps.transform.position.y - fillSmoothness, currFill),
+                //    ps.transform.position.y,
+                //    ps.transform.position.z);
+            }
 
             image.fillAmount = prevFill;
             yield return null;

@@ -137,7 +137,26 @@ public class SpellClass : MonoBehaviour
         pl = GameObject.Find("GameManager").GetComponent<ProgressLogic>();
         gl = GameObject.Find("GameManager").GetComponent<GameLogic>();
         TurnLogic.OnTurnEnd += TurnEndHandler;
+        GameLogic.OnGameRestart += RestartHandler;
+    }
 
+    private void RestartHandler()
+    {
+        isLearned = false;
+        currentCooldown = 0;
+        spellImage = null;
+        if (myIndex != -1)
+        {
+            gl.player.spellSlots[myIndex].color = new Color(1f, 1f, 1f, 1f);
+        }
+        myIndex = -1;
+        PlayerClass.onStatUpdate?.Invoke();
+    }
+
+    private void OnDestroy()
+    {
+        TurnLogic.OnTurnEnd -= TurnEndHandler;
+        GameLogic.OnGameRestart -= RestartHandler;
     }
 
     void TurnEndHandler()

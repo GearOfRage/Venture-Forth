@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +17,8 @@ public class GameLogic : MonoBehaviour
 
     [HideInInspector] public GameStats gameStats;
     [HideInInspector] public PlayerClass player;
+
+    public static Action OnGameRestart;
 
     Fader fader;
 
@@ -44,6 +47,7 @@ public class GameLogic : MonoBehaviour
             FindObjectOfType<AudioManager>().Stop("GameTheme");
             gameOverScreen = Instantiate(gameOverScreenPrefab, Vector3.zero, Quaternion.identity);
             gameOverScreen.GetComponent<Canvas>().sortingOrder = fader.screenFader.sortingOrder + 1;
+            OnGameRestart?.Invoke();
         }
     }
 
