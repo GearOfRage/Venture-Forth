@@ -2,52 +2,73 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum CollectParticleE
-{
-    CoinParticles = 1,
-    EquipParticles = 2,
-    ExpParticles = 3
-}
-
 public class CollectVisuals : MonoBehaviour
 {
-
-    [SerializeField] GameObject CoinParticles;
-    [SerializeField] GameObject EquipParticles;
-    [SerializeField] GameObject ExpParticles;
-    
-    GameLogic gl;
-    GameObject particlesPrefab;
-
-    public float lifeTime = 1f;
+    [SerializeField] ProgressTypeE myName;
+    ParticleSystem[] particleSystems;
 
     private void Start()
     {
-        gl = GameObject.Find("GameManager").GetComponent<GameLogic>();
-    }
-    public void RunParticles(CollectParticleE particle)
-    {
-        Vector3 pos = new Vector3();
-        switch (particle)
+        particleSystems = GetComponentsInChildren<ParticleSystem>();
+        foreach (ParticleSystem item in particleSystems)
         {
-            case CollectParticleE.CoinParticles:
-                particlesPrefab = CoinParticles;
-                pos = gl.player.coinProgressBar.transform.position;
-                break;
-
-            case CollectParticleE.EquipParticles:
-                particlesPrefab = EquipParticles;
-                pos = gl.player.equipmentProgressBar.transform.position;
-                break;
-
-            case CollectParticleE.ExpParticles:
-                particlesPrefab = ExpParticles;
-                pos = gl.player.experienceProgressBar.transform.position;
-                break;
-
-            default:
-                break;
+            item.Stop();
         }
-        Instantiate(particlesPrefab, pos, Quaternion.identity);
+
+        //Add subscription OnCollect
+        TurnLogic.OnCollect += CollectGoldVisual;
+        TurnLogic.OnCollect += CollectEquipmentVisual;
+        TurnLogic.OnCollect += CollectExperienceVisual;
+    }
+
+    void CollectExperienceVisual(ProgressTypeE progressType)
+    {
+        if (myName != progressType)
+            return;
+
+        foreach (ParticleSystem item in particleSystems)
+        {
+            item.Play();
+        }
+        //StartCoroutine(Follow(gameObject,start,end));
+    }
+
+    void CollectEquipmentVisual(ProgressTypeE progressType)
+    {
+        if (myName != progressType)
+            return;
+
+        foreach (ParticleSystem item in particleSystems)
+        {
+            item.Play();
+        }
+    }
+
+    void CollectGoldVisual(ProgressTypeE progressType)
+    {
+        if (myName != progressType)
+            return;
+
+        foreach (ParticleSystem item in particleSystems)
+        {
+            item.Play();
+        }
+    }
+
+    IEnumerator Follow(GameObject follower, Vector3 start, Vector3 target)
+    {
+        float normalizedTime = 0f;
+        float duration = 1f;
+
+        //follower.transform.position.Set(start.x,start.y,start.z);
+        follower.transform.position = start;
+
+        while (normalizedTime <= duration)
+        {
+            normalizedTime += Time.deltaTime / duration;
+
+            follower.transform.position = Vector3.Lerp(follower.transform.position, target, normalizedTime);
+            yield return null;
+        }
     }
 }

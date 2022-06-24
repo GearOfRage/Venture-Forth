@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   sodipodi:docname="Star01.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.4912879"
+     inkscape:cx="363.77952"
+     inkscape:cy="484.14528"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Слой 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       sodipodi:type="star"
+       style="fill:#ffffff;stroke-width:0.2;stroke-linecap:square;fill-opacity:1"
+       id="path186"
+       inkscape:flatsided="false"
+       sodipodi:sides="4"
+       sodipodi:cx="87.645157"
+       sodipodi:cy="110.53226"
+       sodipodi:r1="18.947357"
+       sodipodi:r2="4.6882164"
+       sodipodi:arg1="1.5707963"
+       sodipodi:arg2="2.3561945"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m 87.645157,129.47961 -3.31507,-15.63228 -15.632287,-3.31507 15.632287,-3.31507 3.315069,-15.63229 3.31507,15.63229 15.632284,3.31507 -15.632284,3.31507 z"
+       inkscape:transform-center-x="1.104191e-06"
+       inkscape:transform-center-y="-1.3925324e-06"
+       inkscape:export-filename="path186.png"
+       inkscape:export-xdpi="171.5912"
+       inkscape:export-ydpi="171.5912" />
+  </g>
+</svg>

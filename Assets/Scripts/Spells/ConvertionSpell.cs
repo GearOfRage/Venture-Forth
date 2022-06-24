@@ -20,7 +20,7 @@ public class ConvertionSpell : MonoBehaviour
         {
             return;
         }
-
+        FindObjectOfType<AudioManager>().Play("ConversionSpellCast");
         tg.tilesField.Clear();
         tg.FirstGenerate();
     }

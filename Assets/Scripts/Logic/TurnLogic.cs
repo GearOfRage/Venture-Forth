@@ -29,6 +29,8 @@ public class TurnLogic : MonoBehaviour
     public bool isPanelOpen = false;
 
     public static Action OnTurnEnd;
+    public static Action<ProgressTypeE> OnCollect;
+
     private void Start()
     {
         turnText.text = gl.gameStats.turnNumber.ToString();
@@ -79,6 +81,9 @@ public class TurnLogic : MonoBehaviour
                         case TileNameE.Sword:
                             dmgAmount += gl.player.weaponDamage;
                             break;
+                        case TileNameE.MagicSword:
+                            dmgAmount += gl.player.weaponDamage * 5;
+                            break;
                         default:
                             throw new System.Exception("Unexpected attack " + tileName);
                     }
@@ -117,7 +122,8 @@ public class TurnLogic : MonoBehaviour
                 int expProgressCurrent = gl.player.experienceProgressCurrent + expGain;
                 if (expGain > 0)
                 {
-                    //collectVisuals.RunParticles(CollectParticleE.ExpParticles);
+                    //Put Particle system here
+                    OnCollect(ProgressTypeE.Experience);
                 }
                 int playerLvlUps = expProgressCurrent / gl.player.experienceProgressMax;
                 if (playerLvlUps > 0)
@@ -148,7 +154,10 @@ public class TurnLogic : MonoBehaviour
                 }
                 equipmentProgressGain += Mathf.FloorToInt(shieldCount * gl.player.addictionalEquipementProgressByShield);
                 int equipmentProgressCurrent = gl.player.equipmentProgressCurrent + equipmentProgressGain;
-                //collectVisuals.RunParticles(CollectParticleE.EquipParticles);
+
+                //Put Particle system here
+                OnCollect(ProgressTypeE.Equipment);
+
                 int equipmentLevelUps = equipmentProgressCurrent / gl.player.equipmentProgressMax;
                 if (equipmentLevelUps > 0)
                 {
@@ -167,11 +176,14 @@ public class TurnLogic : MonoBehaviour
                         case TileNameE.ExperiencePotion:
                             gl.player.experienceProgressCurrent += 10;
                             break;
-                        case TileNameE.PosionPoition:
+                        case TileNameE.Poison:
                             healthChange -= gl.player.hpByPotion;
                             break;
                         case TileNameE.HealthPotion:
                             healthChange += gl.player.hpByPotion;
+                            break;
+                        case TileNameE.ManaPotion:
+                            //Decrease random spell CD by hpByPotion
                             break;
                         default:
                             throw new System.Exception("Unexpected potion " + tileName);
@@ -202,7 +214,10 @@ public class TurnLogic : MonoBehaviour
                 goldGain += Mathf.FloorToInt(goldCount * gl.player.addictionalCoinProgressByCoin);
                 gl.gameStats.collectedGold += goldGain;
                 int goldProgressCurrent = gl.player.coinProgressCurrent + goldGain;
-                //collectVisuals.RunParticles(CollectParticleE.CoinParticles);
+
+                //Put Particle system here
+                OnCollect(ProgressTypeE.Gold);
+
                 int goldLevelUps = goldProgressCurrent / gl.player.coinProgressMax;
                 if (goldLevelUps > 0)
                 {
@@ -222,7 +237,7 @@ public class TurnLogic : MonoBehaviour
         for (int i = 0; i < TilesField.gridSize; i++) //Columns
         {
             for (int j = 0; j < TilesField.gridSize; j++) //Rows
-            {   
+            {
                 GameObject tile = tilesField.tiles[i, j];
                 if (tile == null)
                 {

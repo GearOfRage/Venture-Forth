@@ -37,6 +37,7 @@ public class TileBehaviour : MonoBehaviour
         {
             return;
         }
+
         cb.isDragStarted = false;
         cb.ChainDone();
     }
@@ -52,6 +53,43 @@ public class TileBehaviour : MonoBehaviour
             && chain.chain[0].GetComponent<TileClass>().tileType == gameObject.GetComponent<TileClass>().tileType
             && Vector2.Distance(chain.chain[chain.chain.Count - 1].transform.position, gameObject.transform.position) < 1.5f)
         {
+            AudioManager am = FindObjectOfType<AudioManager>();
+            switch (gameObject.GetComponent<TileClass>().tileName)
+            {
+                case TileNameE.RegularEnemy:
+                    am.Play("SkullPick");
+                    break;
+                case TileNameE.ExperiencePotion:
+                    break;
+                case TileNameE.Poison:
+                    break;
+                case TileNameE.HealthPotion:
+                    am.Play("PotionPick");
+                    break;
+                case TileNameE.Shield:
+                    am.Play("ShieldPick");
+                    break;
+                case TileNameE.Coin:
+                    am.Play("CoinPick");
+                    break;
+                case TileNameE.Sword:
+                    am.Play("SwordPick");
+                    break;
+                case TileNameE.Crown:
+                    break;
+                case TileNameE.MagicSword:
+                    break;
+                case TileNameE.ManaPotion:
+                    break;
+                case TileNameE.BrokenSword:
+                    break;
+                case TileNameE.BrokenShield:
+                    break;
+                case TileNameE.EliteEnemy:
+                    break;
+                default:
+                    break;
+            }
             Select(gameObject);
             return;
         }

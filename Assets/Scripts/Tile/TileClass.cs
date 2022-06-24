@@ -13,12 +13,17 @@ public enum TileNameE
 {
     RegularEnemy = 1,
     ExperiencePotion = 2,
-    PosionPoition = 3,
+    Poison = 3,
     HealthPotion = 4,
     Shield = 5,
     Coin = 6,
     Sword = 7,
-    Crown = 8
+    Crown = 8,
+    MagicSword = 9,
+    ManaPotion = 10,
+    BrokenSword = 11,
+    BrokenShield = 12,
+    EliteEnemy = 13
 }
 public class TileClass : MonoBehaviour
 {

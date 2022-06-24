@@ -92,7 +92,8 @@ public class ExpLvlUpLogic : MonoBehaviour
             int randomNumber = availableSpells[UnityEngine.Random.Range(0, availableSpellsCount)];
 
             // todo: delete the line below
-            //randomNumber = 7;
+            randomNumber = 4;
+
             SpellNameE spell = (SpellNameE)randomNumber;
 
             if (hasSpellCanDecreaseCD[randomNumber, 0])

@@ -103,6 +103,11 @@ public class PlayerClass : MonoBehaviour
         coinProgressBar = GameObject.Find("ProgressCoinBarMeter").GetComponent<Image>();
         equipmentProgressBar = GameObject.Find("ProgressEquipmentBarMeter").GetComponent<Image>();
         experienceProgressBar = GameObject.Find("ProgressExperienceBarMeter").GetComponent<Image>();
+        coinProgressBar.fillAmount = (float)coinProgressCurrent / (float)coinProgressMax;
+        equipmentProgressBar.fillAmount = (float)equipmentProgressCurrent / (float)equipmentProgressMax;
+        experienceProgressBar.fillAmount = (float)experienceProgressCurrent / (float)experienceProgressMax;
+        armourBar.fillAmount = (float)armourCurrent / (float)armourMax;
+        healthBar.fillAmount = (float)hpCurrent / (float)hpMax;
 
         //Getting text components for bars
         healthBarUpperText = GameObject.Find("HealthBarUpperText").GetComponent<Text>();
@@ -169,11 +174,11 @@ public class PlayerClass : MonoBehaviour
     public void UpdateBars()
     {
         //Setting fill amounts
-        coinProgressBar.fillAmount = (float)coinProgressCurrent / (float)coinProgressMax;
-        equipmentProgressBar.fillAmount = (float)equipmentProgressCurrent / (float)equipmentProgressMax;
-        experienceProgressBar.fillAmount = (float)experienceProgressCurrent / (float)experienceProgressMax;
-        armourBar.fillAmount = (float)armourCurrent / (float)armourMax;
-        healthBar.fillAmount = (float)hpCurrent / (float)hpMax;
+        StartCoroutine(SmoothBarFill(coinProgressBar, coinProgressCurrent, coinProgressMax));
+        StartCoroutine(SmoothBarFill(equipmentProgressBar, equipmentProgressCurrent, equipmentProgressMax));
+        StartCoroutine(SmoothBarFill(experienceProgressBar, experienceProgressCurrent, experienceProgressMax));
+        StartCoroutine(SmoothBarFill(armourBar, armourCurrent, armourMax));
+        StartCoroutine(SmoothBarFill(healthBar, hpCurrent, hpMax));
 
         //Setting text
         coinProgressBarText.text = coinProgressCurrent + "/" + coinProgressMax;
@@ -186,6 +191,24 @@ public class PlayerClass : MonoBehaviour
 
         //Setting level
         levelText.text = characterExpLevel.ToString();
+    }
+
+    IEnumerator SmoothBarFill(Image image, int current, int max)
+    {
+        float fillSmoothness = 0.005f;
+        float prevFill = image.fillAmount;
+        float currFill = (float)current / max;
+
+        while (currFill != prevFill)
+        {
+            if (currFill > prevFill)
+                prevFill = Mathf.Min(prevFill + fillSmoothness, currFill);
+            if (currFill < prevFill)
+                prevFill = Mathf.Max(prevFill - fillSmoothness, currFill);
+
+            image.fillAmount = prevFill;
+            yield return null;
+        }
     }
 
     public void UpdateStats()
@@ -209,6 +232,6 @@ public class PlayerClass : MonoBehaviour
         {
             spellsText[i].text = spells[i].currentCooldown == 0 ? "" : spells[i].currentCooldown.ToString();
         }
-        
+
     }
 }

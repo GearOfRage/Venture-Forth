@@ -846,6 +846,93 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &497662674
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 497662675}
+  - component: {fileID: 497662676}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &497662675
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497662674}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1440898222}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &497662676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497662674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05fdf84b62301a5469b6a32a724653e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: GameTheme
+    clip: {fileID: 8300000, guid: 3a536a9fe90da9f48ad783fc79881e7b, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: CoinPick
+    clip: {fileID: 8300000, guid: ecba1e7e1ec7ae84280c2c8c3780fd84, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PotionPick
+    clip: {fileID: 8300000, guid: 13ec46e61364f554d967d95978dd1470, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ShieldPick
+    clip: {fileID: 8300000, guid: 3e027f0109b2755408dc01086cef7a8b, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: SkullPick
+    clip: {fileID: 8300000, guid: 9ce0eff93d9f09d4396a6d8c485ee7c5, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: SwordPick
+    clip: {fileID: 8300000, guid: 5b866c739585abf44b9ddc923dfd676c, type: 3}
+    volume: 0.25
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ConversionSpellCast
+    clip: {fileID: 8300000, guid: 2b2b1b84c79dbd949b85deba434e3070, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &501739942
 GameObject:
   m_ObjectHideFlags: 0
@@ -1671,6 +1758,9 @@ GameObject:
   m_Component:
   - component: {fileID: 943439859}
   - component: {fileID: 943439860}
+  - component: {fileID: 943439862}
+  - component: {fileID: 943439861}
+  - component: {fileID: 943439863}
   m_Layer: 0
   m_Name: SpellManager
   m_TagString: Untagged
@@ -1705,6 +1795,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfea4995676291742b770a70bc76b6e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &943439861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943439858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0284b8fca8b6ebd4abb3e76f2a047bd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilePrefab: {fileID: 5358903232906739836, guid: 1a97e34847da2e147a662ccee9e84239, type: 3}
+--- !u!114 &943439862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943439858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05fd3cc93a91b7b4096f58a566042dc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilePrefab: {fileID: 5358903232906739836, guid: bb07e1767ec3b2a45b1e497eb1acb2a5, type: 3}
+--- !u!114 &943439863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943439858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9903989c0f7f534fa9dcd1ebb285138, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilePrefab: {fileID: 5358903232906739836, guid: a9da7d536055798449690f78fe8b8ee4, type: 3}
 --- !u!1 &996487450
 GameObject:
   m_ObjectHideFlags: 0
@@ -2123,6 +2252,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6772598484400507309, guid: e2c1255385e69684cbcaccdfe4ff7d87, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8105665756389424950, guid: e2c1255385e69684cbcaccdfe4ff7d87, type: 3}
       propertyPath: m_SortingOrder
       value: 10
@@ -2423,6 +2556,7 @@ Transform:
   - {fileID: 1923584049}
   - {fileID: 2071907134}
   - {fileID: 943439859}
+  - {fileID: 497662675}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2440,7 +2574,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 8227244635199712535, guid: 94f7af513b1ab554997f6530c2e6c637, type: 3}
   gameOverScreenPrefab: {fileID: 9026267118027749922, guid: cd8676dcd33b4a74fb45aacaa8de2938, type: 3}
-  pl: {fileID: 1440898226}
+  pl: {fileID: 0}
   gameStats: {fileID: 0}
   player: {fileID: 0}
 --- !u!114 &1440898224
@@ -2473,10 +2607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90298dbecee6aa44cb53cd396b129f14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CoinParticles: {fileID: 8736630169155016323, guid: ebbe5b31df47304409d2992d30195f8a, type: 3}
-  EquipParticles: {fileID: 8736630169155016323, guid: 4d4da535f0a3c9e44b37f818c2d45271, type: 3}
-  ExpParticles: {fileID: 8736630169155016323, guid: afce32edd97196148a648b0a5bd2bc47, type: 3}
-  lifeTime: 1
+  myName: 0
 --- !u!114 &1440898226
 MonoBehaviour:
   m_ObjectHideFlags: 0

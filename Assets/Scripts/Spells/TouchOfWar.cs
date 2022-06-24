@@ -5,6 +5,7 @@ using UnityEngine;
 public class TouchOfWar : MonoBehaviour
 {
     readonly SpellNameE mySpellName = SpellNameE.TouchOfWar;
+    [SerializeField] GameObject tilePrefab;
 
     TilesGeneration tg;
     void Start()
@@ -30,7 +31,7 @@ public class TouchOfWar : MonoBehaviour
                 if (tg.tilesField.tiles[i, j].GetComponent<TileClass>().tileName == TileNameE.Coin)
                 {
                     GameObject newTile = Instantiate(
-                        tg.tilesPrefabs[3], 
+                        tilePrefab, 
                         tg.tilesField.tiles[i, j].transform.position,
                         Quaternion.identity,
                         tg.tilesField.tiles[i, j].transform.parent);

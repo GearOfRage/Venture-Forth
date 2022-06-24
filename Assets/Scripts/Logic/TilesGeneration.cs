@@ -91,8 +91,8 @@ public class TilesGeneration : MonoBehaviour
 
     public void GenereteNewTilesAfterChain(int[] numToGen)
     {
-        int maxEnemyNumber = Mathf.CeilToInt((float)chain.chain.Count / 2); // max enemies to generate
-        int minEnemyNumber = 1; //min enemies to generate
+        int maxEnemyNumber = 3; //Mathf.CeilToInt((float)chain.chain.Count / 2); // max enemies to generate
+        int minEnemyNumber = 0; //min enemies to generate
 
         // generate tiles
         GameObject[] generatedTiles = GetRandomPrefabs(chain.chain.Count, minEnemyNumber, maxEnemyNumber);
@@ -109,7 +109,7 @@ public class TilesGeneration : MonoBehaviour
                     offset.transform.position.y + TilesField.gridSize + j,
                     offset.transform.position.z),
                     Quaternion.identity, offset.transform);
-                tilesField.extendedTiles[i, j].name = "[" + (j + 1).ToString() + "]" + "[" + (i + 1).ToString() + "] TMP";
+                tilesField.extendedTiles[i, j].name = "[" + (j + 1).ToString() + "]" + "[" + (i + 1).ToString() + "]";
                 tileIndex++;
             }
         }
