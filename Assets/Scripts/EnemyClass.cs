@@ -22,13 +22,17 @@ public class EnemyClass : MonoBehaviour
     [SerializeField] public Text attackText;
     [SerializeField] public Text armourText;
 
+    [SerializeField] public GameObject killMark;
+
     GameLogic gl;
     GameStats gs;
+
 
     private void Start()
     {
         gl = GameObject.Find("GameManager").GetComponent<GameLogic>();
         gs = gl.player.GetComponent<GameStats>();
+        killMark.active = false;
 
         ScaleStats();
         UpdateStats();

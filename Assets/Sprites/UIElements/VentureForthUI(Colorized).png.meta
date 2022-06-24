@@ -116,28 +116,28 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: VentureForthUIMeterFrame
+      name: VentureForthUI(Colorized)_0
       rect:
         serializedVersion: 2
         x: 58
         y: 933
-        width: 304
+        width: 303
         height: 59
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0148eff520500c8439c11a5dce2226c7
-      internalID: 1615733897
+      spriteID: 48b4a93478ef7044f8ffb4c65570d224
+      internalID: -527717907
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VentureForthUIEquipmentFrame
+      name: VentureForthUI(Colorized)_1
       rect:
         serializedVersion: 2
         x: 408
@@ -145,20 +145,20 @@ TextureImporter:
         width: 94
         height: 94
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 341161269d6f01d489453b1eee741677
-      internalID: 548703048
+      spriteID: 42f2c11ac89d64b439eeaf8b328a0e51
+      internalID: 1435849036
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VentureForthUIBigVerticalMeterFrame
+      name: VentureForthUI(Colorized)_2
       rect:
         serializedVersion: 2
         x: 549
@@ -166,83 +166,62 @@ TextureImporter:
         width: 92
         height: 232
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f9d2ca37636c2d47981d1d59290b10c
-      internalID: 1121192293
+      spriteID: 80c0e4908931c89418791a14b5752423
+      internalID: -1625099994
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VentureForthUIGoldMeterBar
+      name: VentureForthUI(Colorized)_3
       rect:
         serializedVersion: 2
-        x: 70
-        y: 898
-        width: 280
-        height: 24
+        x: 68
+        y: 892
+        width: 283
+        height: 39
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f009e86403c95e149b1e639673450d80
-      internalID: -1181674207
+      spriteID: 9746d03052d19bf4c8457838fd75485e
+      internalID: -630476477
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VentureForthUIEquipmentMeterBar
+      name: VentureForthUI(Colorized)_4
       rect:
         serializedVersion: 2
-        x: 70
-        y: 863
-        width: 280
-        height: 24
+        x: 68
+        y: 851
+        width: 283
+        height: 39
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87ca35ff7d11e7140897fbf8d5395a0d
-      internalID: -1503420550
+      spriteID: 4a1a59998bf3b334eb73267eca6cd589
+      internalID: 126530294
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VentureForthUIExpirienceMeterBar
-      rect:
-        serializedVersion: 2
-        x: 70
-        y: 828
-        width: 280
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e58487effa7c0c547bf471ae4657740d
-      internalID: -2100213858
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: VentureForthUISpellFrame01
+      name: VentureForthUI(Colorized)_5
       rect:
         serializedVersion: 2
         x: 407
@@ -250,20 +229,41 @@ TextureImporter:
         width: 95
         height: 94
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 597d71a7e96b7c1468db2075a43caaf9
-      internalID: 1771308107
+      spriteID: 0c117b1b5d030884abb4979dcb2cdada
+      internalID: 1739591955
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VentureForthUIMeterBackground
+      name: VentureForthUI(Colorized)_6
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 810
+        width: 283
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c57941fea241aaf4eb8aba7817b5f91d
+      internalID: 397199041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VentureForthUI(Colorized)_7
       rect:
         serializedVersion: 2
         x: 70
@@ -271,20 +271,20 @@ TextureImporter:
         width: 280
         height: 35
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2395bbe1c99d8d4f8b3880dfc1e9186
-      internalID: -593910284
+      spriteID: 7ae8b32c4b5650f4995fdb0f39c954d8
+      internalID: -1674499391
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VentureForthUISquareBackground
+      name: VentureForthUI(Colorized)_8
       rect:
         serializedVersion: 2
         x: 140
@@ -292,20 +292,20 @@ TextureImporter:
         width: 70
         height: 70
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3764bc9a1efcdf47a9c3e3f8bd8dae8
-      internalID: -266320840
+      spriteID: c5ba3c172bb36a04fabe164e80ea85c9
+      internalID: 606553245
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VentureForthUIBigVerticalMeterBackground
+      name: VentureForthUI(Colorized)_9
       rect:
         serializedVersion: 2
         x: 280
@@ -313,41 +313,41 @@ TextureImporter:
         width: 70
         height: 210
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a03c621f88407446a0e94f93db5485a
-      internalID: 1148150794
+      spriteID: ed172610343dd034a80d465292850b07
+      internalID: 2040671590
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VentureForthUISpellFrame02
+      name: VentureForthUI(Colorized)_10
       rect:
         serializedVersion: 2
-        x: 398
-        y: 620
-        width: 114
-        height: 90
+        x: 404
+        y: 615
+        width: 100
+        height: 99
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 68e4eb20d3af6654b931fa5564609032
-      internalID: -950318182
+      spriteID: 8853993204262b44097f20c4e0238f5c
+      internalID: -29966026
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VentureForthUIHealthMeterBar
+      name: VentureForthUI(Colorized)_11
       rect:
         serializedVersion: 2
         x: 527
@@ -355,20 +355,20 @@ TextureImporter:
         width: 66
         height: 210
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16008aa4b2d89c649b84e28837b94467
-      internalID: -1160943816
+      spriteID: e0183840c1967214ab9ae01e0123fab0
+      internalID: 1965926952
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VentureForthUIArmourMeterBar
+      name: VentureForthUI(Colorized)_12
       rect:
         serializedVersion: 2
         x: 597
@@ -376,20 +376,20 @@ TextureImporter:
         width: 66
         height: 210
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb21c6f5afce2b6489b66fbd52cc8836
-      internalID: 1518633345
+      spriteID: 2c1612c4581f95644a795546065f1545
+      internalID: -1213485461
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VentureForthUICircleBackground
+      name: VentureForthUI(Colorized)_13
       rect:
         serializedVersion: 2
         x: 140
@@ -397,20 +397,20 @@ TextureImporter:
         width: 70
         height: 70
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a11e38cc3c2a2d941b8166d39adbfa82
-      internalID: -1976728619
+      spriteID: b16ddc0185bad2b489d14dbaa6fd7a5f
+      internalID: 497852685
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VentureForthUICircularClassFrame
+      name: VentureForthUI(Colorized)_14
       rect:
         serializedVersion: 2
         x: 395
@@ -418,20 +418,20 @@ TextureImporter:
         width: 120
         height: 122
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c88266be79708bf428deb47170f83cd4
-      internalID: 1649988398
+      spriteID: 779c0f26c1748c54a865cc084f8191f0
+      internalID: -277114023
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VentureForthUIStone2x1Frame
+      name: VentureForthUI(Colorized)_15
       rect:
         serializedVersion: 2
         x: 59
@@ -439,20 +439,20 @@ TextureImporter:
         width: 162
         height: 92
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 41458b2b7586a8548916720de9d95a88
-      internalID: -266681475
+      spriteID: 32bee902f21fb784e8f43c8e240ae11d
+      internalID: 1966241100
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VentureForthUIStone1x1Frame
+      name: VentureForthUI(Colorized)_16
       rect:
         serializedVersion: 2
         x: 269
@@ -460,20 +460,20 @@ TextureImporter:
         width: 92
         height: 92
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 18537b631572ff94eb30d558fa2077c0
-      internalID: 442991685
+      spriteID: 510b1cc7e208a1d4f875f99c80010ec5
+      internalID: 972625540
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VentureForthUIStone3x1Frame
+      name: VentureForthUI(Colorized)_17
       rect:
         serializedVersion: 2
         x: 409
@@ -481,20 +481,20 @@ TextureImporter:
         width: 232
         height: 92
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5220ccd03442b7d4191a8ac011b4c8bb
-      internalID: -1349614658
+      spriteID: aa9c31693e311244e93c772c977eb9a2
+      internalID: 839603150
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VentureForthUIWood2x1Frame
+      name: VentureForthUI(Colorized)_18
       rect:
         serializedVersion: 2
         x: 62
@@ -502,20 +502,20 @@ TextureImporter:
         width: 156
         height: 86
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9974170c973436a43964165e5d6573f3
-      internalID: 29265478
+      spriteID: 3f1a3f2fbac1c05408542b8d5f0dcd05
+      internalID: 2089012393
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VentureForthUIWood1x1Frame
+      name: VentureForthUI(Colorized)_19
       rect:
         serializedVersion: 2
         x: 272
@@ -523,20 +523,20 @@ TextureImporter:
         width: 86
         height: 86
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc4ec921a5ba10c4d8d1e86329fe8582
-      internalID: -440355718
+      spriteID: bd894646a4995474db15a96fab4f4bbd
+      internalID: -1107723706
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VentureForthUIWood3x1Frame
+      name: VentureForthUI(Colorized)_20
       rect:
         serializedVersion: 2
         x: 412
@@ -544,20 +544,20 @@ TextureImporter:
         width: 226
         height: 86
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0231f8f7b3d17c449dcd3095627efba
-      internalID: 644544132
+      spriteID: 6340aa30fad2590459c44cf0dce32602
+      internalID: -286566171
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VentureForthUIHorizontal2x1Background
+      name: VentureForthUI(Colorized)_21
       rect:
         serializedVersion: 2
         x: 70
@@ -565,20 +565,20 @@ TextureImporter:
         width: 140
         height: 70
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dfa32258298d6c54db4791349f23fd00
-      internalID: -1375894989
+      spriteID: 69063fac08cb0a54eb2235e14e486dee
+      internalID: -270056900
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VentureForthUIHorizontal1x1Background
+      name: VentureForthUI(Colorized)_22
       rect:
         serializedVersion: 2
         x: 280
@@ -586,20 +586,20 @@ TextureImporter:
         width: 70
         height: 70
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4ec8a972c4363847bdd97f206ae4c0c
-      internalID: 825204125
+      spriteID: 6b735b7440ee91641a31960d0c35ac18
+      internalID: 1726213239
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VentureForthUIHorizontal3x1Background
+      name: VentureForthUI(Colorized)_23
       rect:
         serializedVersion: 2
         x: 420
@@ -607,14 +607,14 @@ TextureImporter:
         width: 210
         height: 70
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9ff3a84cb9e7204ba29b3a804105288
-      internalID: 502656447
+      spriteID: a2e3de1eb6f7c764eb604676a658e52d
+      internalID: -1805336603
       vertices: []
       indices: 
       edges: []
@@ -630,30 +630,30 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      VentureForthUIExpirienceMeterBar: -2100213858
-      VentureForthUIEquipmentFrame: 548703048
-      VentureForthUIHorizontal1x1Background: 825204125
-      VentureForthUIHealthMeterBar: -1160943816
-      VentureForthUISquareBackground: -266320840
-      VentureForthUIWood3x1Frame: 644544132
-      VentureForthUIArmourMeterBar: 1518633345
-      VentureForthUICircleBackground: -1976728619
-      VentureForthUIWood2x1Frame: 29265478
-      VentureForthUIStone2x1Frame: -266681475
-      VentureForthUIGoldMeterBar: -1181674207
-      VentureForthUIBigVerticalMeterFrame: 1121192293
-      VentureForthUISpellFrame01: 1771308107
-      VentureForthUIMeterFrame: 1615733897
-      VentureForthUIStone3x1Frame: -1349614658
-      VentureForthUIWood1x1Frame: -440355718
-      VentureForthUIEquipmentMeterBar: -1503420550
-      VentureForthUIHorizontal2x1Background: -1375894989
-      VentureForthUIBigVerticalMeterBackground: 1148150794
-      VentureForthUISpellFrame02: -950318182
-      VentureForthUIStone1x1Frame: 442991685
-      VentureForthUIHorizontal3x1Background: 502656447
-      VentureForthUICircularClassFrame: 1649988398
-      VentureForthUIMeterBackground: -593910284
+      VentureForthUI(Colorized)_1: 1435849036
+      VentureForthUI(Colorized)_8: 606553245
+      VentureForthUI(Colorized)_12: -1213485461
+      VentureForthUI(Colorized)_9: 2040671590
+      VentureForthUI(Colorized)_5: 1739591955
+      VentureForthUI(Colorized)_23: -1805336603
+      VentureForthUI(Colorized)_20: -286566171
+      VentureForthUI(Colorized)_21: -270056900
+      VentureForthUI(Colorized)_14: -277114023
+      VentureForthUI(Colorized)_10: -29966026
+      VentureForthUI(Colorized)_15: 1966241100
+      VentureForthUI(Colorized)_16: 972625540
+      VentureForthUI(Colorized)_17: 839603150
+      VentureForthUI(Colorized)_3: -630476477
+      VentureForthUI(Colorized)_19: -1107723706
+      VentureForthUI(Colorized)_0: -527717907
+      VentureForthUI(Colorized)_7: -1674499391
+      VentureForthUI(Colorized)_13: 497852685
+      VentureForthUI(Colorized)_11: 1965926952
+      VentureForthUI(Colorized)_2: -1625099994
+      VentureForthUI(Colorized)_4: 126530294
+      VentureForthUI(Colorized)_18: 2089012393
+      VentureForthUI(Colorized)_22: 1726213239
+      VentureForthUI(Colorized)_6: 397199041
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

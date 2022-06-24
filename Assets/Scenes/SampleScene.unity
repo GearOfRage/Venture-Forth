@@ -1767,6 +1767,9 @@ GameObject:
   - component: {fileID: 943439862}
   - component: {fileID: 943439861}
   - component: {fileID: 943439863}
+  - component: {fileID: 943439866}
+  - component: {fileID: 943439865}
+  - component: {fileID: 943439864}
   m_Layer: 0
   m_Name: SpellManager
   m_TagString: Untagged
@@ -1840,6 +1843,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 5358903232906739836, guid: a9da7d536055798449690f78fe8b8ee4, type: 3}
+--- !u!114 &943439864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943439858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad2943a384511844ebe7254a4474ac00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilePrefab: {fileID: 5358903232906739836, guid: a9da7d536055798449690f78fe8b8ee4, type: 3}
+--- !u!114 &943439865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943439858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4218240070e94da4f98ac440a74e9d71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &943439866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943439858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5952596e2f1214aa3e41f2a0463343, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilePrefab: {fileID: 5358903232906739836, guid: c7c01d53bd54f3c4c8c8559826aef2c6, type: 3}
 --- !u!1 &996487450
 GameObject:
   m_ObjectHideFlags: 0
@@ -2580,7 +2621,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 8227244635199712535, guid: 94f7af513b1ab554997f6530c2e6c637, type: 3}
   gameOverScreenPrefab: {fileID: 9026267118027749922, guid: cd8676dcd33b4a74fb45aacaa8de2938, type: 3}
-  pl: {fileID: 0}
+  pl: {fileID: 1440898226}
   gameStats: {fileID: 0}
   player: {fileID: 0}
 --- !u!114 &1440898224

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8301178950110941875}
   - component: {fileID: 1691175098366535601}
   - component: {fileID: 4751497246816592533}
-  - component: {fileID: 6031467725417851725}
+  - component: {fileID: 3612293542014540656}
   m_Layer: 5
   m_Name: Item1Text
   m_TagString: Untagged
@@ -68,8 +68,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 334d5dd47647fa24383efac610ea58f2, type: 3}
-    m_FontSize: 23
+    m_Font: {fileID: 12800000, guid: de9b861e1ea0e7240b4b1b1834acc0f8, type: 3}
+    m_FontSize: 30
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -82,10 +82,8 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Stat
 
-    mod[1]+;
-
-    mod[2]+'
---- !u!114 &6031467725417851725
+    mod[1]+; mod[2]+'
+--- !u!114 &3612293542014540656
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -98,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
-  m_EffectDistance: {x: 2, y: -2}
+  m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
 --- !u!1 &1664599994031699432
 GameObject:
@@ -172,7 +170,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 30
+  m_SortingOrder: 12
   m_Sprite: {fileID: -1700805574, guid: 7414d3deeaf8e374cbac72e00faea6b8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -384,8 +382,8 @@ Transform:
   m_GameObject: {fileID: 4113049974629356532}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.02, y: 1.02, z: 1.02}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2985039048872493142}
   m_RootOrder: 3
@@ -430,7 +428,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 35
+  m_SortingOrder: 14
   m_Sprite: {fileID: -1471411020, guid: bca1a36d43d04bc4c94a705415a07548, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -514,7 +512,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 30
+  m_SortingOrder: 12
   m_Sprite: {fileID: -1700805574, guid: 7414d3deeaf8e374cbac72e00faea6b8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -746,8 +744,8 @@ Transform:
   m_GameObject: {fileID: 5388295077472993523}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.99, y: 0.99, z: 0.99}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2985039048872493142}
   m_RootOrder: 5
@@ -792,7 +790,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 20
+  m_SortingOrder: 13
   m_Sprite: {fileID: -1127265142, guid: bca1a36d43d04bc4c94a705415a07548, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -876,7 +874,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 30
+  m_SortingOrder: 12
   m_Sprite: {fileID: -1700805574, guid: 7414d3deeaf8e374cbac72e00faea6b8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1009,7 +1007,7 @@ GameObject:
   - component: {fileID: 981383726602798106}
   - component: {fileID: 7891367790323931489}
   - component: {fileID: 1714309158201083759}
-  - component: {fileID: 3987552402688310700}
+  - component: {fileID: 4078645916518970337}
   m_Layer: 5
   m_Name: Item1Text
   m_TagString: Untagged
@@ -1066,8 +1064,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 334d5dd47647fa24383efac610ea58f2, type: 3}
-    m_FontSize: 23
+    m_Font: {fileID: 12800000, guid: de9b861e1ea0e7240b4b1b1834acc0f8, type: 3}
+    m_FontSize: 30
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -1080,10 +1078,8 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Stat
 
-    mod[1]+;
-
-    mod[2]+'
---- !u!114 &3987552402688310700
+    mod[1]+; mod[2]+'
+--- !u!114 &4078645916518970337
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1096,7 +1092,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
-  m_EffectDistance: {x: 2, y: -2}
+  m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
 --- !u!1 &8664681301810711193
 GameObject:
@@ -1109,7 +1105,7 @@ GameObject:
   - component: {fileID: 7372960017945295962}
   - component: {fileID: 2160211312199204058}
   - component: {fileID: 5290917785936958314}
-  - component: {fileID: 6805839344848212266}
+  - component: {fileID: 7574805765799292143}
   m_Layer: 5
   m_Name: Item1Text
   m_TagString: Untagged
@@ -1166,8 +1162,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 334d5dd47647fa24383efac610ea58f2, type: 3}
-    m_FontSize: 23
+    m_Font: {fileID: 12800000, guid: de9b861e1ea0e7240b4b1b1834acc0f8, type: 3}
+    m_FontSize: 30
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -1180,10 +1176,8 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Stat
 
-    mod[1]+;
-
-    mod[2]+'
---- !u!114 &6805839344848212266
+    mod[1]+; mod[2]+'
+--- !u!114 &7574805765799292143
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1196,5 +1190,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
-  m_EffectDistance: {x: 2, y: -2}
+  m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1

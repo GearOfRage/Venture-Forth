@@ -174,7 +174,7 @@ public class TurnLogic : MonoBehaviour
                     switch (tileName)
                     {
                         case TileNameE.ExperiencePotion:
-                            gl.player.experienceProgressCurrent += 10;
+                            gl.player.experienceProgressCurrent += gl.player.hpByPotion;
                             break;
                         case TileNameE.Poison:
                             healthChange -= gl.player.hpByPotion;

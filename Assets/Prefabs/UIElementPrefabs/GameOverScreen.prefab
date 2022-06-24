@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 4.7}
+  m_AnchoredPosition: {x: 0, y: 4.55}
   m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6167414573762443542
@@ -68,12 +68,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 334d5dd47647fa24383efac610ea58f2, type: 3}
-    m_FontSize: 40
+    m_Font: {fileID: 12800000, guid: 2b40768fda080f4458977071c148e7a8, type: 3}
+    m_FontSize: 54
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 51
+    m_MaxSize: 54
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -132,8 +132,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.25}
-  m_SizeDelta: {x: 375, y: 925}
+  m_AnchoredPosition: {x: 0, y: -0.368}
+  m_SizeDelta: {x: 350, y: 925}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &443320480171604595
 CanvasRenderer:
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.62352943, g: 0.5019608, b: 0.37254903, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -164,8 +164,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 334d5dd47647fa24383efac610ea58f2, type: 3}
-    m_FontSize: 28
+    m_Font: {fileID: 12800000, guid: 2b40768fda080f4458977071c148e7a8, type: 3}
+    m_FontSize: 32
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -176,7 +176,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1/15
+  m_Text: "Max health: 123\nMax armour: 123\nBase damage: 123\nWeapon damage: 123\nHealth
+    regeneration: \r123\nSpikes: 123\nVampirism: 123\nHealth by potion: 123\nArmour
+    by shield: 123\nAdditional exp. gain:\r 123\nAdditional coin gain:\r 123\nAdditional
+    eq. gain: \r123\nDamage reduction: 123\n"
 --- !u!114 &1023732278036689890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,7 +352,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: -266320840, guid: 40ce7f1967950ab44b00259119696b45, type: 3}
+  m_Sprite: {fileID: 1726213239, guid: 40ce7f1967950ab44b00259119696b45, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -506,15 +509,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4441316749378736232, guid: 4f42687735813914cb875b7848f7382b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 4441316749378736232, guid: 4f42687735813914cb875b7848f7382b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 4441316749378736232, guid: 4f42687735813914cb875b7848f7382b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 4441316749378736232, guid: 4f42687735813914cb875b7848f7382b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -550,7 +553,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4441316749378736232, guid: 4f42687735813914cb875b7848f7382b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -4.75
+      value: -5.65
       objectReference: {fileID: 0}
     - target: {fileID: 4441316749378736232, guid: 4f42687735813914cb875b7848f7382b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

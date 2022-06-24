@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 8301178950110941875}
   - component: {fileID: 1691175098366535601}
   - component: {fileID: 4751497246816592533}
-  - component: {fileID: 2510703893371942025}
+  - component: {fileID: 1447326086673545256}
   m_Layer: 5
   m_Name: ItemText
   m_TagString: Untagged
@@ -152,7 +152,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 334d5dd47647fa24383efac610ea58f2, type: 3}
+    m_Font: {fileID: 12800000, guid: de9b861e1ea0e7240b4b1b1834acc0f8, type: 3}
     m_FontSize: 30
     m_FontStyle: 1
     m_BestFit: 0
@@ -165,7 +165,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Stat
---- !u!114 &2510703893371942025
+--- !u!114 &1447326086673545256
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
-  m_EffectDistance: {x: 2, y: -2}
+  m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
 --- !u!1 &2161916190688176566
 GameObject:
@@ -1023,7 +1023,7 @@ GameObject:
   - component: {fileID: 981383726602798106}
   - component: {fileID: 7891367790323931489}
   - component: {fileID: 1714309158201083759}
-  - component: {fileID: 320037641211975474}
+  - component: {fileID: 3938735552144267672}
   m_Layer: 5
   m_Name: ItemText
   m_TagString: Untagged
@@ -1080,7 +1080,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 334d5dd47647fa24383efac610ea58f2, type: 3}
+    m_Font: {fileID: 12800000, guid: de9b861e1ea0e7240b4b1b1834acc0f8, type: 3}
     m_FontSize: 30
     m_FontStyle: 1
     m_BestFit: 0
@@ -1093,7 +1093,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Stat
---- !u!114 &320037641211975474
+--- !u!114 &3938735552144267672
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1106,7 +1106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
-  m_EffectDistance: {x: 2, y: -2}
+  m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
 --- !u!1 &8166713952614953810
 GameObject:
@@ -1203,7 +1203,7 @@ GameObject:
   - component: {fileID: 7372960017945295962}
   - component: {fileID: 2160211312199204058}
   - component: {fileID: 5290917785936958314}
-  - component: {fileID: 9096706985638063269}
+  - component: {fileID: 7389960142491280245}
   m_Layer: 5
   m_Name: ItemText
   m_TagString: Untagged
@@ -1260,7 +1260,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 334d5dd47647fa24383efac610ea58f2, type: 3}
+    m_Font: {fileID: 12800000, guid: de9b861e1ea0e7240b4b1b1834acc0f8, type: 3}
     m_FontSize: 30
     m_FontStyle: 1
     m_BestFit: 0
@@ -1273,7 +1273,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Stat
---- !u!114 &9096706985638063269
+--- !u!114 &7389960142491280245
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1286,5 +1286,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
-  m_EffectDistance: {x: 2, y: -2}
+  m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
