@@ -124,6 +124,10 @@ public class ExpLvlUpLogic : MonoBehaviour
         return spells;
     }
 
+    public void GenerateStats(int number)
+    {
+
+    }
     void FillProgressPanel()
     {
         SpellS[] spells = GenerateSpells(4);

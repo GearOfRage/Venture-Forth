@@ -2,6 +2,7 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using VContainer;
 
 public class GameLogic : MonoBehaviour
 {
@@ -12,8 +13,10 @@ public class GameLogic : MonoBehaviour
     GameObject gameOverScreen;
     GameObject playerObject;
     TilesGeneration tg;
-    TilesField tilesField;
     TurnLogic tl;
+
+    [Inject]
+    TilesField tilesField;
 
     [HideInInspector] public GameStats gameStats;
     [HideInInspector] public PlayerClass player;
@@ -27,7 +30,6 @@ public class GameLogic : MonoBehaviour
         CreatePlayer();
         fader = GetComponent<Fader>();
         tg = GetComponent<TilesGeneration>();
-        tilesField = GetComponent<TilesField>();
         tl = GetComponent<TurnLogic>();
         tg.FirstGenerate();
     }

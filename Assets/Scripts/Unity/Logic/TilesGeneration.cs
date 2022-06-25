@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using VContainer;
 
 public class TilesGeneration : MonoBehaviour
 {
     [SerializeField] public GameObject[] tilesPrefabs;  //Test tile prefab for first board filling
     [SerializeField] float duration = 1f; //Duration of shifting
-    [SerializeField] public TilesField tilesField;
+
+    [Inject]
+    public TilesField tilesField;
 
     Chain chain;
 

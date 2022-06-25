@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VContainer;
 
 public class ChainBehaviour : MonoBehaviour
 {
     public ChainRenderer chainRenderer; //ChainRenderer script
 
     Chain chain;
+
+    [Inject]
     TilesField tilesField;
+
     TilesGeneration tg;
     TurnLogic tl;
 
@@ -19,7 +23,6 @@ public class ChainBehaviour : MonoBehaviour
         isDragStarted = false;
         chainRenderer = gameObject.GetComponentInChildren<ChainRenderer>();
         chain = GetComponent<Chain>();
-        tilesField = GetComponent<TilesField>();
         tg = GetComponent<TilesGeneration>();
     }
     

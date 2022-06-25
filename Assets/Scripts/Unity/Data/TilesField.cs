@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TilesField : MonoBehaviour
+public class TilesField
 {
     public static int gridSize = 6; //Size of both dimentions
 
@@ -19,7 +19,7 @@ public class TilesField : MonoBehaviour
         {
             for (int j = 0; j < gridSize; j++)
             {
-                Destroy(tiles[i, j]);
+                Object.Destroy(tiles[i, j]);
             }
         }
     }

@@ -1,26 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VContainer;
 
 public class DeathDoorCheck : MonoBehaviour
 {
+    [Inject]
+    DamageService damageService;
 
     bool isDeathOnDoor = false;
     SpriteRenderer deathDoorSpriteRenderer;
-    TurnLogic tl;
+    GameLogic gl;
 
     void Start()
     {
         TurnLogic.OnTurnEnd += CheckDeathDoor;
         GameLogic.OnGameRestart += CheckDeathDoor;
         TryGetComponent(out deathDoorSpriteRenderer);
-        tl = FindObjectOfType<TurnLogic>();
+        gl = FindObjectOfType<GameLogic>();
     }
-
 
     void CheckDeathDoor()
     {
-        HpArmourS hpArmour = tl.CalculatePlayerHpChange();
+        HpArmourS hpArmour = damageService.CalculatePlayerHpChange();
 
         if (hpArmour.hp > 0 && isDeathOnDoor)
         {
