@@ -93,6 +93,7 @@ public class PlayerClass : MonoBehaviour
     public Text[] spellsText;
 
     public static Action onStatUpdate;
+    public static Action onBarsUpdate;
     private void Init()
     {
         //Getting text component for level and stats display
@@ -178,6 +179,7 @@ public class PlayerClass : MonoBehaviour
     {
         Init();
         onStatUpdate += UpdateStats;
+        onBarsUpdate += UpdateBars;
         TurnLogic.OnTurnEnd += UpdateStats;
         TurnLogic.OnTurnEnd += UpdateBars;
     }
@@ -213,7 +215,7 @@ public class PlayerClass : MonoBehaviour
 
     IEnumerator SmoothBarFill(Image image, GameObject ps, int current, int max)
     {
-        float fillSmoothness = 0.005f;
+        float fillSmoothness = 2f;
         float prevFill = image.fillAmount;
         float currFill = (float)current / max;
 
@@ -221,14 +223,14 @@ public class PlayerClass : MonoBehaviour
         {
             if (currFill > prevFill)
             {
-                prevFill = Mathf.Min(prevFill + fillSmoothness, currFill);
+                prevFill = Mathf.Min(prevFill + Time.deltaTime/fillSmoothness, currFill);
                 //ps.transform.position.Set(Mathf.Min(ps.transform.position.y+fillSmoothness, currFill),
                 //    ps.transform.position.y,
                 //    ps.transform.position.z);
             }
             if (currFill < prevFill)
             {
-                prevFill = Mathf.Max(prevFill - fillSmoothness, currFill);
+                prevFill = Mathf.Max(prevFill - Time.deltaTime / fillSmoothness, currFill);
                 //ps.transform.position.Set(Mathf.Max(ps.transform.position.y - fillSmoothness, currFill),
                 //    ps.transform.position.y,
                 //    ps.transform.position.z);

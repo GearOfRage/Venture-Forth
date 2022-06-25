@@ -26,6 +26,7 @@ public class DeathDoorCheck : MonoBehaviour
         {
             //stop 
             isDeathOnDoor = false;
+            deathDoorSpriteRenderer.color = new(.75f, 0f, 0f, 0f);
         }
         else if (hpArmour.hp <= 0 && !isDeathOnDoor)
         {
@@ -37,19 +38,21 @@ public class DeathDoorCheck : MonoBehaviour
 
     IEnumerator StartFlashing()
     {
-        Color color = new Color(.75f, 0f, 0f, 0f);
+        float smoothness = 2f;
+        Color color = new(.75f, 0f, 0f, 0f);
         int direction = 1;
         while (isDeathOnDoor)
         {
             if (deathDoorSpriteRenderer.color.a > .5f)
             {
                 direction = -1;
-            } else if (deathDoorSpriteRenderer.color.a < 0f)
+            }
+            else if (deathDoorSpriteRenderer.color.a < 0f)
             {
                 direction = 1;
             }
 
-            color.a += 0.05f * direction;
+            color.a += Time.deltaTime / smoothness * direction;
 
             deathDoorSpriteRenderer.color = color;
             yield return null;

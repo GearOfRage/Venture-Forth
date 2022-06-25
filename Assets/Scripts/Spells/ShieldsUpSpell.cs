@@ -67,5 +67,8 @@ public class ShieldsUpSpell : MonoBehaviour
         }
         gl.player.equipmentProgressCurrent = equipmentProgressCurrent % gl.player.equipmentProgressMax;
         gl.player.armourCurrent = Mathf.Min(gl.player.armourMax, armourGain);
+
+        PlayerClass.onStatUpdate?.Invoke();
+        PlayerClass.onBarsUpdate?.Invoke();
     }
 }

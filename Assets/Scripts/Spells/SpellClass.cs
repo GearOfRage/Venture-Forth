@@ -145,7 +145,7 @@ public class SpellClass : MonoBehaviour
         isLearned = false;
         currentCooldown = 0;
         spellImage = null;
-        if (myIndex != -1)
+        if (myIndex >= 0 && gl.player.spellSlots.Length > myIndex)
         {
             gl.player.spellSlots[myIndex].color = new Color(1f, 1f, 1f, 1f);
         }

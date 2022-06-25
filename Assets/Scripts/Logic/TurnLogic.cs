@@ -177,7 +177,7 @@ public class TurnLogic : MonoBehaviour
                 if (expGain > 0)
                 {
                     //Put Particle system here
-                    OnCollect(ProgressTypeE.Experience);
+                    //OnCollect(ProgressTypeE.Experience);
                 }
                 int playerLvlUps = expProgressCurrent / gl.player.experienceProgressMax;
                 if (playerLvlUps > 0)
@@ -210,7 +210,7 @@ public class TurnLogic : MonoBehaviour
                 int equipmentProgressCurrent = gl.player.equipmentProgressCurrent + equipmentProgressGain;
 
                 //Put Particle system here
-                OnCollect(ProgressTypeE.Equipment);
+                //OnCollect(ProgressTypeE.Equipment);
 
                 int equipmentLevelUps = equipmentProgressCurrent / gl.player.equipmentProgressMax;
                 if (equipmentLevelUps > 0)
@@ -270,7 +270,7 @@ public class TurnLogic : MonoBehaviour
                 int goldProgressCurrent = gl.player.coinProgressCurrent + goldGain;
 
                 //Put Particle system here
-                OnCollect(ProgressTypeE.Gold);
+                //OnCollect(ProgressTypeE.Gold);
 
                 int goldLevelUps = goldProgressCurrent / gl.player.coinProgressMax;
                 if (goldLevelUps > 0)
