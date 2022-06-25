@@ -47,7 +47,6 @@ public class GameLogic : MonoBehaviour
             FindObjectOfType<AudioManager>().Stop("GameTheme");
             gameOverScreen = Instantiate(gameOverScreenPrefab, Vector3.zero, Quaternion.identity);
             gameOverScreen.GetComponent<Canvas>().sortingOrder = fader.screenFader.sortingOrder + 1;
-            OnGameRestart?.Invoke();
         }
     }
 
@@ -69,5 +68,6 @@ public class GameLogic : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("GameTheme");
 
         Destroy(gameOverScreen);
+        OnGameRestart?.Invoke();
     }
 }

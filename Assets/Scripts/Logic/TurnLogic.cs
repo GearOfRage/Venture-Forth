@@ -285,7 +285,8 @@ public class TurnLogic : MonoBehaviour
         }
     }
 
-    void CalculateDamageToPlayer()
+
+    public HpArmourS CalculatePlayerHpChange()
     {
         int dmgToPlayer = 0;
         for (int i = 0; i < TilesField.gridSize; i++) //Columns
@@ -306,18 +307,21 @@ public class TurnLogic : MonoBehaviour
             }
         }
 
-
-        HpArmourS hpArmour = CalculateDamageWithArmour(
+       return CalculateDamageWithArmour(
             dmgToPlayer,
             gl.player.armourCurrent,
             gl.player.hpCurrent,
             gl.player.damageReductionByArmour
         );
-        int receivedDamage = gl.player.hpCurrent - hpArmour.hp;
-        gl.gameStats.receivedDamage += receivedDamage;
-        gl.player.hpCurrent = hpArmour.hp;
-        gl.player.armourCurrent = hpArmour.armour;
+    }
 
+    public void CalculateDamageToPlayer()
+    {
+        HpArmourS newHpArmour = CalculatePlayerHpChange();
+        int receivedDamage = gl.player.hpCurrent - newHpArmour.hp;
+        gl.gameStats.receivedDamage += receivedDamage;
+        gl.player.hpCurrent = newHpArmour.hp;
+        gl.player.armourCurrent = newHpArmour.armour;
     }
 
     HpArmourS CalculateDamageWithArmour(int dmg, int armour, int hp, float dmgReductionByArmour)

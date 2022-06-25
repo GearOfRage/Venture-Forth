@@ -58,6 +58,7 @@ public class ThirstSpell : MonoBehaviour
             }
         }
         gl.player.hpCurrent = Mathf.Clamp(gl.player.hpCurrent + healthChange, 0, gl.player.hpMax);
+        PlayerClass.onStatUpdate?.Invoke();
         tg.GenereteNewTilesAfterChain(numToGen);
     }
 }
