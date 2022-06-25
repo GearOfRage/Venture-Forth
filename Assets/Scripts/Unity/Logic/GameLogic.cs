@@ -1,6 +1,4 @@
-using System.Collections;
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 using VContainer;
 
@@ -15,12 +13,14 @@ public class GameLogic : MonoBehaviour
     TurnLogic tl;
 
     [Inject]
-    TilesGeneration tg;
+    readonly TilesGeneration tg;
 
     [Inject]
-    TilesField tilesField;
+    readonly TilesField tilesField;
 
-    [HideInInspector] public GameStats gameStats;
+    [Inject]
+    public GameStats gameStats;
+
     [HideInInspector] public PlayerClass player;
 
     public static Action OnGameRestart;
@@ -57,7 +57,6 @@ public class GameLogic : MonoBehaviour
     {
         playerObject = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
         player = playerObject.GetComponent<PlayerClass>();
-        gameStats = playerObject.GetComponent<GameStats>();
     }
 
     public void Restart()

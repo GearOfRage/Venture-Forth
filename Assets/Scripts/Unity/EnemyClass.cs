@@ -25,13 +25,10 @@ public class EnemyClass : MonoBehaviour
     [SerializeField] public GameObject killMark;
 
     GameLogic gl;
-    GameStats gs;
-
 
     private void Start()
     {
         gl = GameObject.Find("GameManager").GetComponent<GameLogic>();
-        gs = gl.player.GetComponent<GameStats>();
 
         ScaleStats();
         UpdateStats();
@@ -39,9 +36,9 @@ public class EnemyClass : MonoBehaviour
 
     void ScaleStats()
     {
-        attack = gl.player.characterEqipLevel + 1 + (gs.turnNumber / 10);
-        hp = gl.player.characterEqipLevel + gl.player.characterExpLevel + gl.player.characterGoldLevel + (gs.turnNumber / 8) + 2;
-        hpMax = gl.player.characterEqipLevel + gl.player.characterExpLevel + gl.player.characterGoldLevel + (gs.turnNumber / 8);
+        attack = gl.player.characterEqipLevel + 1 + (gl.gameStats.turnNumber / 10);
+        hp = gl.player.characterEqipLevel + gl.player.characterExpLevel + gl.player.characterGoldLevel + (gl.gameStats.turnNumber / 8) + 2;
+        hpMax = gl.player.characterEqipLevel + gl.player.characterExpLevel + gl.player.characterGoldLevel + (gl.gameStats.turnNumber / 8);
         armour = gl.player.characterEqipLevel + 1;
     }
 

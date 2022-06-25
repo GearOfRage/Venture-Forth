@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameStats : MonoBehaviour
+public class GameStats
 {
-    [HideInInspector]
     public int turnNumber = 1;
-
     public int collectedGold = 0;
     public int killedRegularEnemies = 0;
     public int killedEliteEnemies = 0;

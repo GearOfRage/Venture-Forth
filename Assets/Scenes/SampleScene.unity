@@ -1427,7 +1427,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 7482667652216324306, guid: bc95cdbe5a8c5444b82aedf6d0f29ba3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6b1b322dd118b07408983aa43f7a72f4, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
@@ -2704,7 +2704,6 @@ GameObject:
   - component: {fileID: 1440898228}
   - component: {fileID: 1440898231}
   - component: {fileID: 1440898233}
-  - component: {fileID: 1440898234}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2748,7 +2747,6 @@ MonoBehaviour:
   playerPrefab: {fileID: 8227244635199712535, guid: 94f7af513b1ab554997f6530c2e6c637, type: 3}
   gameOverScreenPrefab: {fileID: 9026267118027749922, guid: cd8676dcd33b4a74fb45aacaa8de2938, type: 3}
   pl: {fileID: 1440898226}
-  gameStats: {fileID: 0}
   player: {fileID: 0}
 --- !u!114 &1440898224
 MonoBehaviour:
@@ -2764,7 +2762,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnText: {fileID: 739734569}
   collectVisuals: {fileID: 1440898225}
-  tilesField: {fileID: 1440898234}
   gl: {fileID: 1440898223}
   pl: {fileID: 1440898226}
   isPanelOpen: 0
@@ -2859,19 +2856,6 @@ MonoBehaviour:
   - {fileID: 5358903232906739836, guid: bb07e1767ec3b2a45b1e497eb1acb2a5, type: 3}
   - {fileID: 5358903232906739836, guid: 1a97e34847da2e147a662ccee9e84239, type: 3}
   duration: 1
-  tilesField: {fileID: 1440898234}
---- !u!114 &1440898234
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1440898220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 174a43cdec9b80849835f50edcc3d955, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1444773055
 GameObject:
   m_ObjectHideFlags: 0
@@ -3165,7 +3149,8 @@ MonoBehaviour:
   - {fileID: 497662674}
   - {fileID: 2071907133}
   - {fileID: 782755829}
-  gl: {fileID: 1440898223}
+  gameLogic: {fileID: 1440898223}
+  tilesGeneration: {fileID: 1440898233}
 --- !u!224 &1490198487 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8988953045170706744, guid: 1981fb7d7f5620f4bb45c63cb43dec9a, type: 3}
