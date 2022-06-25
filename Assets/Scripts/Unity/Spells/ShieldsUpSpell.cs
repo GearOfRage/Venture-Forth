@@ -1,17 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VContainer;
 
 public class ShieldsUpSpell : MonoBehaviour
 {
     readonly SpellNameE mySpellName = SpellNameE.ShieldsUp;
 
+    [Inject]
     GameLogic gl;
+    [Inject]
     TilesGeneration tg;
     void Start()
     {
-        gl = GameObject.Find("GameManager").GetComponent<GameLogic>();
-        tg = GameObject.Find("GameManager").GetComponent<TilesGeneration>();
         //add subscription to spellclass cast event
         SpellClass.OnCast += Cast;
     }

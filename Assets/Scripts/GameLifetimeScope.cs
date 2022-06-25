@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class GameLifetimeScope : LifetimeScope
 {
-    [SerializeField] GameLogic gl;
+    [SerializeField] GameLogic gameLogic;
+    [SerializeField] TilesGeneration tilesGeneration;
 
     protected override void Configure(IContainerBuilder builder)
     {
         builder.Register<TilesField>(Lifetime.Singleton);
-
         builder.Register<DamageService>(Lifetime.Singleton);
-        builder.RegisterComponent(gl);
+
+        builder.RegisterComponent(gameLogic);
+        builder.RegisterComponent(tilesGeneration);
     }
 }

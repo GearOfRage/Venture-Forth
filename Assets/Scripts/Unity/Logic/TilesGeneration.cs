@@ -12,14 +12,12 @@ public class TilesGeneration : MonoBehaviour
     [Inject]
     public TilesField tilesField;
 
-    Chain chain;
 
     GameObject offset; //Tiles matrix offset
     readonly System.Random rnd = new();
 
     private void Start()
     {
-        chain = GetComponent<Chain>();
     }
 
     public void FirstGenerate()

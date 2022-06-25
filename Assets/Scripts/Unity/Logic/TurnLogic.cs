@@ -186,7 +186,6 @@ public class TurnLogic : MonoBehaviour
                 int playerLvlUps = expProgressCurrent / gl.player.experienceProgressMax;
                 if (playerLvlUps > 0)
                 {
-                    Debug.Log("Up " + playerLvlUps + " gl.player levels now!");
                     gl.player.characterExpLevel += playerLvlUps;
                     pl.ShowProgressPanel(ProgressTypeE.Experience, playerLvlUps);
                 }
@@ -219,7 +218,7 @@ public class TurnLogic : MonoBehaviour
                 int equipmentLevelUps = equipmentProgressCurrent / gl.player.equipmentProgressMax;
                 if (equipmentLevelUps > 0)
                 {
-                    Debug.Log("Up " + equipmentLevelUps + " equipements now!");
+                    //Debug.Log("Up " + equipmentLevelUps + " equipements now!");
                 }
                 gl.player.equipmentProgressCurrent = equipmentProgressCurrent % gl.player.equipmentProgressMax;
                 gl.player.armourCurrent = Mathf.Min(gl.player.armourMax, armourGain);
@@ -280,7 +279,6 @@ public class TurnLogic : MonoBehaviour
                 if (goldLevelUps > 0)
                 {
                     pl.ShowProgressPanel(ProgressTypeE.Gold, goldLevelUps);
-                    Debug.Log("Up " + goldLevelUps + " golds now!");
                 }
                 gl.player.coinProgressCurrent = goldProgressCurrent % gl.player.coinProgressMax;
                 break;

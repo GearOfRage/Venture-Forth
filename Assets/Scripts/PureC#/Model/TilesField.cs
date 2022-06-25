@@ -9,10 +9,6 @@ public class TilesField
     public GameObject[,] tiles = new GameObject[gridSize, gridSize]; //Tiles matrix
     public GameObject[,] extendedTiles = new GameObject[gridSize, gridSize]; //Extended tiles matrix
 
-    void Start()
-    {
-    }
-
     public void Clear()
     {
         for (int i = 0; i < gridSize; i++)

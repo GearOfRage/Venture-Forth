@@ -12,8 +12,10 @@ public class GameLogic : MonoBehaviour
 
     GameObject gameOverScreen;
     GameObject playerObject;
-    TilesGeneration tg;
     TurnLogic tl;
+
+    [Inject]
+    TilesGeneration tg;
 
     [Inject]
     TilesField tilesField;
@@ -29,7 +31,6 @@ public class GameLogic : MonoBehaviour
     {
         CreatePlayer();
         fader = GetComponent<Fader>();
-        tg = GetComponent<TilesGeneration>();
         tl = GetComponent<TurnLogic>();
         tg.FirstGenerate();
     }

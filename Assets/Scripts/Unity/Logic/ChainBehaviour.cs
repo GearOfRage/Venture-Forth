@@ -12,7 +12,9 @@ public class ChainBehaviour : MonoBehaviour
     [Inject]
     TilesField tilesField;
 
+    [Inject]
     TilesGeneration tg;
+
     TurnLogic tl;
 
     public bool isDragStarted;
@@ -23,7 +25,6 @@ public class ChainBehaviour : MonoBehaviour
         isDragStarted = false;
         chainRenderer = gameObject.GetComponentInChildren<ChainRenderer>();
         chain = GetComponent<Chain>();
-        tg = GetComponent<TilesGeneration>();
     }
     
     public void ChainDone()

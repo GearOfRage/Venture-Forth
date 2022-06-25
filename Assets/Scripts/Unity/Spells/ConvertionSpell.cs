@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VContainer;
 
 public class ConvertionSpell : MonoBehaviour
 {
     readonly SpellNameE mySpellName = SpellNameE.Conversion;
 
+    [Inject]
     TilesGeneration tg;
     void Start()
     {
-        tg = GameObject.Find("GameManager").GetComponent<TilesGeneration>();
         //add subscription to spellclass cast event
         SpellClass.OnCast += Cast;
     }
