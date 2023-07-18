@@ -65,8 +65,12 @@ public class GameLogic : MonoBehaviour
         CreatePlayer();
         tilesField.Clear();
         tg.FirstGenerate();
+        gameStats.turnNumber = 1;
+        
         tl.turnText.text = gameStats.turnNumber.ToString();
 
+        
+        
         FindObjectOfType<AudioManager>().Play("GameTheme");
 
         Destroy(gameOverScreen);
