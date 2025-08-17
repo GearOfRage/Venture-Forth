@@ -893,7 +893,7 @@ MonoBehaviour:
   sounds:
   - name: GameTheme
     clip: {fileID: 8300000, guid: 3a536a9fe90da9f48ad783fc79881e7b, type: 3}
-    volume: 0.25
+    volume: 0.1
     pitch: 0.8
     loop: 1
     source: {fileID: 0}
@@ -911,7 +911,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: ShieldPick
     clip: {fileID: 8300000, guid: 3e027f0109b2755408dc01086cef7a8b, type: 3}
-    volume: 0.1
+    volume: 0.05
     pitch: 0.8
     loop: 0
     source: {fileID: 0}
