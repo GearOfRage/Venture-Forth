@@ -8,6 +8,7 @@ public class ChainBehaviour : MonoBehaviour
     public ChainRenderer chainRenderer; //ChainRenderer script
 
     Chain chain;
+    StatsProjection statsProjection;
 
     [Inject]
     TilesField tilesField;
@@ -25,14 +26,19 @@ public class ChainBehaviour : MonoBehaviour
         isDragStarted = false;
         chainRenderer = gameObject.GetComponentInChildren<ChainRenderer>();
         chain = GetComponent<Chain>();
+        statsProjection = GetComponent<StatsProjection>();
     }
-    
+
     public void ChainDone()
     {
+        if (statsProjection != null)
+            statsProjection.HideProjection();
+
         if (chain.chain.Count >= chain.minChainSize)
         {
             tl.Next();
-        } else
+        }
+        else
         {
             chainRenderer.DestroyNodes();
             chain.chain.Clear(); //Clearing the chain elements
@@ -41,6 +47,8 @@ public class ChainBehaviour : MonoBehaviour
 
     public void OnPanelClose()
     {
+        if (statsProjection != null)
+            statsProjection.HideProjection();
 
         // then destroy it
         int[] numToGen = CalculateAndDestroyChainTiles();

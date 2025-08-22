@@ -6,6 +6,7 @@ public class GameLifetimeScope : LifetimeScope
 {
     [SerializeField] GameLogic gameLogic;
     [SerializeField] TilesGeneration tilesGeneration;
+    [SerializeField] StatsProjection statsProjection;
 
     protected override void Configure(IContainerBuilder builder)
     {
@@ -16,6 +17,7 @@ public class GameLifetimeScope : LifetimeScope
         // View - some element that are visible on UI
         builder.RegisterComponent(gameLogic);
         builder.RegisterComponent(tilesGeneration);
+        builder.RegisterComponent(statsProjection);
 
         // Controller - some behavior / logic / algorithm / etc
         builder.Register<DamageService>(Lifetime.Singleton);
