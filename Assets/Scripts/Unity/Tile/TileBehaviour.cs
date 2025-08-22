@@ -9,6 +9,7 @@ public class TileBehaviour : MonoBehaviour
     ChainBehaviour cb;
     Chain chain;
     TurnLogic tl;
+    StatsProjection statsProjection;
 
     void Start()
     {
@@ -16,6 +17,7 @@ public class TileBehaviour : MonoBehaviour
         cb = GameObject.Find("GameManager").GetComponent<ChainBehaviour>();
         chain = GameObject.Find("GameManager").GetComponent<Chain>();
         tl = GameObject.Find("GameManager").GetComponent<TurnLogic>();
+        statsProjection = GameObject.Find("GameManager").GetComponent<StatsProjection>();
 
         gameObject.GetComponentInChildren<SpriteRenderer>().transform.Rotate(0, 0, Random.Range(-10f, 10f), Space.Self);
     }
@@ -30,6 +32,8 @@ public class TileBehaviour : MonoBehaviour
         {
             PlaySound();
             Select(gameObject);
+            if (statsProjection != null)
+                statsProjection.ShowProjection();
         }
         cb.isDragStarted = true;
     }
@@ -42,6 +46,8 @@ public class TileBehaviour : MonoBehaviour
         }
 
         cb.isDragStarted = false;
+        if (statsProjection != null)
+            statsProjection.HideProjection();
         cb.ChainDone();
     }
 
@@ -59,6 +65,8 @@ public class TileBehaviour : MonoBehaviour
             PlaySound();
             Select(gameObject);
             tl.CalculatePotentialDamageToEnemies();
+            if (statsProjection != null)
+                statsProjection.ShowProjection();
             return;
         }
         if (chain.chain.Count > 1)
@@ -66,8 +74,10 @@ public class TileBehaviour : MonoBehaviour
             if (cb.isDragStarted && gameObject == chain.chain[chain.chain.Count - 2])
             {
                 chain.chain.RemoveAt(chain.chain.Count - 1);
-                cb.chainRenderer.DrawChain(); 
+                cb.chainRenderer.DrawChain();
                 tl.CalculatePotentialDamageToEnemies();
+                if (statsProjection != null)
+                    statsProjection.ShowProjection();
             }
         }
     }
