@@ -187,6 +187,7 @@ public class PlayerClass : MonoBehaviour
     private void OnDestroy()
     {
         onStatUpdate -= UpdateStats;
+        onBarsUpdate -= UpdateBars;
         TurnLogic.OnTurnEnd -= UpdateStats;
         TurnLogic.OnTurnEnd -= UpdateBars;
     }
@@ -223,7 +224,7 @@ public class PlayerClass : MonoBehaviour
         {
             if (currFill > prevFill)
             {
-                prevFill = Mathf.Min(prevFill + Time.deltaTime/fillSmoothness, currFill);
+                prevFill = Mathf.Min(prevFill + Time.deltaTime / fillSmoothness, currFill);
                 //ps.transform.position.Set(Mathf.Min(ps.transform.position.y+fillSmoothness, currFill),
                 //    ps.transform.position.y,
                 //    ps.transform.position.z);

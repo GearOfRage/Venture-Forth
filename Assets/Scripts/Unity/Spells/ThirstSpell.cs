@@ -31,34 +31,44 @@ public class ThirstSpell : MonoBehaviour
         {
             for (int j = 0; j < TilesField.gridSize; j++) //Rows
             {
-                if (tg.tilesField.tiles[i, j].GetComponent<TileClass>().tileType == TileTypeE.Potion)
+                GameObject tile = tg.tilesField.tiles[i, j];
+                if (tile != null && tile.GetComponent<TileClass>().tileType == TileTypeE.Potion)
                 {
                     numToGen[i]++;
-                    TileNameE tile = tg.tilesField.tiles[i, j].GetComponent<TileClass>().tileName;
-                    switch (tile)
+                    TileNameE tileName = tile.GetComponent<TileClass>().tileName;
+                    switch (tileName)
                     {
                         case TileNameE.ExperiencePotion:
-                            gl.player.experienceProgressCurrent += gl.player.hpByPotion;
+                            if (gl.player != null)
+                                gl.player.experienceProgressCurrent += gl.player.hpByPotion;
                             break;
                         case TileNameE.Poison:
-                            healthChange -= gl.player.hpByPotion;
+                            if (gl.player != null)
+                                healthChange -= gl.player.hpByPotion;
                             break;
                         case TileNameE.HealthPotion:
-                            healthChange += gl.player.hpByPotion;
+                            if (gl.player != null)
+                                healthChange += gl.player.hpByPotion;
                             break;
                         case TileNameE.ManaPotion:
                             //Decrease random spell CD by hpByPotion
                             break;
                         default:
-                            throw new System.Exception("Unexpected potion " + tile);
+                            throw new System.Exception("Unexpected potion " + tileName);
                     }
 
-                    Destroy(tg.tilesField.tiles[i, j]);
+                    Destroy(tile);
                     tg.tilesField.tiles[i, j] = null;
                 }
             }
         }
-        gl.player.hpCurrent = Mathf.Clamp(gl.player.hpCurrent + healthChange, 0, gl.player.hpMax);
+
+        // Null check to prevent errors if PlayerClass is destroyed
+        if (gl.player != null)
+        {
+            gl.player.hpCurrent = Mathf.Clamp(gl.player.hpCurrent + healthChange, 0, gl.player.hpMax);
+        }
+
         PlayerClass.onStatUpdate?.Invoke();
         PlayerClass.onBarsUpdate?.Invoke();
         tg.GenereteNewTilesAfterChain(numToGen);

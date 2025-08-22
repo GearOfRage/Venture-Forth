@@ -32,13 +32,13 @@ public class ShieldsUpSpell : MonoBehaviour
         {
             for (int j = 0; j < TilesField.gridSize; j++) //Rows
             {
-                if (tg.tilesField.tiles[i, j].GetComponent<TileClass>().tileType == TileTypeE.Armour)
+                GameObject tile = tg.tilesField.tiles[i, j];
+                if (tile != null && tile.GetComponent<TileClass>().tileType == TileTypeE.Armour)
                 {
                     numToGen[i]++;
 
-
-                    TileNameE tile = tg.tilesField.tiles[i, j].GetComponent<TileClass>().tileName;
-                    switch (tile)
+                    TileNameE tileName = tile.GetComponent<TileClass>().tileName;
+                    switch (tileName)
                     {
                         case TileNameE.Shield:
                             equipmentProgressGain++;
@@ -46,28 +46,31 @@ public class ShieldsUpSpell : MonoBehaviour
                             shieldCount++;
                             break;
                         default:
-                            throw new System.Exception("Unexpected armour " + tile);
+                            throw new System.Exception("Unexpected armour " + tileName);
                     }
-                    Destroy(tg.tilesField.tiles[i, j]);
+                    Destroy(tile);
                     tg.tilesField.tiles[i, j] = null;
                 }
             }
         }
         tg.GenereteNewTilesAfterChain(numToGen);
 
-        equipmentProgressGain += Mathf.FloorToInt(shieldCount * gl.player.addictionalEquipementProgressByShield);
-        int equipmentProgressCurrent = gl.player.equipmentProgressCurrent + equipmentProgressGain;
-
-        //Put Particle system here
-        TurnLogic.OnCollect(ProgressTypeE.Equipment);
-
-        int equipmentLevelUps = equipmentProgressCurrent / gl.player.equipmentProgressMax;
-        if (equipmentLevelUps > 0)
+        if (gl.player != null)
         {
-            Debug.Log("Up " + equipmentLevelUps + " equipements now!");
+            equipmentProgressGain += Mathf.FloorToInt(shieldCount * gl.player.addictionalEquipementProgressByShield);
+            int equipmentProgressCurrent = gl.player.equipmentProgressCurrent + equipmentProgressGain;
+
+            //Put Particle system here
+            TurnLogic.OnCollect(ProgressTypeE.Equipment);
+
+            int equipmentLevelUps = equipmentProgressCurrent / gl.player.equipmentProgressMax;
+            if (equipmentLevelUps > 0)
+            {
+                Debug.Log("Up " + equipmentLevelUps + " equipements now!");
+            }
+            gl.player.equipmentProgressCurrent = equipmentProgressCurrent % gl.player.equipmentProgressMax;
+            gl.player.armourCurrent = Mathf.Min(gl.player.armourMax, armourGain);
         }
-        gl.player.equipmentProgressCurrent = equipmentProgressCurrent % gl.player.equipmentProgressMax;
-        gl.player.armourCurrent = Mathf.Min(gl.player.armourMax, armourGain);
 
         PlayerClass.onStatUpdate?.Invoke();
         PlayerClass.onBarsUpdate?.Invoke();
