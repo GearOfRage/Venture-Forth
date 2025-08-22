@@ -27,6 +27,7 @@ public class EquipItemClass : MonoBehaviour
     public EquipItemTypeE itemType;
     public Sprite itemImage;
     public int itemStat;
+    public string itemBaseStatName; // Added to support different support item effects
 
     GameLogic gl;
     ProgressLogic pl;
@@ -43,6 +44,7 @@ public class EquipItemClass : MonoBehaviour
         itemType = itemToWear.itemType;
         itemImage = itemToWear.itemImage;
         itemStat = itemToWear.itemStat;
+        itemBaseStatName = itemToWear.itemBaseStatName;
     }
 
     void OnMouseDown()
@@ -70,6 +72,28 @@ public class EquipItemClass : MonoBehaviour
                 case EquipItemTypeE.Support:
                     gl.player.itemItem.Wear(this);
                     gl.player.itemSlot.sprite = sprite;
+                    // Apply different support item effects based on itemBaseStatName
+                    switch (itemBaseStatName)
+                    {
+                        case "Experience boost":
+                            gl.player.addictionalExperienceProgressByEnemy += itemStat * 0.1f;
+                            break;
+                        case "Gold boost":
+                            gl.player.addictionalCoinProgressByCoin += itemStat * 0.1f;
+                            break;
+                        case "Equipment boost":
+                            gl.player.addictionalEquipementProgressByShield += itemStat * 0.1f;
+                            break;
+                        case "Spikes damage":
+                            gl.player.spikes += itemStat;
+                            break;
+                        case "Health regen":
+                            gl.player.hpRegeneration += itemStat;
+                            break;
+                        case "Vampirism":
+                            gl.player.vampirism += itemStat;
+                            break;
+                    }
                     break;
                 default:
                     break;
