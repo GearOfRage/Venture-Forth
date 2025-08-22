@@ -47,7 +47,28 @@ public class GoldLvlUpLogic : MonoBehaviour
             case 4:
                 item.itemType = EquipItemTypeE.Support;
                 item.itemImage = possibleSupportArts[Random.Range(0, possibleSupportArts.Length)];
-                item.itemBaseStatName = "Gives some strange shit";
+                // Random support item type with different effects
+                switch (Random.Range(1, 7))
+                {
+                    case 1:
+                        item.itemBaseStatName = "Experience boost";
+                        break;
+                    case 2:
+                        item.itemBaseStatName = "Gold boost";
+                        break;
+                    case 3:
+                        item.itemBaseStatName = "Equipment boost";
+                        break;
+                    case 4:
+                        item.itemBaseStatName = "Spikes damage";
+                        break;
+                    case 5:
+                        item.itemBaseStatName = "Health regen";
+                        break;
+                    case 6:
+                        item.itemBaseStatName = "Vampirism";
+                        break;
+                }
                 break;
             default:
                 break;
@@ -70,6 +91,7 @@ public class GoldLvlUpLogic : MonoBehaviour
             equipItem.itemStat = item.itemStat;
             equipItem.itemType = item.itemType;
             equipItem.itemImage = item.itemImage;
+            equipItem.itemBaseStatName = item.itemBaseStatName;
         }
 
 
